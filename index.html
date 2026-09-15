@@ -1,17 +1,16 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Nuestra Historia ♥</title>
+<title>Los momentos que guardo contigo</title>
 
 <style>
 
-/* =====================================================
-   CONFIGURACIÓN GENERAL
-===================================================== */
+/* ============================= */
+/* CONFIGURACIÓN GENERAL */
+/* ============================= */
 
 *{
     margin:0;
@@ -26,2289 +25,1086 @@ body{
 }
 
 body{
-    background:
-        radial-gradient(circle at top,
-        #b51c35 0%,
-        #720d22 45%,
-        #30040d 100%);
-
-    color:white;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
+    background:#ff0000;
+    color:#ffffff;
+    font-family:Georgia, "Times New Roman", serif;
     overflow-x:hidden;
 }
 
+/* ============================= */
+/* INTRODUCCIÓN */
+/* ============================= */
 
-/* =====================================================
-   PARTICULAS
-===================================================== */
-
-.particulas{
+#intro{
     position:fixed;
     inset:0;
-    pointer-events:none;
-    overflow:hidden;
-    z-index:1;
+    z-index:9999;
+    background:#ff0000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    cursor:pointer;
 }
 
-.particula{
+.intro-contenido{
+    padding:30px;
+}
+
+.corazon-intro{
+    font-size:90px;
+    animation:latido 1.2s infinite;
+}
+
+.intro-contenido h1{
+    font-size:38px;
+    margin:20px 0 12px;
+    color:#ffffff;
+}
+
+.intro-contenido p{
+    font-size:20px;
+    color:#ffffff;
+}
+
+@keyframes latido{
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.15);
+    }
+}
+
+/* ============================= */
+/* CONTENEDOR PRINCIPAL */
+/* ============================= */
+
+#libro{
+    width:100%;
+    min-height:100vh;
+    padding:25px 15px 50px;
+}
+
+/* ============================= */
+/* PÁGINAS */
+/* ============================= */
+
+.pagina{
+    width:min(850px,94vw);
+    margin:auto;
+    text-align:center;
+    padding:30px 20px;
+    color:#ffffff;
+}
+
+.pagina h1,
+.pagina h2,
+.pagina h3,
+.pagina p,
+.pagina span,
+.pagina div{
+    color:#ffffff;
+}
+
+/* ============================= */
+/* PORTADA */
+/* ============================= */
+
+.portada{
+    min-height:85vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.portada .etiqueta{
+    font-size:18px;
+    margin-bottom:15px;
+}
+
+.portada h1{
+    font-size:48px;
+    line-height:1.2;
+    margin-bottom:20px;
+}
+
+.dedicatoria{
+    max-width:650px;
+    font-size:22px;
+    line-height:1.6;
+}
+
+/* ============================= */
+/* ETIQUETAS */
+/* ============================= */
+
+.etiqueta{
+    font-size:17px;
+    margin-bottom:10px;
+    font-style:italic;
+}
+
+/* ============================= */
+/* FOTOS */
+/* ============================= */
+
+.polaroid{
+    max-width:560px;
+    margin:22px auto;
+    background:transparent;
+    padding:0;
+}
+
+.polaroid img{
+    display:block;
+    width:100%;
+    aspect-ratio:4 / 3;
+    object-fit:cover;
+    object-position:center;
+}
+
+/* ============================= */
+/* TEXTOS DE RECUERDOS */
+/* ============================= */
+
+.titulo-recuerdo{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.descripcion{
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+.pie{
+    font-size:17px;
+    font-style:italic;
+    margin-top:8px;
+}
+
+.texto{
+    max-width:650px;
+    margin:20px auto;
+    font-size:19px;
+    line-height:1.7;
+}
+
+/* ============================= */
+/* FINAL */
+/* ============================= */
+
+.final{
+    min-height:90vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.final .etiqueta{
+    margin-bottom:20px;
+}
+
+/* ============================= */
+/* OSO ANIMADO */
+/* ============================= */
+
+.oso-contenedor{
+    position:relative;
+    width:300px;
+    height:330px;
+    margin:10px auto 25px;
+    animation:aparecerOso 1.5s ease forwards;
+}
+
+@keyframes aparecerOso{
+    from{
+        opacity:0;
+        transform:translateY(80px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Cabeza */
+
+.oso-cabeza{
     position:absolute;
-    color:rgba(255,255,255,.75);
-    animation:caer linear infinite;
+    width:190px;
+    height:175px;
+    background:#9b6a45;
+    border-radius:50%;
+    left:55px;
+    top:35px;
+    border:5px solid #ffffff;
+}
+
+/* Orejas */
+
+.oso-oreja{
+    position:absolute;
+    width:65px;
+    height:65px;
+    background:#9b6a45;
+    border-radius:50%;
+    top:10px;
+    border:5px solid #ffffff;
+}
+
+.oso-oreja.izquierda{
+    left:35px;
+}
+
+.oso-oreja.derecha{
+    right:35px;
+}
+
+.oso-oreja::after{
+    content:"";
+    position:absolute;
+    width:30px;
+    height:30px;
+    background:#d99a72;
+    border-radius:50%;
+    left:13px;
+    top:13px;
+}
+
+/* Ojos */
+
+.oso-ojo{
+    position:absolute;
+    width:17px;
+    height:22px;
+    background:#222222;
+    border-radius:50%;
+    top:75px;
+}
+
+.oso-ojo.izquierdo{
+    left:50px;
+}
+
+.oso-ojo.derecho{
+    right:50px;
+}
+
+/* Brillo ojos */
+
+.oso-ojo::after{
+    content:"";
+    position:absolute;
+    width:5px;
+    height:5px;
+    background:white;
+    border-radius:50%;
+    top:4px;
+    left:4px;
+}
+
+/* Hocico */
+
+.oso-hocico{
+    position:absolute;
+    width:75px;
+    height:58px;
+    background:#d99a72;
+    border-radius:50%;
+    left:52px;
+    bottom:25px;
+}
+
+.oso-nariz{
+    position:absolute;
+    width:23px;
+    height:17px;
+    background:#222222;
+    border-radius:50%;
+    top:10px;
+    left:26px;
+}
+
+.oso-boca{
+    position:absolute;
+    width:25px;
+    height:13px;
+    border-bottom:4px solid #222222;
+    border-radius:50%;
+    left:25px;
+    top:25px;
+}
+
+/* Cuerpo */
+
+.oso-cuerpo{
+    position:absolute;
+    width:170px;
+    height:145px;
+    background:#9b6a45;
+    border-radius:80px 80px 45px 45px;
+    left:65px;
+    top:185px;
+    border:5px solid #ffffff;
+}
+
+/* Barriguita */
+
+.oso-barriga{
+    position:absolute;
+    width:105px;
+    height:90px;
+    background:#d99a72;
+    border-radius:50%;
+    left:28px;
+    top:25px;
+}
+
+/* Brazos */
+
+.oso-brazo{
+    position:absolute;
+    width:55px;
+    height:105px;
+    background:#9b6a45;
+    border-radius:40px;
+    top:195px;
+    border:5px solid #ffffff;
+}
+
+.oso-brazo.izquierdo{
+    left:35px;
+    transform:rotate(25deg);
+}
+
+.oso-brazo.derecho{
+    right:35px;
+    transform:rotate(-25deg);
+}
+
+/* Patas */
+
+.oso-pata{
+    position:absolute;
+    width:65px;
+    height:55px;
+    background:#9b6a45;
+    border-radius:50%;
+    bottom:0;
+    border:5px solid #ffffff;
+}
+
+.oso-pata.izquierda{
+    left:65px;
+}
+
+.oso-pata.derecha{
+    right:65px;
+}
+
+/* Corazón */
+
+.corazon-oso{
+    position:absolute;
+    font-size:52px;
+    left:50%;
+    top:205px;
+    transform:translateX(-50%);
+    z-index:5;
+    animation:corazonOso 1.2s infinite;
+}
+
+@keyframes corazonOso{
+    0%,100%{
+        transform:translateX(-50%) scale(1);
+    }
+
+    50%{
+        transform:translateX(-50%) scale(1.18);
+    }
+}
+
+/* Animación de movimiento */
+
+.oso-contenedor{
+    animation:
+        aparecerOso 1.5s ease forwards,
+        movimientoOso 2.5s ease-in-out 1.5s infinite;
+}
+
+@keyframes movimientoOso{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
+/* ============================= */
+/* MENSAJE FINAL */
+/* ============================= */
+
+.mensaje-final{
+    max-width:650px;
+    margin:auto;
+}
+
+.mensaje-final h2{
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.mensaje-final p{
+    font-size:20px;
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+#volverVer{
+    background:transparent;
+    color:#ffffff;
+    border:2px solid #ffffff;
+    border-radius:25px;
+    padding:12px 25px;
+    font-family:inherit;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+#volverVer:hover{
+    background:#ffffff;
+    color:#ff0000;
+}
+
+/* ============================= */
+/* CORAZONES / PARTÍCULAS */
+/* ============================= */
+
+.particula{
+    position:fixed;
+    pointer-events:none;
+    z-index:999;
+    color:#ffffff;
+    animation:caer linear forwards;
 }
 
 @keyframes caer{
-
-    0%{
-        transform:translateY(-20px) rotate(0deg);
-        opacity:0;
-    }
-
-    15%{
+    from{
+        transform:translateY(-30px) rotate(0deg);
         opacity:1;
     }
 
-    100%{
+    to{
         transform:translateY(110vh) rotate(360deg);
         opacity:0;
     }
 }
 
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
 
-/* =====================================================
-   INTRO
-===================================================== */
+@media(max-width:600px){
 
-#intro{
-    position:fixed;
-    inset:0;
-
-    background:
-        radial-gradient(circle at center,
-        #bd2340 0%,
-        #720c22 50%,
-        #2c030b 100%);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-
-    z-index:9999;
-
-    transition:opacity 1s ease;
-}
-
-#intro.ocultar{
-    opacity:0;
-    pointer-events:none;
-}
-
-.intro-corazon{
-    font-size:100px;
-
-    animation:latido 1.3s infinite;
-
-    text-shadow:
-        0 0 30px rgba(255,100,130,.8);
-}
-
-@keyframes latido{
-
-    0%,
-    100%{
-        transform:scale(1);
+    .portada h1{
+        font-size:34px;
     }
 
-    50%{
-        transform:scale(1.18);
-    }
-}
-
-.intro-texto{
-    margin-top:25px;
-
-    font-size:25px;
-
-    letter-spacing:2px;
-
-    text-align:center;
-}
-
-.intro-subtexto{
-    margin-top:12px;
-
-    font-size:15px;
-
-    opacity:.85;
-}
-
-
-/* =====================================================
-   CONTENEDOR
-===================================================== */
-
-.contenedor{
-    position:relative;
-
-    z-index:2;
-
-    width:min(1000px,94vw);
-
-    margin:auto;
-
-    padding:30px 0 60px;
-}
-
-
-/* =====================================================
-   ENCABEZADO
-===================================================== */
-
-header{
-    text-align:center;
-
-    padding:25px 10px 35px;
-}
-
-header h1{
-
-    font-size:
-        clamp(28px,5vw,48px);
-
-    font-weight:normal;
-
-    letter-spacing:2px;
-
-    color:white;
-
-    text-shadow:
-        0 3px 15px rgba(0,0,0,.45);
-}
-
-header p{
-
-    margin-top:12px;
-
-    font-size:17px;
-
-    color:white;
-
-    opacity:.9;
-}
-
-
-/* =====================================================
-   LIBRO
-===================================================== */
-
-.libro{
-    position:relative;
-
-    min-height:650px;
-
-    perspective:1500px;
-}
-
-.pagina{
-
-    position:relative;
-
-    width:100%;
-
-    min-height:650px;
-
-    padding:45px 35px;
-
-    border-radius:12px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #8f122b,
-            #700c21
-        );
-
-    color:white;
-
-    border:
-        1px solid rgba(255,255,255,.18);
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.5),
-        inset 0 0 40px rgba(255,255,255,.04);
-
-    overflow:hidden;
-}
-
-.pagina[hidden]{
-    display:none;
-}
-
-
-/* =====================================================
-   PORTADA
-===================================================== */
-
-.portada{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    text-align:center;
-}
-
-.portada-contenido{
-    max-width:750px;
-}
-
-.portada .corazon{
-
-    font-size:85px;
-
-    color:white;
-
-    animation:latido 1.5s infinite;
-
-    margin-bottom:20px;
-
-    text-shadow:
-        0 0 25px rgba(255,255,255,.5);
-}
-
-.portada h2{
-
-    font-size:
-        clamp(35px,6vw,62px);
-
-    font-weight:normal;
-
-    color:white;
-
-    margin-bottom:20px;
-}
-
-.portada p{
-
-    font-size:20px;
-
-    line-height:1.8;
-
-    color:white;
-}
-
-.linea-decorativa{
-
-    width:100px;
-
-    height:2px;
-
-    background:white;
-
-    margin:25px auto;
-}
-
-
-/* =====================================================
-   ETIQUETA
-===================================================== */
-
-.etiqueta{
-
-    display:inline-block;
-
-    padding:8px 18px;
-
-    border-radius:30px;
-
-    background:rgba(255,255,255,.16);
-
-    border:
-        1px solid rgba(255,255,255,.35);
-
-    color:white;
-
-    font-size:14px;
-
-    letter-spacing:1px;
-
-    margin-bottom:20px;
-}
-
-
-/* =====================================================
-   PAGINA DE RECUERDO
-===================================================== */
-
-.contenido-pagina{
-    text-align:center;
-}
-
-.contenido-pagina h2{
-
-    font-size:
-        clamp(28px,5vw,43px);
-
-    color:white;
-
-    font-weight:normal;
-
-    margin-bottom:8px;
-}
-
-.contenido-pagina .descripcion{
-
-    color:white;
-
-    font-size:17px;
-
-    margin-bottom:10px;
-
-    opacity:.9;
-}
-
-
-/* =====================================================
-   POLAROID
-===================================================== */
-
-.polaroid{
-
-    max-width:560px;
-
-    margin:22px auto;
-
-    padding:14px 14px 25px;
-
-    background:white;
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.35);
-
-    transform:none !important;
-}
-
-.polaroid img{
-
-    display:block;
-
-    width:100%;
-
-    aspect-ratio:4 / 3;
-
-    object-fit:cover;
-
-    object-position:center;
-}
-
-.polaroid .pie{
-
-    color:#5d1d2b;
-
-    font-size:16px;
-
-    margin-top:16px;
-
-    font-style:italic;
-}
-
-
-/* =====================================================
-   TEXTO DEL RECUERDO
-===================================================== */
-
-.texto-recuerdo{
-
-    max-width:700px;
-
-    margin:20px auto 0;
-
-    padding:20px 25px;
-
-    border-left:
-        3px solid white;
-
-    background:
-        rgba(255,255,255,.08);
-
-    text-align:left;
-
-    line-height:1.8;
-
-    font-size:17px;
-
-    color:white;
-}
-
-
-/* =====================================================
-   INDICADOR
-===================================================== */
-
-.indicador{
-
-    position:absolute;
-
-    bottom:18px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    font-size:13px;
-
-    color:white;
-
-    opacity:.8;
-}
-
-
-/* =====================================================
-   FINAL
-===================================================== */
-
-.final{
-
-    text-align:center;
-
-    padding-top:30px;
-}
-
-
-/* =====================================================
-   OSITO ANIMADO
-===================================================== */
-
-.osito-contenedor{
-
-    position:relative;
-
-    width:min(600px,95vw);
-
-    height:420px;
-
-    margin:10px auto 0;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    overflow:hidden;
-}
-
-
-/* -----------------------------------------------------
-   OSITO
------------------------------------------------------ */
-
-.osito{
-
-    position:relative;
-
-    width:210px;
-
-    height:270px;
-
-    margin-top:35px;
-
-    opacity:0;
-
-    transform:
-        translateY(300px)
-        scale(.25);
-
-    transition:
-        opacity:1s ease,
-        transform:1.7s
-        cubic-bezier(.18,.82,.2,1);
-}
-
-.osito.visible{
-
-    opacity:1;
-
-    transform:
-        translateY(0)
-        scale(1);
-
-    animation:
-        ositoRespira 3s
-        ease-in-out
-        2s infinite;
-}
-
-@keyframes ositoRespira{
-
-    0%,
-    100%{
-        transform:
-            translateY(0)
-            scale(1);
+    .dedicatoria{
+        font-size:18px;
     }
 
-    50%{
-        transform:
-            translateY(-5px)
-            scale(1.015);
-    }
-}
-
-
-/* -----------------------------------------------------
-   CABEZA
------------------------------------------------------ */
-
-.cabeza{
-
-    position:absolute;
-
-    width:170px;
-    height:145px;
-
-    left:20px;
-    top:10px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #c98b5b,
-            #9b603b
-        );
-
-    border-radius:
-        48% 48% 45% 45%;
-
-    box-shadow:
-        inset -8px -10px 15px
-        rgba(70,30,10,.18);
-}
-
-
-/* -----------------------------------------------------
-   OREJAS
------------------------------------------------------ */
-
-.oreja{
-
-    position:absolute;
-
-    width:62px;
-    height:62px;
-
-    top:-25px;
-
-    background:#a96c46;
-
-    border-radius:50%;
-
-    box-shadow:
-        inset 0 0 0 9px #d29b72;
-}
-
-.oreja.izquierda{
-    left:-5px;
-}
-
-.oreja.derecha{
-    right:-5px;
-}
-
-
-/* -----------------------------------------------------
-   INTERIOR OREJAS
------------------------------------------------------ */
-
-.oreja::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:34px;
-    height:34px;
-
-    left:14px;
-    top:14px;
-
-    background:#e2ad8d;
-
-    border-radius:50%;
-}
-
-
-/* -----------------------------------------------------
-   HOCICO
------------------------------------------------------ */
-
-.hocico{
-
-    position:absolute;
-
-    width:75px;
-    height:57px;
-
-    left:47px;
-    top:78px;
-
-    background:#e5b38f;
-
-    border-radius:50%;
-}
-
-
-/* -----------------------------------------------------
-   OJOS
------------------------------------------------------ */
-
-.ojo{
-
-    position:absolute;
-
-    width:14px;
-    height:18px;
-
-    top:63px;
-
-    background:#24130f;
-
-    border-radius:50%;
-
-    z-index:3;
-}
-
-.ojo.izquierdo{
-    left:43px;
-}
-
-.ojo.derecho{
-    right:43px;
-}
-
-
-/* Brillo de ojos */
-
-.ojo::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:4px;
-    height:5px;
-
-    background:white;
-
-    border-radius:50%;
-
-    left:3px;
-    top:3px;
-}
-
-
-/* -----------------------------------------------------
-   NARIZ
------------------------------------------------------ */
-
-.nariz{
-
-    position:absolute;
-
-    width:22px;
-    height:17px;
-
-    left:74px;
-    top:93px;
-
-    background:#3b1c18;
-
-    border-radius:
-        50% 50% 55% 55%;
-
-    z-index:4;
-}
-
-
-/* -----------------------------------------------------
-   BOCA
------------------------------------------------------ */
-
-.boca{
-
-    position:absolute;
-
-    left:84px;
-    top:106px;
-
-    width:2px;
-    height:16px;
-
-    background:#4b211c;
-
-    z-index:3;
-}
-
-.boca::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:27px;
-    height:13px;
-
-    left:-13px;
-    top:7px;
-
-    border-bottom:
-        2px solid #4b211c;
-
-    border-radius:0 0 50% 50%;
-}
-
-
-/* -----------------------------------------------------
-   CUERPO
------------------------------------------------------ */
-
-.cuerpo{
-
-    position:absolute;
-
-    width:150px;
-    height:145px;
-
-    left:30px;
-    top:125px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #bd7b4e,
-            #915736
-        );
-
-    border-radius:
-        48% 48% 42% 42%;
-
-    box-shadow:
-        inset -8px -10px 15px
-        rgba(60,25,10,.15);
-}
-
-
-/* -----------------------------------------------------
-   BARRIGA
------------------------------------------------------ */
-
-.barriga{
-
-    position:absolute;
-
-    width:90px;
-    height:90px;
-
-    left:30px;
-    top:25px;
-
-    background:#dba27b;
-
-    border-radius:50%;
-}
-
-
-/* -----------------------------------------------------
-   BRAZOS
------------------------------------------------------ */
-
-.brazo{
-
-    position:absolute;
-
-    width:55px;
-    height:105px;
-
-    top:140px;
-
-    background:#a96843;
-
-    border-radius:45px;
-
-    z-index:-1;
-}
-
-.brazo.izquierdo{
-
-    left:4px;
-
-    transform:
-        rotate(30deg);
-}
-
-.brazo.derecho{
-
-    right:4px;
-
-    transform:
-        rotate(-30deg);
-}
-
-
-/* -----------------------------------------------------
-   PATAS
------------------------------------------------------ */
-
-.pata{
-
-    position:absolute;
-
-    width:70px;
-    height:65px;
-
-    bottom:-18px;
-
-    background:#9e603d;
-
-    border-radius:50%;
-}
-
-.pata.izquierda{
-    left:20px;
-}
-
-.pata.derecha{
-    right:20px;
-}
-
-
-/* -----------------------------------------------------
-   CORAZON DEL OSITO
------------------------------------------------------ */
-
-.corazon-osito{
-
-    position:absolute;
-
-    left:50%;
-
-    top:65px;
-
-    transform:
-        translateX(-50%)
-        scale(.7);
-
-    color:#c91e43;
-
-    font-size:50px;
-
-    z-index:5;
-
-    animation:
-        corazonOsito 1.5s
-        ease-in-out
-        infinite;
-}
-
-@keyframes corazonOsito{
-
-    0%,
-    100%{
-        transform:
-            translateX(-50%)
-            scale(.7);
+    .titulo-recuerdo{
+        font-size:27px;
     }
 
-    50%{
-        transform:
-            translateX(-50%)
-            scale(.85);
-    }
-}
-
-
-/* =====================================================
-   PEQUEÑOS CORAZONES ALREDEDOR
-===================================================== */
-
-.corazon-flotante{
-
-    position:absolute;
-
-    color:white;
-
-    font-size:25px;
-
-    opacity:0;
-
-    transform:scale(.2);
-
-    transition:
-        opacity .8s ease,
-        transform 1s ease;
-}
-
-.corazon-flotante.visible{
-
-    opacity:.85;
-
-    transform:scale(1);
-
-    animation:
-        flotarCorazon 2.5s
-        ease-in-out
-        infinite;
-}
-
-@keyframes flotarCorazon{
-
-    0%,
-    100%{
-        transform:
-            translateY(0)
-            scale(1);
-    }
-
-    50%{
-        transform:
-            translateY(-12px)
-            scale(1.08);
-    }
-}
-
-.corazon1{
-    left:18%;
-    top:30%;
-}
-
-.corazon2{
-    right:20%;
-    top:25%;
-}
-
-.corazon3{
-    left:25%;
-    top:65%;
-}
-
-.corazon4{
-    right:25%;
-    top:65%;
-}
-
-
-/* =====================================================
-   MENSAJE FINAL
-===================================================== */
-
-.mensaje-final{
-
-    max-width:700px;
-
-    margin:0 auto;
-
-    opacity:0;
-
-    transform:
-        translateY(25px);
-
-    transition:
-        opacity 1.5s ease,
-        transform 1.5s ease;
-}
-
-.mensaje-final.visible{
-
-    opacity:1;
-
-    transform:
-        translateY(0);
-}
-
-.mensaje-final h2{
-
-    color:white;
-
-    font-size:38px;
-
-    font-weight:normal;
-
-    margin-bottom:15px;
-}
-
-.mensaje-final p{
-
-    color:white;
-
-    font-size:18px;
-
-    line-height:1.8;
-}
-
-
-/* =====================================================
-   BOTON
-===================================================== */
-
-#volverVer{
-
-    margin-top:25px;
-
-    padding:13px 25px;
-
-    border:
-        1px solid rgba(255,255,255,.5);
-
-    border-radius:30px;
-
-    background:
-        rgba(255,255,255,.12);
-
-    color:white;
-
-    cursor:pointer;
-
-    font-size:15px;
-
-    transition:
-        transform .25s ease,
-        background .25s ease;
-}
-
-#volverVer:hover{
-
-    background:
-        rgba(255,255,255,.25);
-
-    transform:
-        translateY(-3px);
-}
-
-
-/* =====================================================
-   BARRA
-===================================================== */
-
-.barra-tiempo{
-
-    position:fixed;
-
-    left:0;
-    top:0;
-
-    height:3px;
-
-    width:0%;
-
-    background:white;
-
-    z-index:10000;
-}
-
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-
-@media(max-width:700px){
-
-    .contenedor{
-        width:95vw;
-        padding-top:15px;
-    }
-
-    .pagina{
-        padding:30px 17px;
-        min-height:620px;
-    }
-
-    .intro-corazon{
-        font-size:75px;
-    }
-
-    .intro-texto{
-        font-size:20px;
-    }
-
-    .portada h2{
-        font-size:35px;
-    }
-
-    .portada p{
+    .texto{
         font-size:17px;
     }
 
-    .polaroid{
-        padding:9px 9px 18px;
-    }
-
-    .texto-recuerdo{
-        font-size:15px;
-        padding:15px;
-    }
-
-    .osito-contenedor{
-        height:390px;
-    }
-
-    .osito{
-        transform:
-            translateY(300px)
-            scale(.8);
-    }
-
-    .osito.visible{
-        transform:
-            translateY(0)
-            scale(.8);
+    .oso-contenedor{
+        transform:scale(.85);
+        margin-top:-5px;
+        margin-bottom:0;
     }
 
     .mensaje-final h2{
-        font-size:30px;
+        font-size:32px;
     }
-
 }
 
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =====================================================
-     INTRO
-===================================================== -->
+<!-- ============================= -->
+<!-- INTRODUCCIÓN -->
+<!-- ============================= -->
 
 <div id="intro">
 
-    <div class="intro-corazon">
-        ♥
-    </div>
+    <div class="intro-contenido">
 
-    <div class="intro-texto">
-        Preparé algo especial para ti...
-    </div>
+        <div class="corazon-intro">♥</div>
 
-    <div class="intro-subtexto">
-        Espera un momento ♥
+        <h1>Una pequeña sorpresa...</h1>
+
+        <p>Haz clic para comenzar</p>
+
     </div>
 
 </div>
 
 
-<div class="barra-tiempo" id="barraTiempo"></div>
+<!-- ============================= -->
+<!-- LIBRO -->
+<!-- ============================= -->
 
+<main id="libro">
 
-<div class="particulas" id="particulas"></div>
+    <!-- PORTADA -->
 
+    <section class="pagina portada" id="portada">
 
-<!-- =====================================================
-     CONTENEDOR
-===================================================== -->
-
-<main class="contenedor">
-
-
-<header>
-
-    <h1 id="tituloPrincipal">
-        Los momentos que guardo contigo
-    </h1>
-
-    <p id="dedicatoria">
-        Hay recuerdos que merecen su propio libro.
-        Este es el nuestro.
-    </p>
-
-</header>
-
-
-<div class="libro">
-
-
-<!-- =====================================================
-     PORTADA
-===================================================== -->
-
-<section class="pagina portada" id="portada">
-
-    <div class="portada-contenido">
-
-        <div class="corazon">
-            ♥
+        <div class="etiqueta">
+            Para alguien especial
         </div>
 
-        <h2>
-            Nuestra Historia
-        </h2>
+        <h1>
+            Los momentos que guardo contigo
+        </h1>
 
-        <div class="linea-decorativa"></div>
-
-        <p>
-            Una pequeña colección de momentos,
-            recuerdos y sonrisas que quiero guardar
-            para siempre.
+        <p class="dedicatoria">
+            Hay recuerdos que merecen su propio libro.
+            Este es el nuestro.
         </p>
 
-    </div>
-
-</section>
+    </section>
 
 
-<!-- =====================================================
-     RECUERDOS
-===================================================== -->
+    <!-- ============================= -->
+    <!-- RECUERDO 1 -->
+    <!-- ============================= -->
 
-<section
-    class="pagina"
-    id="paginaRecuerdo"
-    hidden
->
+    <section class="pagina recuerdo" hidden>
 
-<div class="contenido-pagina">
+        <div class="etiqueta">
+            El comienzo
+        </div>
 
-    <div
-        class="etiqueta"
-        id="fecha"
-    >
-        El comienzo
-    </div>
+        <h2 class="titulo-recuerdo">
+            Donde empezó todo
+        </h2>
 
+        <p class="descripcion">
+            Nuestra primera foto juntos
+        </p>
 
-    <h2 id="tituloRecuerdo">
-        Donde empezó todo
-    </h2>
+        <div class="polaroid">
+            <img src="foto1.png" alt="Nuestra primera foto juntos">
+        </div>
 
-
-    <p
-        class="descripcion"
-        id="descripcionRecuerdo"
-    >
-        Nuestra primera foto juntos
-    </p>
-
-
-    <div class="polaroid">
-
-        <img
-            id="fotoRecuerdo"
-            src="foto1.png"
-            alt="Nuestro recuerdo"
-        >
-
-        <div
-            class="pie"
-            id="pieFoto"
-        >
+        <p class="pie">
             Un instante, muchas sonrisas.
+        </p>
+
+        <p class="texto">
+            Quizás ese día no imaginábamos cuántos recuerdos
+            vendrían después. Hoy lo guardo como uno de mis favoritos.
+        </p>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- RECUERDO 2 -->
+    <!-- ============================= -->
+
+    <section class="pagina recuerdo" hidden>
+
+        <div class="etiqueta">
+            Un día especial
         </div>
 
-    </div>
+        <h2 class="titulo-recuerdo">
+            Nuestra pequeña aventura
+        </h2>
+
+        <p class="descripcion">
+            Una aventura compartida
+        </p>
+
+        <div class="polaroid">
+            <img src="foto2.png" alt="Una aventura compartida">
+        </div>
+
+        <p class="pie">
+            El mejor destino: compartirlo contigo.
+        </p>
+
+        <p class="texto">
+            No fue solo el lugar. Fueron las conversaciones,
+            las risas y esa manera de convertir un día cualquiera
+            en algo especial.
+        </p>
+
+    </section>
 
 
-    <div
-        class="texto-recuerdo"
-        id="textoRecuerdo"
-    >
-        Quizás ese día no imaginábamos
-        cuántos recuerdos vendrían después.
-        Hoy lo guardo como uno de mis favoritos.
-    </div>
+    <!-- ============================= -->
+    <!-- RECUERDO 3 -->
+    <!-- ============================= -->
 
-</div>
+    <section class="pagina recuerdo" hidden>
 
+        <div class="etiqueta">
+            Siempre en mi memoria
+        </div>
 
-<div
-    class="indicador"
-    id="indicadorPagina"
->
-    Página 1 de 5
-</div>
+        <h2 class="titulo-recuerdo">
+            Las cosas más sencillas
+        </h2>
 
-</section>
+        <p class="descripcion">
+            Un momento que queremos recordar
+        </p>
 
+        <div class="polaroid">
+            <img src="foto3.png" alt="Un momento especial">
+        </div>
 
-<!-- =====================================================
-     FINAL
-===================================================== -->
+        <p class="pie">
+            De esos días que dan ganas de repetir.
+        </p>
 
-<section
-    class="pagina final"
-    id="final"
-    hidden
->
+        <p class="texto">
+            A veces la felicidad cabe en una foto,
+            en una conversación larga o en una risa
+            que no se puede contener.
+        </p>
 
-
-<div class="etiqueta">
-    Y todavía quedan muchas páginas...
-</div>
+    </section>
 
 
-<!-- =====================================================
-     OSITO
-===================================================== -->
+    <!-- ============================= -->
+    <!-- RECUERDO 4 -->
+    <!-- ============================= -->
 
-<div
-    class="osito-contenedor"
-    id="ositoContenedor"
->
+    <section class="pagina recuerdo" hidden>
 
+        <div class="etiqueta">
+            Una aventura al atardecer
+        </div>
 
-    <div class="corazon-flotante corazon1">
-        ♥
-    </div>
+        <h2 class="titulo-recuerdo">
+            Donde el cielo guardó este momento
+        </h2>
 
-    <div class="corazon-flotante corazon2">
-        ♥
-    </div>
+        <p class="descripcion">
+            Un paseo a caballo durante el atardecer
+        </p>
 
-    <div class="corazon-flotante corazon3">
-        ♥
-    </div>
+        <div class="polaroid">
+            <img src="foto4.png" alt="Paseo a caballo al atardecer">
+        </div>
 
-    <div class="corazon-flotante corazon4">
-        ♥
-    </div>
+        <p class="pie">
+            Un atardecer que siempre querré recordar.
+        </p>
 
+        <p class="texto">
+            El cielo cambió de colores y el tiempo pareció
+            detenerse. Hay paisajes hermosos, pero los recuerdos
+            son los que les dan un significado especial.
+        </p>
 
-    <div
-        class="osito"
-        id="osito"
-    >
-
-
-        <!-- OREJAS -->
-
-        <div class="oreja izquierda"></div>
-
-        <div class="oreja derecha"></div>
+    </section>
 
 
-        <!-- CABEZA -->
+    <!-- ============================= -->
+    <!-- RECUERDO 5 -->
+    <!-- ============================= -->
 
-        <div class="cabeza">
+    <section class="pagina recuerdo" hidden>
 
-            <div class="ojo izquierdo"></div>
+        <div class="etiqueta">
+            Un momento para nosotros
+        </div>
 
-            <div class="ojo derecho"></div>
+        <h2 class="titulo-recuerdo">
+            Juntos, todo se siente especial
+        </h2>
 
-            <div class="hocico"></div>
+        <p class="descripcion">
+            Un recuerdo de los dos juntos
+        </p>
 
-            <div class="nariz"></div>
+        <div class="polaroid">
+            <img src="foto5.png" alt="Un recuerdo de los dos juntos">
+        </div>
 
-            <div class="boca"></div>
+        <p class="pie">
+            Contigo, hasta lo cotidiano se vuelve inolvidable.
+        </p>
+
+        <p class="texto">
+            No importa el lugar ni el momento.
+            Cuando estamos juntos, siempre aparece una razón
+            para sonreír y guardar una nueva página en nuestra historia.
+        </p>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- FINAL -->
+    <!-- ============================= -->
+
+    <section class="pagina final" id="final" hidden>
+
+        <div class="etiqueta">
+            Y todavía quedan muchas páginas...
+        </div>
+
+        <!-- OSO -->
+
+        <div class="oso-contenedor">
+
+            <div class="oso-oreja izquierda"></div>
+            <div class="oso-oreja derecha"></div>
+
+            <div class="oso-cabeza">
+
+                <div class="oso-ojo izquierdo"></div>
+                <div class="oso-ojo derecho"></div>
+
+                <div class="oso-hocico">
+                    <div class="oso-nariz"></div>
+                    <div class="oso-boca"></div>
+                </div>
+
+            </div>
+
+            <div class="oso-cuerpo">
+
+                <div class="oso-barriga"></div>
+
+            </div>
+
+            <div class="oso-brazo izquierdo"></div>
+            <div class="oso-brazo derecho"></div>
+
+            <div class="oso-pata izquierda"></div>
+            <div class="oso-pata derecha"></div>
+
+            <div class="corazon-oso">
+                ♥
+            </div>
 
         </div>
 
 
-        <!-- BRAZO IZQUIERDO -->
+        <!-- MENSAJE -->
 
-        <div class="brazo izquierdo"></div>
+        <div class="mensaje-final" id="mensajeFinal">
 
+            <h2>
+                Continuará…
+            </h2>
 
-        <!-- BRAZO DERECHO -->
+            <p>
+                Porque nuestra historia todavía tiene muchas páginas
+                por escribir. ♥
+            </p>
 
-        <div class="brazo derecho"></div>
-
-
-        <!-- CUERPO -->
-
-        <div class="cuerpo">
-
-            <div class="barriga"></div>
+            <button id="volverVer">
+                Volver a ver nuestra historia ♥
+            </button>
 
         </div>
 
-
-        <!-- PATAS -->
-
-        <div class="pata izquierda"></div>
-
-        <div class="pata derecha"></div>
-
-
-        <!-- CORAZÓN -->
-
-        <div class="corazon-osito">
-            ♥
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     MENSAJE
-===================================================== -->
-
-<div
-    class="mensaje-final"
-    id="mensajeFinal"
->
-
-    <h2>
-        Continuará…
-    </h2>
-
-    <p>
-        Porque nuestra historia todavía tiene
-        muchas páginas por escribir.
-        Gracias por ser parte de mi vida. ♥
-    </p>
-
-    <button id="volverVer">
-        Volver a ver nuestra historia ♥
-    </button>
-
-</div>
-
-
-</section>
-
-
-</div>
+    </section>
 
 </main>
 
 
-<!-- =====================================================
-     MUSICA
-===================================================== -->
+<!-- ============================= -->
+<!-- MÚSICA -->
+<!-- ============================= -->
 
-<audio
-    id="musica"
-    src="cancion.mp3"
-    preload="auto"
-    loop
-></audio>
+<audio id="musica" loop>
+    <source src="cancion.mp3" type="audio/mpeg">
+</audio>
 
 
 <script>
 
+/* ============================= */
+/* CONFIGURACIÓN */
+/* ============================= */
 
-/* =====================================================
-   CONFIGURACIÓN
-===================================================== */
+const segundosPortada = 4;
+const segundosPorPagina = 15;
 
-const CONFIG = {
+const intro = document.getElementById("intro");
+const musica = document.getElementById("musica");
 
-    segundosPortada:4,
+const paginas = document.querySelectorAll(".pagina");
+const portada = document.getElementById("portada");
+const final = document.getElementById("final");
 
-    segundosPorPagina:15,
-
-    titulo:
-        "Los momentos que guardo contigo",
-
-    dedicatoria:
-        "Hay recuerdos que merecen su propio libro. Este es el nuestro.",
-
-    recuerdos:[
-
-        {
-            fecha:"El comienzo",
-
-            titulo:"Donde empezó todo",
-
-            foto:"foto1.png",
-
-            descripcion:
-                "Nuestra primera foto juntos",
-
-            pie:
-                "Un instante, muchas sonrisas.",
-
-            texto:
-                "Quizás ese día no imaginábamos cuántos recuerdos vendrían después. Hoy lo guardo como uno de mis favoritos."
-        },
-
-        {
-            fecha:"Un día especial",
-
-            titulo:
-                "Nuestra pequeña aventura",
-
-            foto:"foto2.png",
-
-            descripcion:
-                "Una aventura compartida",
-
-            pie:
-                "El mejor destino: compartirlo contigo.",
-
-            texto:
-                "No fue solo el lugar. Fueron las conversaciones, las risas y esa manera de convertir un día cualquiera en algo especial."
-        },
-
-        {
-            fecha:"Siempre en mi memoria",
-
-            titulo:
-                "Las cosas más sencillas",
-
-            foto:"foto3.png",
-
-            descripcion:
-                "Un momento que queremos recordar",
-
-            pie:
-                "De esos días que dan ganas de repetir.",
-
-            texto:
-                "A veces la felicidad cabe en una foto, en una conversación larga o en una risa que no se puede contener."
-        },
-
-        {
-            fecha:
-                "Una aventura al atardecer",
-
-            titulo:
-                "Donde el cielo guardó este momento",
-
-            foto:"foto4.png",
-
-            descripcion:
-                "Un paseo a caballo durante el atardecer",
-
-            pie:
-                "Un atardecer que siempre querré recordar.",
-
-            texto:
-                "El cielo cambió de colores y el tiempo pareció detenerse. Hay paisajes hermosos, pero los recuerdos son los que les dan un significado especial."
-        },
-
-        {
-            fecha:
-                "Un momento para nosotros",
-
-            titulo:
-                "Juntos, todo se siente especial",
-
-            foto:"foto5.png",
-
-            descripcion:
-                "Un recuerdo de los dos juntos",
-
-            pie:
-                "Contigo, hasta lo cotidiano se vuelve inolvidable.",
-
-            texto:
-                "No importa el lugar ni el momento. Cuando estamos juntos, siempre aparece una razón para sonreír y guardar una nueva página en nuestra historia."
-        }
-
-    ]
-
-};
-
-
-/* =====================================================
-   VARIABLES
-===================================================== */
-
-const intro =
-    document.getElementById("intro");
-
-const portada =
-    document.getElementById("portada");
-
-const paginaRecuerdo =
-    document.getElementById("paginaRecuerdo");
-
-const final =
-    document.getElementById("final");
-
-const musica =
-    document.getElementById("musica");
-
-const barraTiempo =
-    document.getElementById("barraTiempo");
-
-let paginaActual = -1;
-
+let paginaActual = 0;
 let temporizador = null;
-
+let iniciado = false;
 let pausado = false;
 
-let finalizado = false;
 
-let tiempoInicio = 0;
+/* ============================= */
+/* INICIAR */
+/* ============================= */
 
-let tiempoRestante = 0;
+intro.addEventListener("click", iniciar);
 
+function iniciar(){
 
-/* =====================================================
-   TITULOS
-===================================================== */
+    if(iniciado) return;
 
-document.getElementById(
-    "tituloPrincipal"
-).textContent =
-    CONFIG.titulo;
+    iniciado = true;
 
-document.getElementById(
-    "dedicatoria"
-).textContent =
-    CONFIG.dedicatoria;
+    intro.style.display = "none";
 
+    musica.volume = 1;
 
-/* =====================================================
-   PARTICULAS
-===================================================== */
+    musica.play().catch(() => {});
 
-function crearParticulas(){
+    mostrarPagina(0);
 
-    const contenedor =
-        document.getElementById(
-            "particulas"
-        );
-
-    for(let i=0;i<35;i++){
-
-        const p =
-            document.createElement("div");
-
-        p.className =
-            "particula";
-
-        p.textContent =
-            Math.random() > .5
-            ? "♥"
-            : "✦";
-
-        p.style.left =
-            Math.random()*100+"%";
-
-        p.style.fontSize =
-            (8+Math.random()*14)+"px";
-
-        p.style.animationDuration =
-            (7+Math.random()*9)+"s";
-
-        p.style.animationDelay =
-            (-Math.random()*15)+"s";
-
-        contenedor.appendChild(p);
-
-    }
-
-}
-
-crearParticulas();
-
-
-/* =====================================================
-   PORTADA
-===================================================== */
-
-function mostrarPortada(){
-
-    portada.hidden=false;
-
-    paginaRecuerdo.hidden=true;
-
-    final.hidden=true;
-
-    paginaActual=-1;
-
-    barraTiempo.style.width="0%";
-
-    iniciarTemporizador(
-        CONFIG.segundosPortada,
-        siguientePagina
-    );
-
+    iniciarTemporizador();
 }
 
 
-/* =====================================================
-   MOSTRAR RECUERDO
-===================================================== */
+/* ============================= */
+/* MOSTRAR PÁGINA */
+/* ============================= */
 
-function mostrarRecuerdo(indice){
+function mostrarPagina(numero){
 
-    if(
-        indice<0 ||
-        indice>=CONFIG.recuerdos.length
-    ){
+    paginas.forEach(pagina => {
+        pagina.hidden = true;
+    });
 
-        mostrarFinal();
+    if(numero < paginas.length){
 
-        return;
+        paginas[numero].hidden = false;
+
     }
-
-
-    const recuerdo =
-        CONFIG.recuerdos[indice];
-
-
-    portada.hidden=true;
-
-    paginaRecuerdo.hidden=false;
-
-    final.hidden=true;
-
-
-    document.getElementById(
-        "fecha"
-    ).textContent =
-        recuerdo.fecha;
-
-
-    document.getElementById(
-        "tituloRecuerdo"
-    ).textContent =
-        recuerdo.titulo;
-
-
-    document.getElementById(
-        "descripcionRecuerdo"
-    ).textContent =
-        recuerdo.descripcion;
-
-
-    document.getElementById(
-        "fotoRecuerdo"
-    ).src =
-        recuerdo.foto;
-
-
-    document.getElementById(
-        "pieFoto"
-    ).textContent =
-        recuerdo.pie;
-
-
-    document.getElementById(
-        "textoRecuerdo"
-    ).textContent =
-        recuerdo.texto;
-
-
-    document.getElementById(
-        "indicadorPagina"
-    ).textContent =
-        `Página ${indice+1} de ${CONFIG.recuerdos.length}`;
-
-
-    barraTiempo.style.width="0%";
-
-
-    iniciarTemporizador(
-        CONFIG.segundosPorPagina,
-        siguientePagina
-    );
-
 }
 
 
-/* =====================================================
-   SIGUIENTE
-===================================================== */
+/* ============================= */
+/* TEMPORIZADOR */
+/* ============================= */
 
-function siguientePagina(){
+function iniciarTemporizador(){
 
-    if(
-        finalizado ||
-        pausado
-    ){
-        return;
-    }
+    clearTimeout(temporizador);
 
-    paginaActual++;
+    const tiempo = paginaActual === 0
+        ? segundosPortada
+        : segundosPorPagina;
 
+    temporizador = setTimeout(() => {
 
-    if(
-        paginaActual >=
-        CONFIG.recuerdos.length
-    ){
+        if(!pausado){
 
-        mostrarFinal();
+            paginaActual++;
 
-    }else{
+            if(paginaActual >= paginas.length){
 
-        mostrarRecuerdo(
-            paginaActual
-        );
+                mostrarFinal();
 
-    }
+            }else{
 
-}
+                mostrarPagina(paginaActual);
 
-
-/* =====================================================
-   TEMPORIZADOR
-===================================================== */
-
-function iniciarTemporizador(
-    segundos,
-    callback
-){
-
-    clearInterval(
-        temporizador
-    );
-
-
-    const duracion =
-        segundos*1000;
-
-
-    tiempoInicio =
-        Date.now();
-
-
-    tiempoRestante =
-        duracion;
-
-
-    barraTiempo.style.width=
-        "0%";
-
-
-    temporizador =
-        setInterval(()=>{
-
-            if(pausado){
-                return;
-            }
-
-
-            const transcurrido =
-                Date.now()-tiempoInicio;
-
-
-            const porcentaje =
-                Math.min(
-                    100,
-                    (
-                        transcurrido/
-                        duracion
-                    )*100
-                );
-
-
-            barraTiempo.style.width =
-                porcentaje+"%";
-
-
-            if(
-                transcurrido >=
-                duracion
-            ){
-
-                clearInterval(
-                    temporizador
-                );
-
-                callback();
+                iniciarTemporizador();
 
             }
 
-        },50);
+        }
 
+    }, tiempo * 1000);
 }
 
 
-/* =====================================================
-   PAUSA
-===================================================== */
+/* ============================= */
+/* MOSTRAR FINAL */
+/* ============================= */
 
-function pausarHistoria(){
+function mostrarFinal(){
 
-    if(finalizado){
+    clearTimeout(temporizador);
+
+    paginas.forEach(pagina => {
+        pagina.hidden = true;
+    });
+
+    final.hidden = false;
+
+    crearParticulas();
+
+    bajarMusica();
+}
+
+
+/* ============================= */
+/* PAUSAR / CONTINUAR */
+/* ============================= */
+
+document.addEventListener("click", function(e){
+
+    if(!iniciado) return;
+
+    if(
+        e.target.closest("#intro") ||
+        e.target.closest("#volverVer")
+    ){
         return;
     }
 
+    if(final.hidden === false){
+        return;
+    }
 
-    pausado=!pausado;
-
+    pausado = !pausado;
 
     if(pausado){
 
-        clearInterval(
-            temporizador
-        );
+        clearTimeout(temporizador);
 
         musica.pause();
 
     }else{
 
-        const ancho =
-            parseFloat(
-                barraTiempo.style.width
-            ) || 0;
+        musica.play().catch(() => {});
 
-
-        let duracion;
-
-
-        if(paginaActual===-1){
-
-            duracion =
-                CONFIG.segundosPortada*
-                1000;
-
-        }else{
-
-            duracion =
-                CONFIG.segundosPorPagina*
-                1000;
-
-        }
-
-
-        tiempoRestante =
-            duracion*
-            (1-ancho/100);
-
-
-        tiempoInicio =
-            Date.now();
-
-
-        clearInterval(
-            temporizador
-        );
-
-
-        temporizador =
-            setInterval(()=>{
-
-                if(pausado){
-                    return;
-                }
-
-
-                const transcurrido =
-                    Date.now()-tiempoInicio;
-
-
-                const porcentaje =
-                    ancho+
-                    (
-                        transcurrido/
-                        duracion
-                    )*(100-ancho);
-
-
-                barraTiempo.style.width =
-                    Math.min(
-                        100,
-                        porcentaje
-                    )+"%";
-
-
-                if(
-                    transcurrido >=
-                    tiempoRestante
-                ){
-
-                    clearInterval(
-                        temporizador
-                    );
-
-                    siguientePagina();
-
-                }
-
-            },50);
-
-
-        musica.play()
-            .catch(()=>{});
+        iniciarTemporizador();
 
     }
 
+});
+
+
+/* ============================= */
+/* PARTÍCULAS */
+/* ============================= */
+
+function crearParticulas(){
+
+    for(let i = 0; i < 30; i++){
+
+        const particula = document.createElement("div");
+
+        particula.className = "particula";
+
+        particula.textContent =
+            Math.random() > 0.5 ? "♥" : "♡";
+
+        particula.style.left =
+            Math.random() * 100 + "vw";
+
+        particula.style.top =
+            "-30px";
+
+        particula.style.fontSize =
+            (14 + Math.random() * 20) + "px";
+
+        particula.style.animationDuration =
+            (4 + Math.random() * 5) + "s";
+
+        document.body.appendChild(particula);
+
+        setTimeout(() => {
+            particula.remove();
+        }, 10000);
+    }
 }
 
 
-/* =====================================================
-   MOSTRAR OSITO
-===================================================== */
-
-function mostrarOsito(){
-
-    const osito =
-        document.getElementById(
-            "osito"
-        );
-
-
-    const corazones =
-        document.querySelectorAll(
-            ".corazon-flotante"
-        );
-
-
-    setTimeout(()=>{
-
-        osito.classList.add(
-            "visible"
-        );
-
-    },300);
-
-
-    corazones.forEach(
-        (corazon,index)=>{
-
-            setTimeout(()=>{
-
-                corazon.classList.add(
-                    "visible"
-                );
-
-            },900+(index*450));
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   FINAL
-===================================================== */
-
-function mostrarFinal(){
-
-    clearInterval(
-        temporizador
-    );
-
-
-    finalizado=true;
-
-
-    portada.hidden=true;
-
-    paginaRecuerdo.hidden=true;
-
-    final.hidden=false;
-
-
-    barraTiempo.style.width=
-        "100%";
-
-
-    mostrarOsito();
-
-
-    setTimeout(()=>{
-
-        document
-            .getElementById(
-                "mensajeFinal"
-            )
-            .classList.add(
-                "visible"
-            );
-
-    },3000);
-
-
-    bajarMusica();
-
-}
-
-
-/* =====================================================
-   BAJAR MUSICA
-===================================================== */
+/* ============================= */
+/* BAJAR MÚSICA */
+/* ============================= */
 
 function bajarMusica(){
 
-    let volumen =
-        musica.volume;
+    let volumen = musica.volume;
 
+    const intervalo = setInterval(() => {
 
-    const intervalo =
-        setInterval(()=>{
+        volumen -= 0.02;
 
-            volumen-=.05;
+        if(volumen <= 0){
 
+            volumen = 0;
 
-            if(volumen<=0){
+            clearInterval(intervalo);
 
-                volumen=0;
+            musica.pause();
+            musica.currentTime = 0;
 
-                musica.volume=0;
+        }
 
-                musica.pause();
+        musica.volume = volumen;
 
-                musica.currentTime=0;
-
-                clearInterval(
-                    intervalo
-                );
-
-            }else{
-
-                musica.volume=
-                    volumen;
-
-            }
-
-        },300);
+    }, 130);
 
 }
 
 
-/* =====================================================
-   VOLVER A VER
-===================================================== */
+/* ============================= */
+/* VOLVER A VER */
+/* ============================= */
 
-document
-    .getElementById(
-        "volverVer"
-    )
-    .addEventListener(
-        "click",
-        ()=>{
+document.getElementById("volverVer").addEventListener("click", function(){
 
-            clearInterval(
-                temporizador
-            );
+    final.hidden = true;
 
+    paginaActual = 0;
+    pausado = false;
 
-            finalizado=false;
+    musica.volume = 1;
 
-            pausado=false;
+    mostrarPagina(0);
 
+    musica.currentTime = 0;
 
-            musica.pause();
+    musica.play().catch(() => {});
 
-            musica.currentTime=0;
+    iniciarTemporizador();
 
-            musica.volume=1;
+});
 
 
-            document
-                .getElementById(
-                    "mensajeFinal"
-                )
-                .classList.remove(
-                    "visible"
-                );
+/* ============================= */
+/* EVITAR SELECCIÓN ACCIDENTAL */
+/* ============================= */
 
-
-            document
-                .getElementById(
-                    "osito"
-                )
-                .classList.remove(
-                    "visible"
-                );
-
-
-            document
-                .querySelectorAll(
-                    ".corazon-flotante"
-                )
-                .forEach(
-                    corazon =>
-                        corazon.classList.remove(
-                            "visible"
-                        )
-                );
-
-
-            paginaActual=-1;
-
-
-            mostrarPortada();
-
-
-            musica.play()
-                .catch(()=>{});
-
-        }
-    );
-
-
-/* =====================================================
-   CLICK PARA PAUSAR
-===================================================== */
-
-document.addEventListener(
-    "click",
-    function(evento){
-
-        if(
-            evento.target.closest(
-                "#volverVer"
-            )
-        ){
-            return;
-        }
-
-
-        if(
-            evento.target.closest(
-                "button"
-            )
-        ){
-            return;
-        }
-
-
-        if(finalizado){
-            return;
-        }
-
-
-        pausarHistoria();
-
-    }
-);
-
-
-/* =====================================================
-   INICIAR
-===================================================== */
-
-window.addEventListener(
-    "load",
-    ()=>{
-
-        setTimeout(()=>{
-
-            intro.classList.add(
-                "ocultar"
-            );
-
-
-            setTimeout(()=>{
-
-                intro.style.display=
-                    "none";
-
-
-                mostrarPortada();
-
-
-                musica.volume=1;
-
-
-                musica.play()
-                    .catch(()=>{});
-
-            },1000);
-
-        },4000);
-
-    }
-);
+document.addEventListener("dragstart", function(e){
+    e.preventDefault();
+});
 
 </script>
 
 </body>
 </html>
+```
