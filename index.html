@@ -12,7 +12,7 @@
 <style>
 
 /* =========================================================
-   ESTILOS GENERALES
+   PISTA 1: ESTILOS GENERALES
 ========================================================= */
 
 *{
@@ -57,7 +57,7 @@ body{
 
 
 /* =========================================================
-   INICIO
+   PISTA 2: PANTALLA INICIAL
 ========================================================= */
 
 .inicio{
@@ -158,16 +158,18 @@ body{
 
     color:#ffe5ea;
 
-    text-shadow:0 2px 6px #3d0613;
+    text-shadow:
+        0 2px 6px #3d0613;
 }
 
 .inicio h1{
 
-    font-size:clamp(
-        38px,
-        8vw,
-        66px
-    );
+    font-size:
+        clamp(
+            38px,
+            8vw,
+            66px
+        );
 
     font-weight:normal;
 
@@ -204,7 +206,7 @@ body{
 
 
 /* =========================================================
-   PARTÍCULAS
+   PISTA 3: PARTÍCULAS DEL FONDO
 ========================================================= */
 
 .particulas{
@@ -261,7 +263,7 @@ body{
 
 
 /* =========================================================
-   CONTENEDOR
+   PISTA 4: CONTENEDOR PRINCIPAL
 ========================================================= */
 
 main{
@@ -291,7 +293,7 @@ header{
 
 
 /* =========================================================
-   LIBRO
+   PISTA 5: LIBRO
 ========================================================= */
 
 .libro{
@@ -337,7 +339,7 @@ header{
 
 
 /* =========================================================
-   PÁGINAS
+   PISTA 6: PÁGINAS
 ========================================================= */
 
 .pagina{
@@ -410,7 +412,7 @@ header{
 
 
 /* =========================================================
-   PORTADA
+   PISTA 7: PORTADA
 ========================================================= */
 
 .portada{
@@ -467,8 +469,9 @@ header{
 
 
 /* =========================================================
-   FOTOS
-   SIN MOVIMIENTO
+   PISTA 8: FOTOS
+   IMPORTANTE:
+   LAS FOTOS NO SE MUEVEN NI GIRAN
 ========================================================= */
 
 .polaroid{
@@ -531,7 +534,7 @@ header{
 
 
 /* =========================================================
-   BOTONES
+   PISTA 9: BOTONES
 ========================================================= */
 
 button{
@@ -574,7 +577,7 @@ button:focus-visible{
 
 
 /* =========================================================
-   PROGRESO
+   PISTA 10: BARRA DE PROGRESO
 ========================================================= */
 
 .progreso{
@@ -619,7 +622,7 @@ button:focus-visible{
 
 
 /* =========================================================
-   NOTAS
+   PISTA 11: NOTAS
 ========================================================= */
 
 .nota{
@@ -639,95 +642,15 @@ button:focus-visible{
     text-align:center;
 }
 
-.secreto{
-
-    padding:20px;
-
-    border:
-        1px dashed
-        #ffd2da;
-
-    border-radius:8px;
-
-    margin-top:20px;
-
-    background:#ffffff18;
-
-    color:#fff !important;
-}
-
-.numero{
-
-    font:
-        11px
-        Arial,
-        sans-serif;
-
-    color:#fff;
-
-    letter-spacing:2px;
-
-    margin-top:28px;
-}
-
 
 /* =========================================================
-   AVISO DE PAUSA
-========================================================= */
-
-.pausa-mensaje{
-
-    position:fixed;
-
-    left:50%;
-
-    top:50%;
-
-    transform:
-        translate(-50%,-50%);
-
-    z-index:900;
-
-    padding:
-        16px
-        25px;
-
-    border-radius:30px;
-
-    background:#3c0613dd;
-
-    border:
-        1px solid
-        #ffffff80;
-
-    color:#fff;
-
-    font:
-        14px
-        Arial,
-        sans-serif;
-
-    opacity:0;
-
-    pointer-events:none;
-
-    transition:
-        opacity .3s ease;
-}
-
-.pausa-mensaje.mostrar{
-
-    opacity:1;
-}
-
-
-/* =========================================================
-   PÁGINA FINAL
+   PISTA 12:
+   CORAZÓN GRANDE LLENO DE CORAZONCITOS
 ========================================================= */
 
 .pagina.final{
 
-    min-height:700px;
+    min-height:720px;
 
     display:flex;
 
@@ -737,537 +660,233 @@ button:focus-visible{
 
     justify-content:flex-start;
 
-    padding-top:45px;
+    padding-top:38px;
 
     overflow:hidden;
 }
 
-.final-titulo{
 
-    margin-bottom:10px;
+/*
+   Este es el área donde se forma
+   el corazón gigante.
+*/
 
-    color:#fff;
-
-    font-size:
-        clamp(
-            28px,
-            6vw,
-            42px
-        );
-
-    font-weight:normal;
-}
-
-
-/* =========================================================
-   CORAZÓN DE GIRASOLES
-========================================================= */
-
-.corazon-girasoles{
+.corazon{
 
     position:relative;
 
     width:min(
-        560px,
-        94vw
+        620px,
+        96vw
     );
 
-    height:430px;
+    height:490px;
 
     margin:
-        15px
-        auto
-        5px;
+        5px auto
+        0;
 
     overflow:hidden;
 }
 
 
 /*
-   Cada girasol es pequeño.
-   Las posiciones están calculadas para formar
-   un corazón.
+   Cada corazón individual conserva
+   SIEMPRE su forma.
 */
 
-.girasol{
+.mini-corazon{
 
     position:absolute;
 
-    width:42px;
+    width:15px;
 
-    height:110px;
+    height:15px;
 
     opacity:0;
 
     transform:
-        translateY(45px)
+        translate(
+            var(--x-inicio),
+            var(--y-inicio)
+        )
         scale(.15);
 
-    transform-origin:
-        center bottom;
-}
-
-
-/* POSICIONES DEL CORAZÓN */
-
-.g1{
-    left:21%;
-    top:17%;
-}
-
-.g2{
-    left:29%;
-    top:8%;
-}
-
-.g3{
-    left:39%;
-    top:7%;
-}
-
-.g4{
-    left:50%;
-    top:15%;
-}
-
-.g5{
-    left:61%;
-    top:7%;
-}
-
-.g6{
-    left:71%;
-    top:8%;
-}
-
-.g7{
-    left:79%;
-    top:17%;
-}
-
-.g8{
-    left:17%;
-    top:28%;
-}
-
-.g9{
-    left:28%;
-    top:31%;
-}
-
-.g10{
-    left:40%;
-    top:35%;
-}
-
-.g11{
-    left:51%;
-    top:35%;
-}
-
-.g12{
-    left:63%;
-    top:31%;
-}
-
-.g13{
-    left:74%;
-    top:28%;
-}
-
-.g14{
-    left:25%;
-    top:43%;
-}
-
-.g15{
-    left:39%;
-    top:48%;
-}
-
-.g16{
-    left:51%;
-    top:48%;
-}
-
-.g17{
-    left:65%;
-    top:43%;
-}
-
-.g18{
-    left:34%;
-    top:58%;
-}
-
-.g19{
-    left:55%;
-    top:58%;
-}
-
-.g20{
-    left:45%;
-    top:70%;
-}
-
-
-/* =========================================================
-   TALLO
-========================================================= */
-
-.tallo{
-
-    position:absolute;
-
-    width:4px;
-
-    height:75px;
-
-    left:50%;
-
-    bottom:0;
-
-    transform:
-        translateX(-50%)
-        scaleY(0);
-
-    transform-origin:
-        bottom center;
-
-    background:
-        linear-gradient(
-            90deg,
-            #315f22,
-            #4d8a2f,
-            #294e1d
-        );
-
-    border-radius:5px;
-}
-
-
-/* =========================================================
-   HOJAS
-========================================================= */
-
-.hoja{
-
-    position:absolute;
-
-    width:24px;
-
-    height:12px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #679c38,
-            #315f22
-        );
-
-    border-radius:
-        100%
-        0
-        100%
-        0;
-
-    opacity:0;
-
-    transform:scale(0);
-}
-
-.hoja.izquierda{
-
-    left:2px;
-
-    bottom:28px;
-
-    transform-origin:
-        right center;
-
-    rotate:-25deg;
-}
-
-.hoja.derecha{
-
-    right:1px;
-
-    bottom:43px;
-
-    transform-origin:
-        left center;
-
-    rotate:25deg;
-}
-
-
-/* =========================================================
-   FLOR
-========================================================= */
-
-.flor{
-
-    position:absolute;
-
-    width:42px;
-
-    height:42px;
-
-    left:50%;
-
-    top:0;
-
-    transform:
-        translateX(-50%)
-        scale(0);
-
-    transform-origin:center;
+    animation:
+        ninguno
+        1s
+        forwards;
+
+    /*
+       La posición final se define
+       mediante left y top.
+    */
 }
 
 
 /*
-   16 pétalos para que se vea más
-   como un girasol real y menos como
-   una simple figura.
+   Creamos el corazón con dos
+   pequeños círculos y una punta.
 */
 
-.petalo{
-
-    position:absolute;
-
-    width:10px;
-
-    height:20px;
-
-    left:16px;
-
-    top:0;
-
-    background:
-        linear-gradient(
-            90deg,
-            #d88909,
-            #f5bd28,
-            #c87505
-        );
-
-    border-radius:
-        55%
-        55%
-        48%
-        48%;
-
-    transform-origin:
-        50%
-        21px;
-}
-
-
-/* pétalos */
-
-.p1{transform:rotate(0deg)}
-.p2{transform:rotate(22.5deg)}
-.p3{transform:rotate(45deg)}
-.p4{transform:rotate(67.5deg)}
-.p5{transform:rotate(90deg)}
-.p6{transform:rotate(112.5deg)}
-.p7{transform:rotate(135deg)}
-.p8{transform:rotate(157.5deg)}
-.p9{transform:rotate(180deg)}
-.p10{transform:rotate(202.5deg)}
-.p11{transform:rotate(225deg)}
-.p12{transform:rotate(247.5deg)}
-.p13{transform:rotate(270deg)}
-.p14{transform:rotate(292.5deg)}
-.p15{transform:rotate(315deg)}
-.p16{transform:rotate(337.5deg)}
-
-
-/* centro oscuro */
-
-.centro{
-
-    position:absolute;
-
-    width:17px;
-
-    height:17px;
-
-    left:50%;
-
-    top:50%;
-
-    transform:
-        translate(-50%,-50%);
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #8c551b,
-            #4a2a0d 65%,
-            #281505
-        );
-
-    box-shadow:
-        inset 0 1px 3px #dca34a55;
-}
-
-
-/* pequeños puntos del centro */
-
-.centro:after{
+.mini-corazon::before,
+.mini-corazon::after{
 
     content:"";
 
     position:absolute;
 
-    inset:3px;
+    top:0;
 
-    border-radius:50%;
+    width:9px;
+
+    height:13px;
+
+    border-radius:
+        9px
+        9px
+        0
+        0;
 
     background:
-        radial-gradient(
-            circle,
-            #1f1005 1px,
-            transparent 1.5px
-        );
+        var(--rosa);
+}
 
-    background-size:4px 4px;
+.mini-corazon::before{
+
+    left:7px;
+
+    transform:
+        rotate(45deg);
+
+    transform-origin:
+        0 100%;
+}
+
+.mini-corazon::after{
+
+    left:0;
+
+    transform:
+        rotate(-45deg);
+
+    transform-origin:
+        100% 100%;
+}
+
+
+/*
+   PISTA:
+   Esta clase hace que los corazones
+   aparezcan como pequeñas chispitas.
+*/
+
+.mini-corazon.aparecer{
+
+    animation:
+        formarCorazon
+        .9s
+        cubic-bezier(
+            .2,
+            .8,
+            .2,
+            1
+        )
+        forwards;
+}
+
+@keyframes ninguno{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:0;
+    }
+}
+
+@keyframes formarCorazon{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            translate(
+                var(--x-inicio),
+                var(--y-inicio)
+            )
+            scale(.15)
+            rotate(
+                var(--giro)
+            );
+    }
+
+    45%{
+
+        opacity:1;
+
+        transform:
+            translate(
+                0,
+                0
+            )
+            scale(1.25)
+            rotate(
+                var(--giro)
+            );
+    }
+
+    75%{
+
+        opacity:1;
+
+        transform:
+            translate(
+                0,
+                0
+            )
+            scale(.92)
+            rotate(
+                var(--giro)
+            );
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:
+            translate(
+                0,
+                0
+            )
+            scale(1)
+            rotate(
+                var(--giro)
+            );
+    }
 }
 
 
 /* =========================================================
-   ANIMACIÓN DE CADA GIRASOL
+   PISTA 13: BRILLO DE ALGUNOS CORAZONES
 ========================================================= */
 
-.girasol.aparecer{
+.mini-corazon.brillo::before,
+.mini-corazon.brillo::after{
 
-    animation:
-        aparecerGirasol
-        .9s
-        cubic-bezier(.2,.8,.25,1)
-        forwards;
-}
-
-.girasol.aparecer .tallo{
-
-    animation:
-        crecerTallo
-        .55s
-        ease-out
-        forwards;
-}
-
-.girasol.aparecer .hoja{
-
-    animation:
-        aparecerHoja
-        .45s
-        ease-out
-        forwards;
-}
-
-.girasol.aparecer .flor{
-
-    animation:
-        abrirFlor
-        .65s
-        cubic-bezier(.2,.8,.2,1)
-        .35s
-        forwards;
-}
-
-
-@keyframes aparecerGirasol{
-
-    0%{
-
-        opacity:0;
-
-        transform:
-            translateY(45px)
-            scale(.15);
-    }
-
-    65%{
-
-        opacity:1;
-
-        transform:
-            translateY(-4px)
-            scale(1.05);
-    }
-
-    100%{
-
-        opacity:1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-@keyframes crecerTallo{
-
-    from{
-        transform:
-            translateX(-50%)
-            scaleY(0);
-    }
-
-    to{
-        transform:
-            translateX(-50%)
-            scaleY(1);
-    }
-}
-
-@keyframes aparecerHoja{
-
-    from{
-        opacity:0;
-        scale:0;
-    }
-
-    to{
-        opacity:1;
-        scale:1;
-    }
-}
-
-@keyframes abrirFlor{
-
-    0%{
-
-        transform:
-            translateX(-50%)
-            scale(0)
-            rotate(-20deg);
-    }
-
-    70%{
-
-        transform:
-            translateX(-50%)
-            scale(1.12)
-            rotate(5deg);
-    }
-
-    100%{
-
-        transform:
-            translateX(-50%)
-            scale(1)
-            rotate(0deg);
-    }
+    filter:
+        drop-shadow(
+            0 0 5px
+            #ffb6ca
+        );
 }
 
 
 /* =========================================================
-   MENSAJE FINAL
+   PISTA 14: MENSAJE FINAL
 ========================================================= */
 
 .mensaje-final{
@@ -1281,9 +900,9 @@ button:focus-visible{
         opacity 1.5s ease,
         transform 1.5s ease;
 
-    margin-top:5px;
-
     text-align:center;
+
+    margin-top:-10px;
 }
 
 .mensaje-final.visible{
@@ -1306,7 +925,9 @@ button:focus-visible{
     margin:
         5px
         0
-        12px;
+        10px;
+
+    font-weight:normal;
 
     color:#fff;
 }
@@ -1325,7 +946,7 @@ button:focus-visible{
 
 
 /* =========================================================
-   BOTÓN VOLVER A VER
+   PISTA 15: BOTÓN VOLVER A VER
 ========================================================= */
 
 #volverVer{
@@ -1344,8 +965,6 @@ button:focus-visible{
     background:#fff;
 
     color:#8b1430;
-
-    margin-top:5px;
 }
 
 #volverVer.visible{
@@ -1360,7 +979,7 @@ button:focus-visible{
 
 
 /* =========================================================
-   RESPONSIVE
+   PISTA 16: RESPONSIVE PARA CELULAR
 ========================================================= */
 
 @media(max-width:520px){
@@ -1377,8 +996,6 @@ button:focus-visible{
         padding:
             26px
             18px;
-
-        min-height:530px;
     }
 
     .portada{
@@ -1386,49 +1003,32 @@ button:focus-visible{
         min-height:550px;
     }
 
-    .corazon-girasoles{
+    .corazon{
 
         width:100%;
 
-        height:380px;
+        height:390px;
     }
 
-    .girasol{
+    .mini-corazon{
 
-        transform:
-            translateY(45px)
-            scale(.8);
+        width:13px;
+
+        height:13px;
     }
 
-    .g1{left:17%}
-    .g2{left:25%}
-    .g3{left:36%}
-    .g4{left:48%}
-    .g5{left:60%}
-    .g6{left:71%}
-    .g7{left:79%}
+    .mini-corazon::before,
+    .mini-corazon::after{
 
-    .g8{left:13%}
-    .g9{left:25%}
-    .g10{left:38%}
-    .g11{left:50%}
-    .g12{left:62%}
-    .g13{left:74%}
+        width:8px;
 
-    .g14{left:22%}
-    .g15{left:36%}
-    .g16{left:50%}
-    .g17{left:64%}
-
-    .g18{left:32%}
-    .g19{left:55%}
-
-    .g20{left:43%}
+        height:11px;
+    }
 }
 
 
 /* =========================================================
-   REDUCIR MOVIMIENTO
+   PISTA 17: REDUCIR ANIMACIONES
 ========================================================= */
 
 @media(prefers-reduced-motion:reduce){
@@ -1454,7 +1054,7 @@ button:focus-visible{
 
 
 <!-- ======================================================
-     INTRODUCCIÓN
+     PISTA 18: PANTALLA INICIAL
 ====================================================== -->
 
 <div
@@ -1466,7 +1066,6 @@ button:focus-visible{
 
         <span
             class="inicio-corazon"
-            aria-hidden="true"
         >
             ♥
         </span>
@@ -1489,7 +1088,7 @@ button:focus-visible{
 
 
 <!-- ======================================================
-     PARTÍCULAS
+     PISTA 19: PARTÍCULAS
 ====================================================== -->
 
 <div
@@ -1500,7 +1099,7 @@ button:focus-visible{
 
 
 <!-- ======================================================
-     MÚSICA
+     PISTA 20: MÚSICA
 ====================================================== -->
 
 <audio
@@ -1515,7 +1114,7 @@ button:focus-visible{
 
 
 <!-- ======================================================
-     CONTENIDO
+     PISTA 21: CONTENIDO PRINCIPAL
 ====================================================== -->
 
 <main>
@@ -1532,19 +1131,15 @@ button:focus-visible{
 
 
         <!-- ==============================================
-             PORTADA
+             PISTA 22: PORTADA
         =============================================== -->
 
         <section
             class="pagina portada"
             id="portada"
-            aria-label="Portada"
         >
 
-            <div
-                class="sello"
-                aria-hidden="true"
-            >
+            <div class="sello">
                 ✧
             </div>
 
@@ -1564,14 +1159,13 @@ button:focus-visible{
 
 
         <!-- ==============================================
-             PÁGINAS
+             PISTA 23: PÁGINAS CON FOTOS
         =============================================== -->
 
         <section
             class="pagina"
             id="contenido"
             hidden
-            aria-label="Página del libro"
         >
 
             <div
@@ -1581,14 +1175,10 @@ button:focus-visible{
 
             <h2
                 id="encabezado"
-                tabindex="-1"
             ></h2>
 
 
-            <figure
-                class="polaroid"
-                id="marco"
-            >
+            <figure class="polaroid">
 
                 <img
                     id="foto"
@@ -1607,21 +1197,6 @@ button:focus-visible{
             <p id="texto"></p>
 
 
-            <button
-                id="revelar"
-                hidden
-            >
-                Hay algo más para ti… 💌
-            </button>
-
-
-            <p
-                id="secreto"
-                class="secreto"
-                hidden
-            ></p>
-
-
             <div
                 class="numero"
                 id="numero"
@@ -1631,7 +1206,8 @@ button:focus-visible{
 
 
         <!-- ==============================================
-             PÁGINA FINAL
+             PISTA 24:
+             PÁGINA FINAL CON CORAZÓN
         =============================================== -->
 
         <section
@@ -1644,264 +1220,22 @@ button:focus-visible{
                 Y todavía quedan muchas páginas...
             </div>
 
-            <h2 class="final-titulo">
-                ♥
-            </h2>
 
-
-            <!-- CORAZÓN -->
+            <!--
+                AQUÍ SE FORMARÁ EL CORAZÓN
+                COMPLETAMENTE LLENO
+                DE CORAZONCITOS.
+            -->
 
             <div
-                class="corazon-girasoles"
-                id="corazonGirasoles"
-            >
+                class="corazon"
+                id="corazon"
+            ></div>
 
 
-                <!-- GIRASOL 1 -->
-
-                <div class="girasol g1">
-
-                    <div class="tallo"></div>
-
-                    <div class="hoja izquierda"></div>
-
-                    <div class="hoja derecha"></div>
-
-                    <div class="flor">
-
-                        <span class="petalo p1"></span>
-                        <span class="petalo p2"></span>
-                        <span class="petalo p3"></span>
-                        <span class="petalo p4"></span>
-                        <span class="petalo p5"></span>
-                        <span class="petalo p6"></span>
-                        <span class="petalo p7"></span>
-                        <span class="petalo p8"></span>
-                        <span class="petalo p9"></span>
-                        <span class="petalo p10"></span>
-                        <span class="petalo p11"></span>
-                        <span class="petalo p12"></span>
-                        <span class="petalo p13"></span>
-                        <span class="petalo p14"></span>
-                        <span class="petalo p15"></span>
-                        <span class="petalo p16"></span>
-
-                        <div class="centro"></div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- GIRASOL 2 -->
-
-                <div class="girasol g2">
-
-                    <div class="tallo"></div>
-                    <div class="hoja izquierda"></div>
-                    <div class="hoja derecha"></div>
-
-                    <div class="flor">
-
-                        <span class="petalo p1"></span>
-                        <span class="petalo p2"></span>
-                        <span class="petalo p3"></span>
-                        <span class="petalo p4"></span>
-                        <span class="petalo p5"></span>
-                        <span class="petalo p6"></span>
-                        <span class="petalo p7"></span>
-                        <span class="petalo p8"></span>
-                        <span class="petalo p9"></span>
-                        <span class="petalo p10"></span>
-                        <span class="petalo p11"></span>
-                        <span class="petalo p12"></span>
-                        <span class="petalo p13"></span>
-                        <span class="petalo p14"></span>
-                        <span class="petalo p15"></span>
-                        <span class="petalo p16"></span>
-
-                        <div class="centro"></div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- GIRASOL 3 -->
-
-                <div class="girasol g3">
-
-                    <div class="tallo"></div>
-                    <div class="hoja izquierda"></div>
-                    <div class="hoja derecha"></div>
-
-                    <div class="flor">
-
-                        <span class="petalo p1"></span>
-                        <span class="petalo p2"></span>
-                        <span class="petalo p3"></span>
-                        <span class="petalo p4"></span>
-                        <span class="petalo p5"></span>
-                        <span class="petalo p6"></span>
-                        <span class="petalo p7"></span>
-                        <span class="petalo p8"></span>
-                        <span class="petalo p9"></span>
-                        <span class="petalo p10"></span>
-                        <span class="petalo p11"></span>
-                        <span class="petalo p12"></span>
-                        <span class="petalo p13"></span>
-                        <span class="petalo p14"></span>
-                        <span class="petalo p15"></span>
-                        <span class="petalo p16"></span>
-
-                        <div class="centro"></div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- GIRASOL 4 -->
-
-                <div class="girasol g4">
-
-                    <div class="tallo"></div>
-                    <div class="hoja izquierda"></div>
-                    <div class="hoja derecha"></div>
-
-                    <div class="flor">
-
-                        <span class="petalo p1"></span>
-                        <span class="petalo p2"></span>
-                        <span class="petalo p3"></span>
-                        <span class="petalo p4"></span>
-                        <span class="petalo p5"></span>
-                        <span class="petalo p6"></span>
-                        <span class="petalo p7"></span>
-                        <span class="petalo p8"></span>
-                        <span class="petalo p9"></span>
-                        <span class="petalo p10"></span>
-                        <span class="petalo p11"></span>
-                        <span class="petalo p12"></span>
-                        <span class="petalo p13"></span>
-                        <span class="petalo p14"></span>
-                        <span class="petalo p15"></span>
-                        <span class="petalo p16"></span>
-
-                        <div class="centro"></div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- GIRASOL 5 -->
-
-                <div class="girasol g5">
-
-                    <div class="tallo"></div>
-                    <div class="hoja izquierda"></div>
-                    <div class="hoja derecha"></div>
-
-                    <div class="flor">
-
-                        <span class="petalo p1"></span>
-                        <span class="petalo p2"></span>
-                        <span class="petalo p3"></span>
-                        <span class="petalo p4"></span>
-                        <span class="petalo p5"></span>
-                        <span class="petalo p6"></span>
-                        <span class="petalo p7"></span>
-                        <span class="petalo p8"></span>
-                        <span class="petalo p9"></span>
-                        <span class="petalo p10"></span>
-                        <span class="petalo p11"></span>
-                        <span class="petalo p12"></span>
-                        <span class="petalo p13"></span>
-                        <span class="petalo p14"></span>
-                        <span class="petalo p15"></span>
-                        <span class="petalo p16"></span>
-
-                        <div class="centro"></div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- GIRASOL 6 -->
-
-                <div class="girasol g6">
-
-                    <div class="tallo"></div>
-                    <div class="hoja izquierda"></div>
-                    <div class="hoja derecha"></div>
-
-                    <div class="flor">
-
-                        <span class="petalo p1"></span>
-                        <span class="petalo p2"></span>
-                        <span class="petalo p3"></span>
-                        <span class="petalo p4"></span>
-                        <span class="petalo p5"></span>
-                        <span class="petalo p6"></span>
-                        <span class="petalo p7"></span>
-                        <span class="petalo p8"></span>
-                        <span class="petalo p9"></span>
-                        <span class="petalo p10"></span>
-                        <span class="petalo p11"></span>
-                        <span class="petalo p12"></span>
-                        <span class="petalo p13"></span>
-                        <span class="petalo p14"></span>
-                        <span class="petalo p15"></span>
-                        <span class="petalo p16"></span>
-
-                        <div class="centro"></div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- GIRASOL 7 -->
-
-                <div class="girasol g7">
-
-                    <div class="tallo"></div>
-                    <div class="hoja izquierda"></div>
-                    <div class="hoja derecha"></div>
-
-                    <div class="flor">
-
-                        <span class="petalo p1"></span>
-                        <span class="petalo p2"></span>
-                        <span class="petalo p3"></span>
-                        <span class="petalo p4"></span>
-                        <span class="petalo p5"></span>
-                        <span class="petalo p6"></span>
-                        <span class="petalo p7"></span>
-                        <span class="petalo p8"></span>
-                        <span class="petalo p9"></span>
-                        <span class="petalo p10"></span>
-                        <span class="petalo p11"></span>
-                        <span class="petalo p12"></span>
-                        <span class="petalo p13"></span>
-                        <span class="petalo p14"></span>
-                        <span class="petalo p15"></span>
-                        <span class="petalo p16"></span>
-
-                        <div class="centro"></div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- GIRASOLES 8 AL 20
-                     Se crean automáticamente con JavaScript -->
-
-            </div>
-
+            <!-- ==========================================
+                 PISTA 25: MENSAJE FINAL
+            =========================================== -->
 
             <div
                 class="mensaje-final"
@@ -1916,7 +1250,9 @@ button:focus-visible{
                     Porque nuestra historia todavía tiene muchas páginas por escribir. ♥
                 </p>
 
-                <button id="volverVer">
+                <button
+                    id="volverVer"
+                >
                     Volver a ver nuestra historia ♥
                 </button>
 
@@ -1943,8 +1279,6 @@ button:focus-visible{
 
         <span
             id="contador"
-            role="status"
-            aria-live="polite"
         >
             Portada
         </span>
@@ -1956,26 +1290,15 @@ button:focus-visible{
         Las páginas avanzan solas. Disfruta nuestra historia.
     </p>
 
-
-    <noscript>
-        Activa JavaScript en tu navegador para abrir el libro.
-    </noscript>
-
 </main>
-
-
-<div
-    class="pausa-mensaje"
-    id="pausaMensaje"
->
-</div>
 
 
 <script>
 
 
 /* =========================================================
-   CONFIGURACIÓN
+   PISTA 26:
+   CONFIGURACIÓN DE LA HISTORIA
 ========================================================= */
 
 const CONFIG = {
@@ -1996,98 +1319,48 @@ const CONFIG = {
     recuerdos:[
 
         {
-
             fecha:"El comienzo",
-
             titulo:"Donde empezó todo",
-
             foto:"foto1.png",
-
-            descripcion:
-                "Nuestra primera foto juntos",
-
-            pie:
-                "Un instante, muchas sonrisas.",
-
-            texto:
-                "Quizás ese día no imaginábamos cuántos recuerdos vendrían después. Hoy lo guardo como uno de mis favoritos."
-
+            descripcion:"Nuestra primera foto juntos",
+            pie:"Un instante, muchas sonrisas.",
+            texto:"Quizás ese día no imaginábamos cuántos recuerdos vendrían después. Hoy lo guardo como uno de mis favoritos."
         },
 
         {
-
             fecha:"Un día especial",
-
             titulo:"Nuestra pequeña aventura",
-
             foto:"foto2.png",
-
-            descripcion:
-                "Una aventura compartida",
-
-            pie:
-                "El mejor destino: compartirlo contigo.",
-
-            texto:
-                "No fue solo el lugar. Fueron las conversaciones, las risas y esa manera de convertir un día cualquiera en algo especial."
-
+            descripcion:"Una aventura compartida",
+            pie:"El mejor destino: compartirlo contigo.",
+            texto:"No fue solo el lugar. Fueron las conversaciones, las risas y esa manera de convertir un día cualquiera en algo especial."
         },
 
         {
-
             fecha:"Siempre en mi memoria",
-
             titulo:"Las cosas más sencillas",
-
             foto:"foto3.png",
-
-            descripcion:
-                "Un momento que queremos recordar",
-
-            pie:
-                "De esos días que dan ganas de repetir.",
-
-            texto:
-                "A veces la felicidad cabe en una foto, en una conversación larga o en una risa que no se puede contener."
-
+            descripcion:"Un momento que queremos recordar",
+            pie:"De esos días que dan ganas de repetir.",
+            texto:"A veces la felicidad cabe en una foto, en una conversación larga o en una risa que no se puede contener."
         },
 
         {
-
             fecha:"Una aventura al atardecer",
-
             titulo:"Donde el cielo guardó este momento",
-
             foto:"foto4.png",
-
-            descripcion:
-                "Un paseo a caballo durante el atardecer",
-
-            pie:
-                "Un atardecer que siempre querré recordar.",
-
-            texto:
-                "El cielo cambió de colores y el tiempo pareció detenerse. Hay paisajes hermosos, pero los recuerdos son los que les dan un significado especial."
-
+            descripcion:"Un paseo a caballo durante el atardecer",
+            pie:"Un atardecer que siempre querré recordar.",
+            texto:"El cielo cambió de colores y el tiempo pareció detenerse. Hay paisajes hermosos, pero los recuerdos son los que les dan un significado especial."
         },
 
         {
-
             fecha:"Un momento para nosotros",
-
             titulo:"Juntos, todo se siente especial",
-
             foto:"foto5.png",
-
-            descripcion:
-                "Un recuerdo de los dos juntos",
-
-            pie:
-                "Contigo, hasta lo cotidiano se vuelve inolvidable.",
-
-            texto:
-                "No importa el lugar ni el momento. Cuando estamos juntos, siempre aparece una razón para sonreír y guardar una nueva página en nuestra historia."
-
+            descripcion:"Un recuerdo de los dos juntos",
+            pie:"Contigo, hasta lo cotidiano se vuelve inolvidable.",
+            texto:"No importa el lugar ni el momento. Cuando estamos juntos, siempre aparece una razón para sonreír y guardar una nueva página en nuestra historia."
         }
 
     ]
@@ -2096,76 +1369,107 @@ const CONFIG = {
 
 
 /* =========================================================
-   ELEMENTOS
+   PISTA 27: ELEMENTOS
 ========================================================= */
 
 const inicio =
-    document.getElementById("inicio");
-
-const abrir =
-    document.getElementById("abrir");
-
-const musica =
-    document.getElementById("musica");
-
-const portada =
-    document.getElementById("portada");
-
-const contenido =
-    document.getElementById("contenido");
-
-const finalPagina =
-    document.getElementById("final");
-
-const titulo =
-    document.getElementById("titulo");
-
-const dedicatoria =
-    document.getElementById("dedicatoria");
-
-const fecha =
-    document.getElementById("fecha");
-
-const encabezado =
-    document.getElementById("encabezado");
-
-const foto =
-    document.getElementById("foto");
-
-const pie =
-    document.getElementById("pie");
-
-const texto =
-    document.getElementById("texto");
-
-const numero =
-    document.getElementById("numero");
-
-const contador =
-    document.getElementById("contador");
-
-const avance =
-    document.getElementById("avance");
-
-const mensajeFinal =
-    document.getElementById("mensajeFinal");
-
-const volverVer =
-    document.getElementById("volverVer");
-
-const corazonGirasoles =
     document.getElementById(
-        "corazonGirasoles"
+        "inicio"
     );
 
-const pausaMensaje =
+const abrir =
     document.getElementById(
-        "pausaMensaje"
+        "abrir"
+    );
+
+const musica =
+    document.getElementById(
+        "musica"
+    );
+
+const portada =
+    document.getElementById(
+        "portada"
+    );
+
+const contenido =
+    document.getElementById(
+        "contenido"
+    );
+
+const finalPagina =
+    document.getElementById(
+        "final"
+    );
+
+const titulo =
+    document.getElementById(
+        "titulo"
+    );
+
+const dedicatoria =
+    document.getElementById(
+        "dedicatoria"
+    );
+
+const fecha =
+    document.getElementById(
+        "fecha"
+    );
+
+const encabezado =
+    document.getElementById(
+        "encabezado"
+    );
+
+const foto =
+    document.getElementById(
+        "foto"
+    );
+
+const pie =
+    document.getElementById(
+        "pie"
+    );
+
+const texto =
+    document.getElementById(
+        "texto"
+    );
+
+const numero =
+    document.getElementById(
+        "numero"
+    );
+
+const contador =
+    document.getElementById(
+        "contador"
+    );
+
+const avance =
+    document.getElementById(
+        "avance"
+    );
+
+const corazon =
+    document.getElementById(
+        "corazon"
+    );
+
+const mensajeFinal =
+    document.getElementById(
+        "mensajeFinal"
+    );
+
+const volverVer =
+    document.getElementById(
+        "volverVer"
     );
 
 
 /* =========================================================
-   VARIABLES
+   PISTA 28: VARIABLES
 ========================================================= */
 
 let paginaActual = -1;
@@ -2176,11 +1480,9 @@ let historiaIniciada = false;
 
 let pausado = false;
 
-let volumenInicial = 1;
-
 
 /* =========================================================
-   DATOS INICIALES
+   PISTA 29: TEXTO INICIAL
 ========================================================= */
 
 titulo.textContent =
@@ -2191,7 +1493,8 @@ dedicatoria.textContent =
 
 
 /* =========================================================
-   ABRIR HISTORIA
+   PISTA 30:
+   BOTÓN ABRIR HISTORIA
 ========================================================= */
 
 abrir.addEventListener(
@@ -2212,21 +1515,24 @@ abrir.addEventListener(
             function(error){
 
                 console.log(
-                    "El navegador bloqueó el audio:",
+                    "Audio bloqueado:",
                     error
                 );
 
             }
         );
 
-        mostrar(0);
+        mostrar(
+            0
+        );
 
     }
 );
 
 
 /* =========================================================
-   MOSTRAR PÁGINA
+   PISTA 31:
+   MOSTRAR CADA PÁGINA
 ========================================================= */
 
 function mostrar(indice){
@@ -2235,7 +1541,14 @@ function mostrar(indice){
         temporizador
     );
 
-    paginaActual = indice;
+    paginaActual =
+        indice;
+
+
+    /*
+       Cuando terminan las 5 fotos,
+       pasamos al corazón gigante.
+    */
 
     if(
         indice >=
@@ -2248,43 +1561,14 @@ function mostrar(indice){
     }
 
 
-    /* PORTADA */
+    portada.hidden =
+        true;
 
-    if(indice === -1){
+    contenido.hidden =
+        false;
 
-        portada.hidden = false;
-
-        contenido.hidden = true;
-
-        finalPagina.hidden = true;
-
-        contador.textContent =
-            "Portada";
-
-        avance.style.width =
-            "0%";
-
-        temporizador =
-            setTimeout(
-                function(){
-
-                    mostrar(0);
-
-                },
-                CONFIG.segundosPortada * 1000
-            );
-
-        return;
-    }
-
-
-    /* PÁGINA */
-
-    portada.hidden = true;
-
-    contenido.hidden = false;
-
-    finalPagina.hidden = true;
+    finalPagina.hidden =
+        true;
 
 
     const recuerdo =
@@ -2303,7 +1587,8 @@ function mostrar(indice){
     foto.alt =
         recuerdo.descripcion;
 
-    foto.hidden = false;
+    foto.hidden =
+        false;
 
     pie.textContent =
         recuerdo.pie;
@@ -2331,6 +1616,7 @@ function mostrar(indice){
             CONFIG.recuerdos.length
         ) * 100;
 
+
     avance.style.width =
         porcentaje + "%";
 
@@ -2351,7 +1637,8 @@ function mostrar(indice){
 
 
 /* =========================================================
-   FINAL
+   PISTA 32:
+   MOSTRAR FINAL
 ========================================================= */
 
 function mostrarFinal(){
@@ -2360,35 +1647,21 @@ function mostrarFinal(){
         temporizador
     );
 
-    portada.hidden = true;
+    portada.hidden =
+        true;
 
-    contenido.hidden = true;
+    contenido.hidden =
+        true;
 
-    finalPagina.hidden = false;
+    finalPagina.hidden =
+        false;
+
 
     contador.textContent =
         "Nuestra historia continúa";
 
     avance.style.width =
         "100%";
-
-
-    /* LIMPIAR GIRASOLES */
-
-    const girasoles =
-        corazonGirasoles.querySelectorAll(
-            ".girasol"
-        );
-
-    girasoles.forEach(
-        function(girasol){
-
-            girasol.classList.remove(
-                "aparecer"
-            );
-
-        }
-    );
 
 
     mensajeFinal.classList.remove(
@@ -2401,207 +1674,277 @@ function mostrarFinal(){
 
 
     /*
-       Pequeño retraso para que el
-       navegador reinicie las animaciones.
+       Limpiamos el corazón anterior
+       para que al volver a ver la historia
+       se pueda formar nuevamente.
+    */
+
+    corazon.innerHTML =
+        "";
+
+
+    /*
+       Esperamos un momento y empezamos
+       a crear las pequeñas chispitas.
     */
 
     setTimeout(
         function(){
 
-            formarCorazon();
+            crearCorazon();
 
         },
-        300
+        500
     );
 
 }
 
 
 /* =========================================================
-   CREAR GIRASOLES RESTANTES
+   PISTA 33:
+   CREAR MUCHOS CORAZONCITOS
 ========================================================= */
 
-function crearGirasoles(){
+function crearCorazon(){
 
     /*
-       Ya existen los primeros 7
-       escritos en HTML.
+       Más corazones = corazón más lleno.
 
-       Aquí agregamos del 8 al 20.
+       150 corazones pequeños.
     */
 
-    const existentes =
-        corazonGirasoles.querySelectorAll(
-            ".girasol"
-        ).length;
+    const cantidad =
+        180;
+
+
+    /*
+       El centro del área.
+    */
+
+    const ancho =
+        corazon.clientWidth;
+
+    const alto =
+        corazon.clientHeight;
+
 
     for(
-        let i = existentes + 1;
-        i <= 20;
+        let i = 0;
+        i < cantidad;
         i++
     ){
 
-        const girasol =
+        const mini =
             document.createElement(
-                "div"
+                "span"
             );
 
-        girasol.className =
-            "girasol g" + i;
+
+        mini.className =
+            "mini-corazon";
 
 
-        const tallo =
-            document.createElement(
-                "div"
-            );
+        /*
+           Buscamos una posición dentro
+           de la forma matemática de corazón.
+        */
 
-        tallo.className =
-            "tallo";
-
-
-        const hojaIzq =
-            document.createElement(
-                "div"
-            );
-
-        hojaIzq.className =
-            "hoja izquierda";
+        let x;
+        let y;
 
 
-        const hojaDer =
-            document.createElement(
-                "div"
-            );
+        do{
 
-        hojaDer.className =
-            "hoja derecha";
-
-
-        const flor =
-            document.createElement(
-                "div"
-            );
-
-        flor.className =
-            "flor";
+            x =
+                (
+                    Math.random()
+                    * 2
+                    - 1
+                ) * 0.98;
 
 
-        for(
-            let p = 1;
-            p <= 16;
-            p++
+            y =
+                (
+                    Math.random()
+                    * 2
+                    - 1
+                ) * 0.95;
+
+
+        }while(
+            !dentroDelCorazon(
+                x,
+                y
+            )
+        );
+
+
+        /*
+           Convertimos la posición
+           matemática a píxeles.
+        */
+
+        const posX =
+            ancho / 2 +
+            x *
+            ancho *
+            0.43;
+
+
+        const posY =
+            alto / 2 +
+            y *
+            alto *
+            0.43;
+
+
+        mini.style.left =
+            (
+                posX - 7
+            ) +
+            "px";
+
+
+        mini.style.top =
+            (
+                posY - 7
+            ) +
+            "px";
+
+
+        /*
+           Cada corazón comienza
+           desde un punto diferente.
+        */
+
+        const inicioX =
+            (
+                Math.random()
+                * ancho
+            ) -
+            posX;
+
+
+        const inicioY =
+            (
+                Math.random()
+                * alto
+            ) -
+            posY;
+
+
+        mini.style.setProperty(
+            "--x-inicio",
+            inicioX + "px"
+        );
+
+
+        mini.style.setProperty(
+            "--y-inicio",
+            inicioY + "px"
+        );
+
+
+        /*
+           Pequeña variación de giro,
+           pero SIN deformar el corazón.
+        */
+
+        const giro =
+            (
+                Math.random()
+                * 30
+            ) -
+            15;
+
+
+        mini.style.setProperty(
+            "--giro",
+            giro + "deg"
+        );
+
+
+        /*
+           Diferentes tonos rosados.
+        */
+
+        const colores =
+            [
+                "#ffb6c9",
+                "#ff9fba",
+                "#ff82a5",
+                "#ffcad7",
+                "#f96f95",
+                "#ffd5df"
+            ];
+
+
+        const rosa =
+            colores[
+                Math.floor(
+                    Math.random()
+                    *
+                    colores.length
+                )
+            ];
+
+
+        mini.style.setProperty(
+            "--rosa",
+            rosa
+        );
+
+
+        /*
+           Algunos corazones tienen
+           un brillo suave.
+        */
+
+        if(
+            Math.random()
+            < .16
         ){
 
-            const petalo =
-                document.createElement(
-                    "span"
-                );
-
-            petalo.className =
-                "petalo p" + p;
-
-            flor.appendChild(
-                petalo
+            mini.classList.add(
+                "brillo"
             );
 
         }
 
 
-        const centro =
-            document.createElement(
-                "div"
-            );
-
-        centro.className =
-            "centro";
-
-        flor.appendChild(
-            centro
+        corazon.appendChild(
+            mini
         );
 
 
-        girasol.appendChild(
-            tallo
-        );
+        /*
+           Aparecen progresivamente.
+        */
 
-        girasol.appendChild(
-            hojaIzq
-        );
+        setTimeout(
+            function(){
 
-        girasol.appendChild(
-            hojaDer
-        );
+                mini.classList.add(
+                    "aparecer"
+                );
 
-        girasol.appendChild(
-            flor
-        );
-
-        corazonGirasoles.appendChild(
-            girasol
+            },
+            i * 45
         );
 
     }
 
-}
-
-
-/* =========================================================
-   FORMAR CORAZÓN
-========================================================= */
-
-function formarCorazon(){
-
-    crearGirasoles();
-
-
-    const girasoles =
-        corazonGirasoles.querySelectorAll(
-            ".girasol"
-        );
-
 
     /*
-       Aparecen como pequeñas chispitas,
-       una después de otra.
-
-       La separación es corta para que
-       se vea cómo el corazón se va
-       construyendo progresivamente.
+       Cuando ya apareció el último,
+       esperamos un poco y mostramos
+       el mensaje final.
     */
 
-    girasoles.forEach(
-        function(girasol,index){
+    const tiempoFinal =
+        cantidad * 45 +
+        1800;
 
-            setTimeout(
-                function(){
-
-                    girasol.classList.add(
-                        "aparecer"
-                    );
-
-                },
-                index * 230
-            );
-
-        }
-    );
-
-
-    /*
-       20 girasoles x 230ms
-       + tiempo de crecimiento.
-    */
-
-    const tiempoCorazon =
-        (
-            girasoles.length * 230
-        ) + 1800;
-
-
-    /*
-       Primero termina de formarse
-       el corazón.
-    */
 
     setTimeout(
         function(){
@@ -2616,39 +1959,76 @@ function formarCorazon(){
 
 
             /*
-               Cuando el corazón ya está
-               completamente formado,
-               comienza a bajar la música.
+               AQUÍ empieza el descenso
+               suave de la música.
             */
 
-            detenerMusicaSuavemente();
+            bajarMusica();
 
         },
-        tiempoCorazon
+        tiempoFinal
     );
 
 }
 
 
 /* =========================================================
-   BAJAR MÚSICA SUAVEMENTE
+   PISTA 34:
+   FÓRMULA PARA HACER EL CORAZÓN
 ========================================================= */
 
-function detenerMusicaSuavemente(){
+function dentroDelCorazon(
+    x,
+    y
+){
+
+    /*
+       Ecuación de corazón.
+
+       Permite que los corazones
+       llenen completamente la figura.
+    */
+
+    const izquierda =
+        x * x +
+        y * y -
+        1;
+
+
+    const resultado =
+        izquierda *
+        izquierda *
+        izquierda -
+        x * x *
+        y * y *
+        y;
+
+
+    return resultado <= 0;
+
+}
+
+
+/* =========================================================
+   PISTA 35:
+   MÚSICA BAJANDO SUAVEMENTE
+========================================================= */
+
+function bajarMusica(){
 
     const duracion =
-        6000;
+        6500;
 
     const pasos =
-        60;
+        65;
 
     const intervalo =
         duracion / pasos;
 
+    let paso = 0;
+
     const volumenInicial =
         musica.volume;
-
-    let paso = 0;
 
 
     const fade =
@@ -2656,6 +2036,7 @@ function detenerMusicaSuavemente(){
             function(){
 
                 paso++;
+
 
                 musica.volume =
                     Math.max(
@@ -2676,6 +2057,7 @@ function detenerMusicaSuavemente(){
                         fade
                     );
 
+
                     musica.pause();
 
                     musica.currentTime =
@@ -2694,7 +2076,8 @@ function detenerMusicaSuavemente(){
 
 
 /* =========================================================
-   VOLVER A VER
+   PISTA 36:
+   BOTÓN VOLVER A VER
 ========================================================= */
 
 volverVer.addEventListener(
@@ -2710,7 +2093,8 @@ volverVer.addEventListener(
 
 
 /* =========================================================
-   REINICIAR HISTORIA
+   PISTA 37:
+   REINICIAR TODO
 ========================================================= */
 
 function reiniciarHistoria(){
@@ -2719,18 +2103,32 @@ function reiniciarHistoria(){
         temporizador
     );
 
-    historiaIniciada = true;
+    historiaIniciada =
+        true;
 
-    pausado = false;
+    pausado =
+        false;
 
-    paginaActual = -1;
+    paginaActual =
+        -1;
 
 
     musica.pause();
 
-    musica.currentTime = 0;
+    musica.currentTime =
+        0;
 
-    musica.volume = 1;
+    musica.volume =
+        1;
+
+
+    /*
+       Eliminamos todos los
+       corazoncitos anteriores.
+    */
+
+    corazon.innerHTML =
+        "";
 
 
     mensajeFinal.classList.remove(
@@ -2742,247 +2140,16 @@ function reiniciarHistoria(){
     );
 
 
-    const girasoles =
-        corazonGirasoles.querySelectorAll(
-            ".girasol"
-        );
+    finalPagina.hidden =
+        true;
 
-    girasoles.forEach(
-        function(girasol){
+    contenido.hidden =
+        true;
 
-            girasol.classList.remove(
-                "aparecer"
-            );
-
-        }
-    );
-
-
-    finalPagina.hidden = true;
-
-    contenido.hidden = true;
-
-    portada.hidden = false;
+    portada.hidden =
+        false;
 
 
     inicio.classList.remove(
         "oculto"
-    );
-
-
-    contador.textContent =
-        "Portada";
-
-    avance.style.width =
-        "0%";
-
-}
-
-
-/* =========================================================
-   PARTÍCULAS
-========================================================= */
-
-function crearParticulas(){
-
-    const contenedor =
-        document.getElementById(
-            "particulas"
-        );
-
-
-    for(
-        let i = 0;
-        i < 28;
-        i++
-    ){
-
-        const particula =
-            document.createElement(
-                "span"
-            );
-
-        const simbolos =
-            [
-                "♥",
-                "✦",
-                "✧",
-                "·"
-            ];
-
-        particula.textContent =
-            simbolos[
-                Math.floor(
-                    Math.random() *
-                    simbolos.length
-                )
-            ];
-
-
-        particula.style.left =
-            Math.random() *
-            100 +
-            "%";
-
-
-        particula.style.fontSize =
-            (
-                8 +
-                Math.random() * 18
-            ) +
-            "px";
-
-
-        particula.style.animationDelay =
-            (
-                Math.random() * 8
-            ) +
-            "s";
-
-
-        particula.style.animationDuration =
-            (
-                6 +
-                Math.random() * 7
-            ) +
-            "s";
-
-
-        contenedor.appendChild(
-            particula
-        );
-
-    }
-
-}
-
-crearParticulas();
-
-
-/* =========================================================
-   PAUSA AL HACER CLICK
-========================================================= */
-
-document.addEventListener(
-    "click",
-    function(event){
-
-        /*
-           No pausar si se está haciendo
-           click en un botón.
-        */
-
-        if(
-            event.target.closest(
-                "button"
-            )
-        ){
-
-            return;
-        }
-
-
-        if(!historiaIniciada){
-
-            return;
-        }
-
-
-        /*
-           No pausar durante el corazón
-           final.
-        */
-
-        if(
-            !finalPagina.hidden
-        ){
-
-            return;
-        }
-
-
-        if(!pausado){
-
-            pausado = true;
-
-            clearTimeout(
-                temporizador
-            );
-
-            musica.pause();
-
-            mostrarAviso(
-                "⏸ Recorrido pausado"
-            );
-
-        }else{
-
-            pausado = false;
-
-            musica.play().catch(
-                function(error){
-
-                    console.log(
-                        error
-                    );
-
-                }
-            );
-
-
-            temporizador =
-                setTimeout(
-                    function(){
-
-                        mostrar(
-                            paginaActual + 1
-                        );
-
-                    },
-                    CONFIG.segundosPorPagina * 1000
-                );
-
-
-            mostrarAviso(
-                "▶ Continuando..."
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   AVISO
-========================================================= */
-
-function mostrarAviso(texto){
-
-    pausaMensaje.textContent =
-        texto;
-
-    pausaMensaje.classList.add(
-        "mostrar"
-    );
-
-
-    setTimeout(
-        function(){
-
-            pausaMensaje.classList.remove(
-                "mostrar"
-            );
-
-        },
-        1200
-    );
-
-}
-
-</script>
-
-</body>
-
-</html>
 ```
