@@ -2,34 +2,784 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Los momentos que guardo contigo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="description" content="Hay una pequeña sorpresa esperando por ti.">
+
+    <title>Un libro para ti</title>
 
     <style>
 
-        /* =====================================================
-           ESTILOS GENERALES
-        ===================================================== */
+        /* ========================================================
+           CSS: colores, diseño y adaptación al celular
+        ======================================================== */
+
+        :root {
+            --papel: #fff9ed;
+            --tinta: #42352e;
+            --rosa: #995b63;
+            --oro: #cba974;
+        }
 
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
+        body {
+            margin: 0;
+            background: #e8dfd4;
+            color: var(--tinta);
+            font-family: Georgia, serif;
+            min-height: 100svh;
+
+            background-image:
+                radial-gradient(
+                    ellipse at top,
+                    #fffaf1,
+                    transparent 70%
+                );
+        }
+
+        main {
+            max-width: 850px;
+            margin: auto;
+            padding: 30px 18px;
+        }
+
+        header {
+            text-align: center;
+            font: 11px Arial, sans-serif;
+            letter-spacing: 4px;
+            margin: 10px 0 25px;
+            color: #73665d;
+        }
+
+        .libro {
+            position: relative;
+            background: var(--papel);
+            border-radius: 5px 16px 16px 5px;
+            border: 1px solid #d8c7ac;
+
+            box-shadow:
+                8px 8px 0 #dfd1bb,
+                12px 12px 0 #cdbda7,
+                0 25px 60px #42352e22;
+
+            overflow: hidden;
+        }
+
+        .libro:before {
+            content: "";
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: #c8b59955;
+            z-index: 1;
+        }
+
+        .pagina {
+            padding: 34px 30px 28px;
+            text-align: center;
+            min-height: 530px;
+
+            animation:
+                entrada .45s ease;
+
+            transform-origin: left center;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        .portada {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            background: #6d3e49;
+            color: #fff3df;
+
+            min-height: 580px;
+
+            border: 12px double #c9a37b;
+        }
+
+        .sello {
+            font-size: 45px;
+            color: var(--oro);
+        }
+
+        .etiqueta {
+            font: 11px Arial, sans-serif;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin: 20px 0;
+        }
+
+        h1 {
+            font-size: clamp(38px, 8vw, 66px);
+            font-weight: normal;
+            line-height: 1.08;
+            max-width: 550px;
+            margin: 15px auto;
+        }
+
+        h2 {
+            font-size: clamp(28px, 5vw, 40px);
+            font-weight: normal;
+            margin: 15px 0;
+        }
+
+        p {
+            line-height: 1.7;
+            white-space: pre-line;
+            font-size: 17px;
+            max-width: 560px;
+            margin: 16px auto;
+        }
+
+        button {
+            border: 0;
+            border-radius: 30px;
+            padding: 14px 22px;
+
+            background: var(--rosa);
+            color: white;
+
+            cursor: pointer;
+            font: 15px Arial, sans-serif;
+            min-height: 46px;
+        }
+
+        button:hover {
+            filter: brightness(1.1);
+        }
+
+        button:focus-visible {
+            outline: 3px solid #d2a84e;
+            outline-offset: 4px;
+        }
+
+        button:disabled {
+            opacity: .4;
+            cursor: default;
+        }
+
+        .portada button {
+            background: #f9ead2;
+            color: #633c44;
+            margin-top: 20px;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 12px 12px 28px;
+
+            box-shadow:
+                0 5px 18px #42352e20;
+
+            max-width: 560px;
+            margin: 22px auto;
+
+            transform: rotate(-2deg);
+        }
+
+        .polaroid img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+
+            object-fit: cover;
+            object-position: center;
+
+            background: #eee;
+        }
+
+        .ilustracion {
+            aspect-ratio: 4 / 3;
+
+            display: grid;
+            place-content: center;
+
+            background:
+                linear-gradient(
+                    150deg,
+                    #d8d6c8,
+                    #f2dcc9
+                );
+
+            color: #71695f;
+            font-size: 72px;
+        }
+
+        .pie-foto {
+            font-style: italic;
+            font-size: 14px;
+            margin: 12px 0 0;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-top: 30px;
+        }
+
+        #contador {
+            font: 12px Arial, sans-serif;
+            color: #75675b;
+            text-align: center;
+        }
+
+        .nota {
+            text-align: center;
+            color: #887b71;
+            font: 12px Arial, sans-serif;
+            margin: 25px 0;
+        }
+
+        .secreto {
+            padding: 20px;
+            border: 1px dashed var(--oro);
+            border-radius: 8px;
+            margin-top: 20px;
+            background: #f4e9d9;
+        }
+
+        .numero {
+            font: 11px Arial, sans-serif;
+            color: #a79279;
+            letter-spacing: 2px;
+            margin-top: 28px;
+        }
+
+        @keyframes entrada {
+
+            from {
+                opacity: 0;
+                transform:
+                    perspective(900px)
+                    rotateY(-8deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            main {
+                padding: 18px 14px;
+            }
+
+            .pagina {
+                padding: 26px 18px;
+                min-height: 530px;
+            }
+
+            .portada {
+                min-height: 550px;
+            }
+
+            nav button {
+                padding: 12px 15px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .pagina {
+                animation: none;
+            }
+        }
+
+
+        /* ========================================================
+           Nuevo diseño: luz, papel y movimiento
+        ======================================================== */
+
+        body {
+            background: #eadfe6;
+
+            background-image:
+                radial-gradient(
+                    at 10% 0%,
+                    #fff4da 0,
+                    transparent 55%
+                ),
+                radial-gradient(
+                    at 95% 80%,
+                    #d6c5e6 0,
+                    transparent 60%
+                );
+        }
+
+        .inicio {
+            position: fixed;
+            inset: 0;
+
+            z-index: 1000;
+
+            display: grid;
+            place-items: center;
+
+            padding: 24px;
+
+            background:
+                radial-gradient(
+                    circle at 50% 20%,
+                    #a85f78 0,
+                    #5c304f 42%,
+                    #241d35 100%
+                );
+
+            transition:
+                opacity .8s ease,
+                visibility .8s ease;
+        }
+
+        .inicio.oculto {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .inicio-tarjeta {
+            width: min(620px, 100%);
+            padding: 54px 30px;
+
+            text-align: center;
+
+            color: #fffaf0;
+
+            border: 2px solid #f0d6a8;
+            border-radius: 24px;
+
+            background: #2b203bbf;
+
+            box-shadow:
+                0 25px 80px #120d1b99,
+                inset 0 0 45px #f4cf9a16;
+
+            backdrop-filter: blur(8px);
+        }
+
+        .inicio-corazon {
+            display: block;
+
+            font-size: 54px;
+            color: #ffd9c8;
+
+            filter:
+                drop-shadow(0 4px 12px #0008);
+
+            animation:
+                latido 2.4s ease-in-out infinite;
+        }
+
+        .inicio h1 {
+            color: #fff;
+
+            font-size: clamp(38px, 8vw, 64px);
+
+            margin: 18px auto;
+
+            text-shadow:
+                0 3px 5px #000,
+                0 0 26px #f3b5c9;
+        }
+
+        .inicio p {
+            color: #fff4e7;
+
+            font:
+                600 clamp(16px, 3.5vw, 20px) / 1.6 Georgia, serif;
+
+            text-shadow:
+                0 2px 4px #000;
+        }
+
+        .inicio button {
+            margin-top: 18px;
+
+            background: #fff1db;
+            color: #5c304f;
+
+            font-weight: 700;
+
+            box-shadow:
+                0 8px 25px #130b1680;
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        header {
+            letter-spacing: 3px;
+            color: #725369;
+        }
+
+        .libro {
+            box-shadow:
+                7px 7px 0 #eee2d0,
+                12px 12px 0 #d4bfb6,
+                0 30px 80px #5d34462b;
+        }
+
+        .portada {
+            position: relative;
+
+            background:
+                radial-gradient(
+                    ellipse at 0 0,
+                    #a46472,
+                    transparent 65%
+                ),
+                linear-gradient(
+                    140deg,
+                    #60324f,
+                    #302a47
+                );
+
+            border: 10px double #d4b48e;
+
+            isolation: isolate;
+        }
+
+        .portada:after {
+            content: "";
+
+            position: absolute;
+            inset: 15px;
+
+            border:
+                1px solid #e3c49955;
+
+            border-radius:
+                50% 50% 0 0;
+
+            z-index: -1;
+
+            pointer-events: none;
+        }
+
+        .portada > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .sello {
+            animation:
+                latido 3s ease-in-out infinite;
+        }
+
+        .portada h1 {
+            color: #fff8e9;
+            font-style: italic;
+
+            text-shadow:
+                0 3px 8px #160c18,
+                0 4px 30px #0008;
+        }
+
+        .portada #dedicatoria {
+            color: #fff3df;
+
+            text-shadow:
+                0 2px 5px #160c18;
+
+            font-weight: 600;
+        }
+
+        .portada .etiqueta {
+            color: #f2d7aa;
+
+            text-shadow:
+                0 2px 5px #160c18;
+        }
+
+        .pagina {
+            background-image:
+                linear-gradient(
+                    90deg,
+                    #bda48415,
+                    transparent 8%
+                );
+        }
+
+        button {
+            transition:
+                transform .2s,
+                box-shadow .2s;
+
+            background: #84546f;
+
+            box-shadow:
+                0 5px 16px #64405122;
+        }
+
+        button:hover:not(:disabled) {
+            transform: translateY(-3px);
+        }
+
+        .polaroid {
+            position: relative;
+
+            transition:
+                transform .4s;
+
+            transform: rotate(-3deg);
+
+            border-radius: 3px;
+        }
+
+        .polaroid:before {
+            content: "";
+
+            position: absolute;
+
+            width: 90px;
+            height: 28px;
+
+            background: #d9bba8aa;
+
+            top: -13px;
+            left: calc(50% - 45px);
+
+            transform: rotate(5deg);
+
+            z-index: 2;
+        }
+
+        .polaroid:hover {
+            transform:
+                rotate(0deg)
+                scale(1.025);
+        }
+
+        .polaroid img {
+            object-fit: cover;
+            object-position: center;
+            background: #f2ece7;
+        }
+
+        .secreto {
+            animation:
+                entrada .7s ease;
+
+            background: #f5e5ec;
+            border-color: #b88e9f;
+        }
+
+        .progreso {
+            height: 4px;
+
+            background: #b79eac44;
+
+            margin: 20px 4px 0;
+
+            border-radius: 8px;
+
+            overflow: hidden;
+        }
+
+        .progreso span {
+            display: block;
+
+            height: 100%;
+            width: 0;
+
+            background: #99667f;
+
+            transition:
+                width .5s;
+        }
+
+        .particulas {
+            position: fixed;
+            inset: 0;
+
+            pointer-events: none;
+
+            overflow: hidden;
+        }
+
+        .particulas span {
+            position: absolute;
+
+            bottom: -50px;
+
+            color: #a4799138;
+
+            animation:
+                flotar 15s linear infinite;
+
+            font-size: 22px;
+        }
+
+        .destello {
+            position: fixed;
+
+            left: 50%;
+            top: 55%;
+
+            pointer-events: none;
+
+            z-index: 10;
+
+            color: #aa5578;
+
+            font-size: 25px;
+
+            animation:
+                confeti 1.8s ease-out forwards;
+        }
+
+        .sonido {
+            display: block;
+
+            margin: 16px auto 0;
+
+            background: transparent;
+
+            color: #6e5364;
+
+            box-shadow: none;
+
+            font-size: 12px;
+
+            padding: 8px 14px;
+        }
+
+        .nota {
+            color: #765e70;
+        }
+
+
+        /* ========================================================
+           Cada fotografía aparece suavemente al abrir su página
+        ======================================================== */
+
+        .foto-aparece {
+            animation:
+                aparecerFoto 1.5s cubic-bezier(.2, .75, .25, 1) both;
+        }
+
+        @keyframes latido {
+
+            50% {
+                transform:
+                    scale(1.18)
+                    rotate(8deg);
+            }
+        }
+
+        @keyframes flotar {
+
+            to {
+                transform:
+                    translateY(-120vh)
+                    rotate(170deg);
+            }
+        }
+
+        @keyframes confeti {
+
+            to {
+                transform:
+                    translate(
+                        var(--dx),
+                        var(--dy)
+                    )
+                    rotate(150deg);
+
+                opacity: 0;
+            }
+        }
+
+        @keyframes entrada {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    perspective(1200px)
+                    rotateY(-16deg)
+                    translateX(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @keyframes aparecerFoto {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    scale(1.1);
+
+                filter:
+                    blur(8px)
+                    brightness(.75);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    scale(1);
+
+                filter: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *:before,
+            *:after {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            .particulas,
+            .destello {
+                display: none;
+            }
+        }
+
+
+        /* ========================================================
+           Tema rojo romántico con textos blancos
+        ======================================================== */
+
+        :root {
+            --papel: #8f1028;
+            --tinta: #fff;
+            --rosa: #fff;
+            --oro: #ffd4dc;
         }
 
         body {
-            min-height: 100vh;
-            color: #ffffff;
-            font-family: Georgia, "Times New Roman", serif;
-            overflow-x: hidden;
+            color: #fff;
 
-            background-color: #650b1d;
+            background: #650b1d;
 
             background-image:
                 radial-gradient(
@@ -49,444 +799,189 @@
                 );
         }
 
+        header {
+            color: #fff;
 
-        /* =====================================================
-           LIBRO
-        ===================================================== */
-
-        .libro {
-            width: min(1100px, 94%);
-            min-height: 700px;
-            margin: 30px auto;
-
-            background: #99152f;
-
-            border-radius: 25px;
-
-            box-shadow:
-                0 25px 70px rgba(0, 0, 0, 0.45),
-                inset 0 0 50px rgba(255, 255, 255, 0.05);
-
-            position: relative;
-            overflow: hidden;
+            text-shadow:
+                0 2px 8px #35000c;
         }
 
+        .libro {
+            background: #99152f;
 
-        /* =====================================================
-           PAGINAS
-        ===================================================== */
+            border: 1px solid #ffb9c7;
+
+            box-shadow:
+                8px 8px 0 #740d23,
+                12px 12px 0 #4d0717,
+                0 30px 80px #21000888;
+        }
+
+        .libro:before {
+            background: #ffcad466;
+        }
 
         .pagina {
-            min-height: 700px;
-            padding: 55px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            color: #fff;
 
             background:
                 radial-gradient(
-                    circle at 20% 20%,
-                    rgba(255, 255, 255, 0.05),
+                    circle at 85% 10%,
+                    #d13a56 0,
                     transparent 35%
                 ),
                 linear-gradient(
-                    135deg,
-                    #99152f,
-                    #650b1d
-                );
-        }
-
-
-        /* =====================================================
-           PORTADA
-        ===================================================== */
-
-        .portada {
-            min-height: 700px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            text-align: center;
-
-            background:
-                radial-gradient(
-                    circle at 50% 30%,
-                    #c72a49,
-                    transparent 42%
-                ),
-                linear-gradient(
                     145deg,
-                    #99152f,
-                    #420815
+                    #a71634,
+                    #6f0c22
                 );
         }
 
-
-        .portada-contenido {
-            max-width: 700px;
-        }
-
-
-        .portada-corazon {
-            font-size: 80px;
-            color: #ffffff;
-
-            animation:
-                latido 1.5s ease-in-out infinite;
-        }
-
-
-        .portada h1 {
-            margin-top: 20px;
-
-            font-size: clamp(35px, 6vw, 65px);
-            line-height: 1.1;
-
-            color: #ffffff;
+        .pagina h2,
+        .pagina p,
+        .pagina .numero {
+            color: #fff;
 
             text-shadow:
-                0 5px 20px rgba(0, 0, 0, 0.3);
+                0 2px 6px #3d0613;
         }
 
+        .pagina .etiqueta {
+            color: #ffe5ea;
 
-        .portada p {
-            margin-top: 25px;
-
-            font-size: 22px;
-            line-height: 1.6;
-
-            color: #ffffff;
+            text-shadow:
+                0 2px 6px #3d0613;
         }
 
+        .portada {
+            background:
+                radial-gradient(
+                    circle at 20% 12%,
+                    #e04c67 0,
+                    transparent 38%
+                ),
+                linear-gradient(
+                    145deg,
+                    #aa1838,
+                    #59091c
+                );
 
-        /* =====================================================
-           INICIO / SORPRESA
-        ===================================================== */
+            border-color: #ffd2da;
+        }
 
         .inicio {
-            position: fixed;
-            inset: 0;
-
-            z-index: 1000;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
             background:
                 radial-gradient(
-                    circle at 15% 5%,
-                    #d94560 0,
-                    transparent 36%
-                ),
-                radial-gradient(
-                    circle at 90% 90%,
-                    #a91535 0,
-                    transparent 42%
+                    circle at 50% 15%,
+                    #df4864 0,
+                    transparent 38%
                 ),
                 linear-gradient(
                     145deg,
-                    #8f1028,
-                    #420815
+                    #a71535,
+                    #4a0717
                 );
-
-            transition:
-                opacity 0.8s ease,
-                visibility 0.8s ease;
         }
-
-
-        .inicio.oculto {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
 
         .inicio-tarjeta {
-            width: min(600px, 90%);
+            background: #6c0b20d9;
 
-            padding: 55px 40px;
-
-            text-align: center;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #8d1027,
-                    #560a19
-                );
-
-            border-radius: 25px;
-
-            border:
-                1px solid rgba(255, 255, 255, 0.15);
+            border-color: #fff;
 
             box-shadow:
-                0 25px 70px rgba(0, 0, 0, 0.45);
-
-            animation:
-                aparecer 1.2s ease both;
+                0 25px 80px #210008a8,
+                inset 0 0 45px #ffffff12;
         }
 
-
-        .inicio-corazon {
-            display: block;
-
-            font-size: 75px;
-            color: #ffffff;
-
-            animation:
-                latido 1.5s ease-in-out infinite;
-        }
-
-
+        .inicio h1,
+        .inicio p,
         .inicio .etiqueta {
-            margin-top: 15px;
-
-            color: #ffffff;
-
-            font-size: 15px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+            color: #fff;
         }
-
-
-        .inicio h1 {
-            margin-top: 20px;
-
-            color: #ffffff;
-
-            font-size: clamp(32px, 5vw, 55px);
-            line-height: 1.15;
-        }
-
 
         .inicio button {
-            margin-top: 35px;
-
-            padding: 15px 30px;
-
-            border: none;
-            border-radius: 50px;
-
-            background: #ffffff;
-            color: #650b1d;
-
-            font-size: 17px;
-            font-weight: bold;
-
-            cursor: pointer;
-
-            transition:
-                transform 0.3s ease,
-                box-shadow 0.3s ease;
+            background: #fff;
+            color: #8b1430;
         }
-
-
-        .inicio button:hover {
-            transform: translateY(-4px) scale(1.03);
-
-            box-shadow:
-                0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-
-
-        /* =====================================================
-           PAGINA DE RECUERDO
-        ===================================================== */
-
-        .recuerdo {
-            width: 100%;
-
-            display: grid;
-
-            grid-template-columns:
-                minmax(280px, 1fr)
-                minmax(280px, 1fr);
-
-            gap: 50px;
-
-            align-items: center;
-        }
-
-
-        .recuerdo-texto {
-            text-align: left;
-        }
-
-
-        .recuerdo-fecha {
-            display: inline-block;
-
-            padding: 8px 15px;
-
-            border-radius: 30px;
-
-            background: rgba(255, 255, 255, 0.12);
-
-            color: #ffffff;
-
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
-
-
-        .recuerdo h2 {
-            margin-top: 20px;
-
-            font-size: clamp(30px, 4vw, 48px);
-
-            line-height: 1.15;
-
-            color: #ffffff;
-        }
-
-
-        .recuerdo-descripcion {
-            margin-top: 18px;
-
-            font-size: 20px;
-            line-height: 1.6;
-
-            color: #ffffff;
-        }
-
-
-        .recuerdo-pie {
-            margin-top: 25px;
-
-            font-style: italic;
-
-            font-size: 17px;
-
-            color: #ffffff;
-        }
-
-
-        .recuerdo-texto-principal {
-            margin-top: 20px;
-
-            font-size: 18px;
-            line-height: 1.8;
-
-            color: #ffffff;
-        }
-
-
-        /* =====================================================
-           CONTENEDOR DE FOTO
-        ===================================================== */
-
-        .foto-contenedor {
-            width: 100%;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            min-height: 420px;
-
-            perspective: 1200px;
-        }
-
 
         .polaroid {
-            width: min(430px, 100%);
-
-            padding: 15px 15px 30px;
-
-            background: #ffffff;
+            background: #fff;
 
             box-shadow:
-                0 25px 50px rgba(0, 0, 0, 0.35);
+                0 15px 38px #35000c99;
+        }
 
-            transform-origin: center center;
+        .polaroid .pie-foto {
+            color: #6d1830;
+            text-shadow: none;
+        }
 
-            overflow: hidden;
+        .polaroid:before {
+            background: #ffc2cdbd;
+        }
+
+        .secreto {
+            color: #fff !important;
+
+            background: #ffffff18;
+
+            border-color: #ffd2da;
+        }
+
+        .progreso {
+            background: #ffffff3d;
+        }
+
+        .progreso span {
+            background: #fff;
+        }
+
+        #contador,
+        .nota {
+            color: #fff;
+
+            text-shadow:
+                0 2px 6px #35000c;
+        }
+
+        .sonido {
+            color: #fff;
+
+            border:
+                1px solid #ffffff70;
+
+            background: #ffffff10;
+        }
+
+        .particulas span {
+            color: #ffffff38;
         }
 
 
-        .polaroid img {
-            display: block;
-
-            width: 100%;
-            height: 360px;
-
-            object-fit: cover;
-
-            background: #eeeeee;
-        }
-
-
-        .polaroid figcaption {
-            margin-top: 15px;
-
-            color: #650b1d;
-
-            text-align: center;
-
-            font-size: 17px;
-            font-weight: bold;
-        }
-
-
-        /* =====================================================
-           ILUSTRACION SI NO CARGA LA FOTO
-        ===================================================== */
-
-        .ilustracion {
-            width: 100%;
-            height: 360px;
-
-            display: none;
-
-            align-items: center;
-            justify-content: center;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #650b1d,
-                    #99152f
-                );
-
-            color: #ffffff;
-
-            font-size: 80px;
-        }
-
-
-        /* =====================================================
-           ANIMACIONES DE LAS FOTOS
-        ===================================================== */
+        /* ========================================================
+           Cinco entradas diferentes
+           La fotografía original permanece intacta
+        ======================================================== */
 
         .foto-centro {
             animation:
                 fotoCentro 1.6s cubic-bezier(.2, .7, .2, 1) both;
         }
 
-
         .foto-lateral {
             animation:
                 fotoLateral 1.6s cubic-bezier(.2, .7, .2, 1) both;
         }
-
 
         .foto-cortina {
             animation:
                 fotoCortina 1.8s ease-in-out both;
         }
 
-
         .foto-giro {
             animation:
                 fotoGiro 1.8s cubic-bezier(.2, .7, .2, 1) both;
         }
-
 
         .foto-album {
             transform-origin: left center;
@@ -497,16 +992,11 @@
             backface-visibility: hidden;
         }
 
-
-        /* =====================================================
-           KEYFRAMES
-        ===================================================== */
-
         @keyframes fotoCentro {
 
             from {
                 opacity: 0;
-                transform: scale(0.78);
+                transform: scale(.78);
             }
 
             to {
@@ -514,7 +1004,6 @@
                 transform: scale(1);
             }
         }
-
 
         @keyframes fotoLateral {
 
@@ -529,366 +1018,76 @@
             }
         }
 
-
         @keyframes fotoCortina {
 
             from {
-                opacity: 0;
-                clip-path: inset(0 50% 0 50%);
+                clip-path: inset(0 50%);
+                opacity: .4;
             }
 
             to {
+                clip-path: inset(0 0);
                 opacity: 1;
-                clip-path: inset(0 0 0 0);
             }
         }
-
 
         @keyframes fotoGiro {
 
             from {
                 opacity: 0;
+
                 transform:
                     rotate(-8deg)
-                    scale(0.88);
+                    scale(.88);
             }
 
             to {
                 opacity: 1;
+
                 transform:
                     rotate(0)
                     scale(1);
             }
         }
 
-
         @keyframes fotoAlbum {
 
             from {
                 opacity: 0;
+
                 transform:
-                    perspective(800px)
+                    perspective(1000px)
                     rotateY(-78deg);
             }
 
             to {
                 opacity: 1;
+
                 transform:
-                    perspective(800px)
+                    perspective(1000px)
                     rotateY(0);
             }
         }
 
-
-        @keyframes aparecer {
-
-            from {
-                opacity: 0;
-                transform: translateY(25px) scale(0.95);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-
-        @keyframes latido {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.12);
-            }
-        }
-
-
-        /* =====================================================
-           CONTADOR
-        ===================================================== */
-
-        #contador {
-            position: fixed;
-
-            top: 20px;
-            left: 50%;
-
-            transform: translateX(-50%);
-
-            z-index: 100;
-
-            padding: 10px 18px;
-
-            background: rgba(255, 255, 255, 0.95);
-
-            color: #650b1d;
-
-            border-radius: 30px;
-
-            font-size: 14px;
-            font-weight: bold;
-
-            box-shadow:
-                0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-
-
-        /* =====================================================
-           NOTA FINAL
-        ===================================================== */
-
-        .nota {
-            max-width: 750px;
-
-            padding: 50px;
-
-            text-align: center;
-
-            background: rgba(255, 255, 255, 0.96);
-
-            color: #650b1d;
-
-            border-radius: 25px;
-
-            box-shadow:
-                0 25px 60px rgba(0, 0, 0, 0.35);
-        }
-
-
-        .nota-corazon {
-            font-size: 65px;
-
-            margin-bottom: 20px;
-        }
-
-
-        .nota h2 {
-            font-size: clamp(32px, 5vw, 55px);
-
-            margin-bottom: 25px;
-        }
-
-
-        .nota p {
-            font-size: 20px;
-            line-height: 1.8;
-        }
-
-
-        /* =====================================================
-           CONTROL DE SONIDO
-        ===================================================== */
-
-        .sonido {
-            position: fixed;
-
-            right: 20px;
-            bottom: 20px;
-
-            z-index: 100;
-
-            width: 48px;
-            height: 48px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 50%;
-
-            background: #ffffff;
-
-            color: #650b1d;
-
-            border: none;
-
-            cursor: pointer;
-
-            font-size: 20px;
-
-            box-shadow:
-                0 8px 25px rgba(0, 0, 0, 0.25);
-        }
-
-
-        /* =====================================================
-           PARTICULAS
-        ===================================================== */
-
-        .particula {
-            position: fixed;
-
-            width: 5px;
-            height: 5px;
-
-            border-radius: 50%;
-
-            background: #ffffff;
-
-            opacity: 0.6;
-
-            pointer-events: none;
-
-            animation:
-                flotar linear infinite;
-        }
-
-
-        @keyframes flotar {
-
-            from {
-                transform:
-                    translateY(100vh)
-                    scale(0.5);
-
-                opacity: 0;
-            }
-
-            20% {
-                opacity: 0.6;
-            }
-
-            80% {
-                opacity: 0.6;
-            }
-
-            to {
-                transform:
-                    translateY(-10vh)
-                    scale(1);
-
-                opacity: 0;
-            }
-        }
-
-
-        /* =====================================================
-           RESPONSIVE
-        ===================================================== */
-
-        @media (max-width: 800px) {
-
-            .libro {
-                width: 96%;
-                margin: 15px auto;
-            }
-
-            .pagina,
-            .portada {
-                padding: 30px 20px;
-            }
-
-            .recuerdo {
-                grid-template-columns: 1fr;
-
-                gap: 30px;
-            }
-
-            .recuerdo-texto {
-                text-align: center;
-            }
-
-            .foto-contenedor {
-                min-height: auto;
-            }
-
-            .polaroid {
-                width: 100%;
-            }
-
-            .polaroid img,
-            .ilustracion {
-                height: 300px;
-            }
-
-            .nota {
-                padding: 35px 25px;
-            }
-        }
-
-
-        @media (max-width: 500px) {
-
-            .inicio-tarjeta {
-                padding: 40px 25px;
-            }
-
-            .inicio-corazon {
-                font-size: 60px;
-            }
-
-            .pagina {
-                min-height: 650px;
-            }
-
-            .recuerdo h2 {
-                font-size: 32px;
-            }
-
-            .recuerdo-descripcion {
-                font-size: 17px;
-            }
-
-            .recuerdo-texto-principal {
-                font-size: 16px;
-            }
-
-            .polaroid img,
-            .ilustracion {
-                height: 260px;
-            }
-        }
-
     </style>
+
 </head>
 
 
 <body>
 
 
-    <!-- =====================================================
-         MUSICA
-    ====================================================== -->
-
-    <audio id="musica" loop preload="auto">
-        <source src="cancion.mp3" type="audio/mpeg">
-    </audio>
-
-
-    <!-- =====================================================
-         PARTICULAS
-    ====================================================== -->
-
-    <div class="particula" style="left:10%; animation-duration:12s;"></div>
-    <div class="particula" style="left:25%; animation-duration:15s;"></div>
-    <div class="particula" style="left:40%; animation-duration:11s;"></div>
-    <div class="particula" style="left:55%; animation-duration:17s;"></div>
-    <div class="particula" style="left:70%; animation-duration:13s;"></div>
-    <div class="particula" style="left:85%; animation-duration:16s;"></div>
-
-
-    <!-- =====================================================
-         CONTADOR
-    ====================================================== -->
-
-    <div id="contador">
-        Preparando nuestra historia...
-    </div>
-
-
-    <!-- =====================================================
-         PORTADA / INICIO
-    ====================================================== -->
+    <!-- ========================================================
+         PORTADA DE SORPRESA
+    ======================================================== -->
 
     <div class="inicio" id="inicio">
 
         <div class="inicio-tarjeta">
 
-            <span class="inicio-corazon" aria-hidden="true">
+            <span
+                class="inicio-corazon"
+                aria-hidden="true">
                 ♥
             </span>
 
@@ -909,37 +1108,245 @@
     </div>
 
 
-    <!-- =====================================================
-         LIBRO
-    ====================================================== -->
+    <!-- ========================================================
+         PARTICULAS
+    ======================================================== -->
 
-    <main class="libro" id="libro">
+    <div
+        class="particulas"
+        id="particulas"
+        aria-hidden="true">
+    </div>
 
-        <!-- AQUÍ SE CARGAN LAS PÁGINAS MEDIANTE JAVASCRIPT -->
+
+    <!-- ========================================================
+         MUSICA
+         
+         CORREGIDO:
+         antes: musica/cancion.mp3
+         ahora: cancion.mp3
+    ======================================================== -->
+
+    <audio
+        id="musica"
+        loop
+        autoplay
+        preload="auto">
+
+        <source
+            src="cancion.mp3"
+            type="audio/mpeg">
+
+    </audio>
+
+
+    <main>
+
+        <p
+            id="estadoMusica"
+            role="status"
+            style="font:13px Arial,sans-serif;text-align:center">
+        </p>
+
+
+        <header>
+            HECHO DE PEQUEÑOS GRANDES MOMENTOS
+        </header>
+
+
+        <!-- ====================================================
+             LIBRO
+        ===================================================== -->
+
+        <div
+            class="libro"
+            id="libro">
+
+
+            <!-- ==================================================
+                 PORTADA
+            =================================================== -->
+
+            <section
+                class="pagina portada"
+                id="portada"
+                aria-label="Portada">
+
+                <div
+                    class="sello"
+                    aria-hidden="true">
+                    ✧
+                </div>
+
+                <div class="etiqueta">
+                    Una historia para guardar
+                </div>
+
+                <h1 id="titulo"></h1>
+
+                <p id="dedicatoria"></p>
+
+                <p class="etiqueta">
+                    Nuestra historia está por comenzar…
+                </p>
+
+            </section>
+
+
+            <!-- ==================================================
+                 CONTENIDO
+            =================================================== -->
+
+            <section
+                class="pagina"
+                id="contenido"
+                hidden
+                aria-label="Página del libro">
+
+                <div
+                    class="etiqueta"
+                    id="fecha">
+                </div>
+
+                <h2
+                    id="encabezado"
+                    tabindex="-1">
+                </h2>
+
+
+                <figure
+                    class="polaroid"
+                    id="marco">
+
+                    <img
+                        id="foto"
+                        alt=""
+                        hidden>
+
+                    <div
+                        class="ilustracion"
+                        id="ilustracion"
+                        aria-hidden="true">
+                        ✿
+                    </div>
+
+                    <figcaption
+                        class="pie-foto"
+                        id="pie">
+                    </figcaption>
+
+                </figure>
+
+
+                <p id="texto"></p>
+
+
+                <button
+                    id="revelar"
+                    hidden>
+
+                    Hay algo más para ti… 💌
+
+                </button>
+
+
+                <p
+                    id="secreto"
+                    class="secreto"
+                    hidden>
+                </p>
+
+
+                <div
+                    class="numero"
+                    id="numero">
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- ====================================================
+             BARRA DE PROGRESO
+        ===================================================== -->
+
+        <div
+            class="progreso"
+            aria-hidden="true">
+
+            <span id="avance"></span>
+
+        </div>
+
+
+        <!-- ====================================================
+             CONTROLES
+        ===================================================== -->
+
+        <div
+            style="text-align:center;margin-top:22px">
+
+            <span
+                id="contador"
+                role="status"
+                aria-live="polite">
+
+                Portada
+
+            </span>
+
+            <br>
+
+            <button
+                class="sonido"
+                id="pausar">
+
+                Pausar recorrido
+
+            </button>
+
+
+            <button
+                class="sonido"
+                id="reiniciar"
+                hidden>
+
+                Volver a ver nuestra historia ↺
+
+            </button>
+
+        </div>
+
+
+        <button
+            class="sonido"
+            id="silenciar"
+            hidden
+            aria-pressed="false">
+
+            Silenciar sonido
+
+        </button>
+
+
+        <p class="nota">
+            Las páginas avanzan solas. Disfruta nuestra historia.
+        </p>
+
+
+        <noscript>
+            Activa JavaScript en tu navegador para abrir el libro.
+        </noscript>
 
     </main>
 
 
-    <!-- =====================================================
-         BOTON DE SONIDO
-    ====================================================== -->
-
-    <button
-        class="sonido"
-        id="btnSonido"
-        title="Activar o desactivar música"
-        aria-label="Activar o desactivar música">
-
-        🔊
-
-    </button>
-
-
     <script>
 
-        /* =====================================================
-           CONFIGURACIÓN
-        ===================================================== */
+        // ========================================================
+        // PERSONALIZA AQUÍ
+        // ========================================================
 
         const CONFIG = {
 
@@ -959,7 +1366,8 @@
             recuerdos: [
 
                 {
-                    fecha: "El comienzo",
+                    fecha:
+                        "El comienzo",
 
                     titulo:
                         "Donde empezó todo",
@@ -977,8 +1385,10 @@
                         "Quizás ese día no imaginábamos cuántos recuerdos vendrían después. Hoy lo guardo como uno de mis favoritos."
                 },
 
+
                 {
-                    fecha: "Un día especial",
+                    fecha:
+                        "Un día especial",
 
                     titulo:
                         "Nuestra pequeña aventura",
@@ -996,8 +1406,10 @@
                         "No fue solo el lugar. Fueron las conversaciones, las risas y esa manera de convertir un día cualquiera en algo especial."
                 },
 
+
                 {
-                    fecha: "Siempre en mi memoria",
+                    fecha:
+                        "Siempre en mi memoria",
 
                     titulo:
                         "Las cosas más sencillas",
@@ -1014,6 +1426,7 @@
                     texto:
                         "A veces la felicidad cabe en una foto, en una conversación larga o en una risa que no se puede contener."
                 },
+
 
                 {
                     fecha:
@@ -1034,6 +1447,7 @@
                     texto:
                         "El cielo cambió de colores y el tiempo pareció detenerse. Hay paisajes hermosos, pero los recuerdos son los que les dan un significado especial."
                 },
+
 
                 {
                     fecha:
@@ -1056,311 +1470,736 @@
                 }
 
             ]
+
         };
 
 
-        /* =====================================================
-           VARIABLES
-        ===================================================== */
+        // ========================================================
+        // JAVASCRIPT: navegación y mensaje final
+        // ========================================================
 
-        const libro =
-            document.getElementById("libro");
+        const $ = id =>
+            document.getElementById(id);
 
-        const inicio =
-            document.getElementById("inicio");
 
-        const abrir =
-            document.getElementById("abrir");
+        let pagina = 0;
 
-        const musica =
-            document.getElementById("musica");
 
-        const contador =
-            document.getElementById("contador");
+        const total =
+            CONFIG.recuerdos.length + 1;
 
-        const btnSonido =
-            document.getElementById("btnSonido");
 
+        $("titulo").textContent =
+            CONFIG.titulo;
 
-        let paginaActual = 0;
 
-        let temporizador = null;
+        $("dedicatoria").textContent =
+            CONFIG.dedicatoria;
 
-        let musicaActiva = true;
 
+        $("secreto").textContent =
+            CONFIG.sorpresa;
 
-        /* =====================================================
-           CREAR PORTADA
-        ===================================================== */
 
-        function crearPortada() {
+        // ========================================================
+        // MOSTRAR FOTO
+        // ========================================================
 
-            libro.innerHTML = `
+        function mostrarFoto(recuerdo) {
 
-                <section class="pagina portada">
+            const foto =
+                $("foto");
 
-                    <div class="portada-contenido">
 
-                        <div class="portada-corazon">
-                            ♥
-                        </div>
+            foto.onload = null;
+            foto.onerror = null;
 
-                        <h1>
-                            ${CONFIG.titulo}
-                        </h1>
 
-                        <p>
-                            ${CONFIG.dedicatoria}
-                        </p>
+            foto.removeAttribute("src");
 
-                    </div>
 
-                </section>
+            foto.hidden = true;
 
-            `;
-        }
 
+            $("ilustracion").hidden =
+                false;
 
-        /* =====================================================
-           MOSTRAR FOTO
-        ===================================================== */
 
-        function mostrarFoto(recuerdo, indice) {
+            foto.alt =
+                recuerdo.descripcion;
 
-            const animaciones = [
 
-                "foto-centro",
+            if (!recuerdo.foto) {
+                return;
+            }
 
-                "foto-lateral",
 
-                "foto-cortina",
+            foto.onload = () => {
 
-                "foto-giro",
+                foto.hidden = false;
 
-                "foto-album"
+                $("ilustracion").hidden =
+                    true;
 
-            ];
 
-            const animacion =
-                animaciones[indice] ||
-                "foto-centro";
+                foto.className = "";
 
 
-            libro.innerHTML = `
+                void foto.offsetWidth;
 
-                <section class="pagina">
 
-                    <div class="recuerdo">
+                const efectos = [
 
-                        <div class="recuerdo-texto">
+                    "foto-centro",
 
-                            <span class="recuerdo-fecha">
-                                ${recuerdo.fecha}
-                            </span>
+                    "foto-lateral",
 
-                            <h2>
-                                ${recuerdo.titulo}
-                            </h2>
+                    "foto-cortina",
 
-                            <p class="recuerdo-descripcion">
-                                ${recuerdo.descripcion}
-                            </p>
+                    "foto-giro",
 
-                            <p class="recuerdo-pie">
-                                ${recuerdo.pie}
-                            </p>
+                    "foto-album"
 
-                            <p class="recuerdo-texto-principal">
-                                ${recuerdo.texto}
-                            </p>
+                ];
 
-                        </div>
 
+                foto.classList.add(
 
-                        <div class="foto-contenedor">
+                    efectos[
+                        CONFIG.recuerdos.indexOf(recuerdo)
+                        % efectos.length
+                    ]
 
-                            <figure class="polaroid ${animacion}">
+                );
 
-                                <img
-                                    src="${recuerdo.foto}"
-                                    alt="${recuerdo.descripcion}"
-                                >
+            };
 
-                                <figcaption>
-                                    ${recuerdo.pie}
-                                </figcaption>
 
-                            </figure>
+            foto.onerror = () => {
 
-                        </div>
+                foto.hidden = true;
 
-                    </div>
+                $("ilustracion").hidden =
+                    false;
 
-                </section>
+            };
 
-            `;
 
-
-            const imagen =
-                libro.querySelector(".polaroid img");
-
-
-            imagen.addEventListener(
-                "error",
-                function () {
-
-                    this.style.display = "none";
-
-                    const ilustracion =
-                        document.createElement("div");
-
-                    ilustracion.className =
-                        "ilustracion";
-
-                    ilustracion.style.display =
-                        "flex";
-
-                    ilustracion.innerHTML = "♥";
-
-                    this.parentElement.insertBefore(
-                        ilustracion,
-                        this.nextElementSibling
-                    );
-
-                }
-            );
+            foto.src =
+                recuerdo.foto;
 
         }
 
 
-        /* =====================================================
-           PAGINA FINAL
-        ===================================================== */
-
-        function mostrarFinal() {
-
-            libro.innerHTML = `
-
-                <section class="pagina">
-
-                    <div class="nota">
-
-                        <div class="nota-corazon">
-                            ♥
-                        </div>
-
-                        <h2>
-                            Para ti
-                        </h2>
-
-                        <p>
-                            ${CONFIG.sorpresa}
-                        </p>
-
-                    </div>
-
-                </section>
-
-            `;
-        }
-
-
-        /* =====================================================
-           MOSTRAR PAGINA
-        ===================================================== */
+        // ========================================================
+        // MOSTRAR PAGINA
+        // ========================================================
 
         function mostrar() {
 
-            clearTimeout(temporizador);
+            $("avance").style.width =
+                (pagina / total * 100) + "%";
 
 
-            const total =
-                CONFIG.recuerdos.length + 2;
+            const portada =
+                pagina === 0;
 
 
-            contador.textContent =
-                `Página ${paginaActual + 1} de ${total}`;
+            $("portada").hidden =
+                !portada;
 
 
-            if (paginaActual === 0) {
+            $("contenido").hidden =
+                portada;
 
-                crearPortada();
 
+            $("contador").textContent =
+                portada
+                    ? "Portada"
+                    : `Página ${pagina} de ${total}`;
+
+
+            $("secreto").hidden =
+                true;
+
+
+            $("revelar").setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+
+            if (portada) {
+                return;
             }
 
-            else if (
-                paginaActual >= 1 &&
-                paginaActual <= CONFIG.recuerdos.length
-            ) {
 
-                mostrarFoto(
-                    CONFIG.recuerdos[paginaActual - 1],
-                    paginaActual - 1
-                );
+            const final =
+                pagina === total;
+
+
+            $("marco").hidden =
+                final;
+
+
+            $("revelar").hidden =
+                true;
+
+
+            if (final) {
+
+                $("secreto").hidden =
+                    false;
+
+
+                celebrar();
+
+
+                $("fecha").textContent =
+                    "Y esto continúa…";
+
+
+                $("encabezado").textContent =
+                    "Mi recuerdo favorito es contigo";
+
+
+                $("texto").textContent =
+                    "Este libro es una pequeña manera de decirte cuánto significan para mí los momentos que compartimos.";
 
             }
 
             else {
 
-                mostrarFinal();
+                const r =
+                    CONFIG.recuerdos[pagina - 1];
+
+
+                $("fecha").textContent =
+                    r.fecha;
+
+
+                $("encabezado").textContent =
+                    r.titulo;
+
+
+                $("texto").textContent =
+                    r.texto;
+
+
+                $("pie").textContent =
+                    r.pie;
+
+
+                mostrarFoto(r);
 
             }
+
+
+            $("numero").textContent =
+                String(pagina).padStart(2, "0");
+
+
+            $("contenido").style.animation =
+                "none";
+
+
+            void $("contenido").offsetWidth;
+
+
+            $("contenido").style.animation =
+                "";
+
+        }
+
+
+        // ========================================================
+        // RECORRIDO AUTOMATICO
+        // ========================================================
+
+        let temporizador;
+
+        let pausado = false;
+
+        let historiaIniciada = false;
+
+
+        function programar() {
+
+            clearTimeout(temporizador);
+
+
+            if (!historiaIniciada) {
+                return;
+            }
+
+
+            const final =
+                pagina === total;
+
+
+            $("pausar").hidden =
+                final;
+
+
+            $("reiniciar").hidden =
+                !final;
+
+
+            if (final) {
+
+                desvanecerMusica(
+                    0,
+                    3500,
+                    true
+                );
+
+                return;
+
+            }
+
+
+            if (
+                pausado ||
+                document.hidden
+            ) {
+                return;
+            }
+
+
+            const segundos =
+                pagina === 0
+                    ? CONFIG.segundosPortada
+                    : CONFIG.segundosPorPagina;
 
 
             temporizador = setTimeout(
 
                 () => {
 
-                    paginaActual++;
-
-                    if (
-                        paginaActual >
-                        CONFIG.recuerdos.length + 1
-                    ) {
-
-                        paginaActual = 0;
-
-                    }
+                    pagina++;
 
                     mostrar();
 
+                    programar();
+
                 },
 
-                paginaActual === 0
-                    ? CONFIG.segundosPortada * 1000
-                    : CONFIG.segundosPorPagina * 1000
+                Math.max(
+                    1,
+                    segundos
+                ) * 1000
 
             );
 
         }
 
 
-        /* =====================================================
-           REPRODUCIR MUSICA
-        ===================================================== */
+        // ========================================================
+        // PAUSAR
+        // ========================================================
 
-        function reproducirMusica() {
+        $("pausar").onclick = () => {
 
-            if (!musicaActiva) {
-                return;
+            pausado =
+                !pausado;
+
+
+            $("pausar").textContent =
+                pausado
+                    ? "Continuar recorrido"
+                    : "Pausar recorrido";
+
+
+            if (pausado) {
+
+                desvanecerMusica(
+                    0,
+                    1800,
+                    true
+                );
+
+            }
+
+            else {
+
+                reproducirMusica()
+                    .then(
+                        () =>
+                            desvanecerMusica(
+                                0.35,
+                                1800
+                            )
+                    );
+
             }
 
 
-            musica.volume = 0.35;
+            programar();
+
+        };
 
 
-            const promesa =
-                musica.play();
+        // ========================================================
+        // REINICIAR
+        // ========================================================
+
+        $("reiniciar").onclick = () => {
+
+            pagina = 1;
+
+            pausado = false;
 
 
-            if (promesa !== undefined) {
+            $("pausar").textContent =
+                "Pausar recorrido";
 
-                promesa.catch(
-                    function () {
-                        console.log(
-                            "El navegador bloqueó el autoplay."
-                        );
-                    }
+
+            reproducirMusica()
+                .then(
+                    () =>
+                        desvanecerMusica(
+                            0.35,
+                            2200
+                        )
+                );
+
+
+            mostrar();
+
+            programar();
+
+        };
+
+
+        document.addEventListener(
+            "visibilitychange",
+            programar
+        );
+
+
+        // ========================================================
+        // MUSICA
+        // ========================================================
+
+        const musica =
+            $("musica");
+
+
+        musica.volume =
+            0.35;
+
+
+        let intervaloVolumen;
+
+
+        // Baja o sube el volumen gradualmente
+
+        function desvanecerMusica(
+            volumenFinal,
+            duracion = 1800,
+            pausarAlFinal = false
+        ) {
+
+            clearInterval(
+                intervaloVolumen
+            );
+
+
+            const volumenInicial =
+                musica.volume;
+
+
+            const pasos = 30;
+
+
+            let paso = 0;
+
+
+            intervaloVolumen =
+                setInterval(
+
+                    () => {
+
+                        paso++;
+
+
+                        musica.volume =
+                            Math.max(
+                                0,
+                                Math.min(
+                                    1,
+                                    volumenInicial +
+                                    (
+                                        volumenFinal -
+                                        volumenInicial
+                                    ) *
+                                    (
+                                        paso /
+                                        pasos
+                                    )
+                                )
+                            );
+
+
+                        if (
+                            paso >= pasos
+                        ) {
+
+                            clearInterval(
+                                intervaloVolumen
+                            );
+
+
+                            musica.volume =
+                                volumenFinal;
+
+
+                            if (
+                                pausarAlFinal &&
+                                volumenFinal === 0
+                            ) {
+
+                                musica.pause();
+
+                            }
+
+                        }
+
+                    },
+
+                    duracion / pasos
+
+                );
+
+        }
+
+
+        // ========================================================
+        // REPRODUCIR MUSICA
+        // ========================================================
+
+        let audioIniciado = false;
+
+
+        async function reproducirMusica() {
+
+            try {
+
+                if (!musica.paused) {
+                    return;
+                }
+
+
+                if (
+                    musica.volume === 0
+                ) {
+
+                    musica.volume =
+                        0.01;
+
+                }
+
+
+                await musica.play();
+
+
+                audioIniciado =
+                    true;
+
+
+                $("estadoMusica").textContent =
+                    "";
+
+
+                $("silenciar").hidden =
+                    false;
+
+
+                document.removeEventListener(
+                    "click",
+                    primerGesto
+                );
+
+
+                document.removeEventListener(
+                    "touchend",
+                    primerGesto
+                );
+
+
+                document.removeEventListener(
+                    "keydown",
+                    primerGesto
+                );
+
+            }
+
+            catch (error) {
+
+                if (
+                    error.name !==
+                        "NotAllowedError" &&
+                    error.name !==
+                        "AbortError"
+                ) {
+
+                    $("estadoMusica").textContent =
+                        "La canción no está disponible. El libro sigue abierto para ti.";
+
+
+                    console.warn(
+                        "Comprueba que exista cancion.mp3 y sea un MP3 válido.",
+                        error
+                    );
+
+                }
+
+            }
+
+        }
+
+
+        function primerGesto() {
+
+            reproducirMusica();
+
+        }
+
+
+        document.addEventListener(
+            "click",
+            primerGesto
+        );
+
+
+        document.addEventListener(
+            "touchend",
+            primerGesto,
+            {
+                passive: true
+            }
+        );
+
+
+        document.addEventListener(
+            "keydown",
+            primerGesto
+        );
+
+
+        // ========================================================
+        // SILENCIAR
+        // ========================================================
+
+        $("silenciar").onclick = () => {
+
+            musica.muted =
+                !musica.muted;
+
+
+            $("silenciar").textContent =
+                musica.muted
+                    ? "Restaurar sonido"
+                    : "Silenciar sonido";
+
+
+            $("silenciar").setAttribute(
+                "aria-pressed",
+                String(musica.muted)
+            );
+
+        };
+
+
+        reproducirMusica();
+
+
+        // ========================================================
+        // BOTON ABRIR
+        // ========================================================
+
+        $("abrir").onclick =
+            async () => {
+
+                // Este toque permite que Chrome,
+                // Android y iPhone autoricen el MP3.
+
+                musica.volume =
+                    0.01;
+
+
+                await reproducirMusica();
+
+
+                desvanecerMusica(
+                    0.35,
+                    2200
+                );
+
+
+                $("inicio").classList.add(
+                    "oculto"
+                );
+
+
+                historiaIniciada =
+                    true;
+
+
+                pagina = 1;
+
+
+                mostrar();
+
+                programar();
+
+            };
+
+
+        // ========================================================
+        // PARTICULAS
+        // ========================================================
+
+        const movimientoReducido =
+            window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            );
+
+
+        if (!movimientoReducido.matches) {
+
+            for (
+                let i = 0;
+                i < 12;
+                i++
+            ) {
+
+                const estrella =
+                    document.createElement(
+                        "span"
+                    );
+
+
+                estrella.textContent =
+                    i % 2
+                        ? "♡"
+                        : "✧";
+
+
+                estrella.style.left =
+                    (i * 8.5) + "%";
+
+
+                estrella.style.animationDelay =
+                    (-i * 1.7) + "s";
+
+
+                estrella.style.animationDuration =
+                    (14 + (i % 4) * 3) + "s";
+
+
+                $("particulas").appendChild(
+                    estrella
                 );
 
             }
@@ -1368,69 +2207,81 @@
         }
 
 
-        /* =====================================================
-           BOTON ABRIR
-        ===================================================== */
+        // ========================================================
+        // CELEBRACION FINAL
+        // ========================================================
 
-        abrir.addEventListener(
-            "click",
-            function () {
+        function celebrar() {
 
-                reproducirMusica();
+            if (
+                movimientoReducido.matches
+            ) {
+                return;
+            }
 
 
-                inicio.classList.add(
-                    "oculto"
+            for (
+                let i = 0;
+                i < 20;
+                i++
+            ) {
+
+                const c =
+                    document.createElement(
+                        "span"
+                    );
+
+
+                c.className =
+                    "destello";
+
+
+                c.textContent =
+                    i % 2
+                        ? "♥"
+                        : "✧";
+
+
+                c.setAttribute(
+                    "aria-hidden",
+                    "true"
                 );
 
 
-                paginaActual = 1;
+                c.style.setProperty(
+                    "--dx",
+                    (
+                        Math.random() * 500 - 250
+                    ) + "px"
+                );
 
 
-                mostrar();
+                c.style.setProperty(
+                    "--dy",
+                    (
+                        Math.random() * 400 - 300
+                    ) + "px"
+                );
 
-            }
-        );
+
+                document.body.appendChild(c);
 
 
-        /* =====================================================
-           BOTON DE SONIDO
-        ===================================================== */
-
-        btnSonido.addEventListener(
-            "click",
-            function () {
-
-                if (musica.paused) {
-
-                    musicaActiva = true;
-
-                    musica.play();
-
-                    btnSonido.textContent = "🔊";
-
-                }
-
-                else {
-
-                    musicaActiva = false;
-
-                    musica.pause();
-
-                    btnSonido.textContent = "🔇";
-
-                }
+                setTimeout(
+                    () => c.remove(),
+                    1900
+                );
 
             }
-        );
+
+        }
 
 
-        /* =====================================================
-           INICIO
-        ===================================================== */
+        // ========================================================
+        // INICIAR
+        // ========================================================
 
-        crearPortada();
-
+        mostrar();
 
     </script>
 
