@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Hay una pequeña sorpresa esperando por ti.">
+<title>Un libro para ti</title>
+<style>
+/* CSS: colores, diseño y adaptación al celular */
+:root{--papel:#fff9ed;--tinta:#42352e;--rosa:#995b63;--oro:#cba974}
+*{box-sizing:border-box}body{margin:0;background:#e8dfd4;color:var(--tinta);font-family:Georgia,serif;min-height:100svh;background-image:radial-gradient(ellipse at top,#fffaf1,transparent 70%)}
+main{max-width:850px;margin:auto;padding:30px 18px}header{text-align:center;font:11px Arial,sans-serif;letter-spacing:4px;margin:10px 0 25px;color:#73665d}
+.libro{position:relative;background:var(--papel);border-radius:5px 16px 16px 5px;border:1px solid #d8c7ac;box-shadow:8px 8px 0 #dfd1bb,12px 12px 0 #cdbda7,0 25px 60px #42352e22;overflow:hidden}
+.libro:before{content:"";position:absolute;left:12px;top:0;bottom:0;width:1px;background:#c8b59955;z-index:1}
+.pagina{padding:34px 30px 28px;text-align:center;min-height:530px;animation:entrada .45s ease;transform-origin:left center}
+[hidden]{display:none!important}.portada{display:flex;align-items:center;justify-content:center;flex-direction:column;background:#6d3e49;color:#fff3df;min-height:580px;border:12px double #c9a37b}
+.sello{font-size:45px;color:var(--oro)}.etiqueta{font:11px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;margin:20px 0}h1{font-size:clamp(38px,8vw,66px);font-weight:normal;line-height:1.08;max-width:550px;margin:15px auto}h2{font-size:clamp(28px,5vw,40px);font-weight:normal;margin:15px 0}p{line-height:1.7;white-space:pre-line;font-size:17px;max-width:560px;margin:16px auto}
+button{border:0;border-radius:30px;padding:14px 22px;background:var(--rosa);color:white;cursor:pointer;font:15px Arial,sans-serif;min-height:46px}button:hover{filter:brightness(1.1)}button:focus-visible{outline:3px solid #d2a84e;outline-offset:4px}button:disabled{opacity:.4;cursor:default}.portada button{background:#f9ead2;color:#633c44;margin-top:20px}
+.polaroid{background:white;padding:12px 12px 28px;box-shadow:0 5px 18px #42352e20;max-width:560px;margin:22px auto;transform:rotate(-2deg)}.polaroid img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center;background:#eee}.ilustracion{aspect-ratio:4/3;display:grid;place-content:center;background:linear-gradient(150deg,#d8d6c8,#f2dcc9);color:#71695f;font-size:72px}.pie-foto{font-style:italic;font-size:14px;margin:12px 0 0}
+nav{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:30px}#contador{font:12px Arial,sans-serif;color:#75675b;text-align:center}.nota{text-align:center;color:#887b71;font:12px Arial,sans-serif;margin:25px 0}.secreto{padding:20px;border:1px dashed var(--oro);border-radius:8px;margin-top:20px;background:#f4e9d9}.numero{font:11px Arial,sans-serif;color:#a79279;letter-spacing:2px;margin-top:28px}
+@keyframes entrada{from{opacity:0;transform:perspective(900px) rotateY(-8deg)}to{opacity:1;transform:none}}
+@media(max-width:520px){main{padding:18px 14px}.pagina{padding:26px 18px;min-height:530px}.portada{min-height:550px}nav button{padding:12px 15px}}
+@media(prefers-reduced-motion:reduce){.pagina{animation:none}}
+
+/* Nuevo diseño: luz, papel y movimiento */
+body{background:#eadfe6;background-image:radial-gradient(at 10% 0%,#fff4da 0,transparent 55%),radial-gradient(at 95% 80%,#d6c5e6 0,transparent 60%)}
+.inicio{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 50% 20%,#a85f78 0,#5c304f 42%,#241d35 100%);transition:opacity .8s ease,visibility .8s ease}.inicio.oculto{opacity:0;visibility:hidden;pointer-events:none}.inicio-tarjeta{width:min(620px,100%);padding:54px 30px;text-align:center;color:#fffaf0;border:2px solid #f0d6a8;border-radius:24px;background:#2b203bbf;box-shadow:0 25px 80px #120d1b99,inset 0 0 45px #f4cf9a16;backdrop-filter:blur(8px)}.inicio-corazon{display:block;font-size:54px;color:#ffd9c8;filter:drop-shadow(0 4px 12px #0008);animation:latido 2.4s ease-in-out infinite}.inicio h1{color:#fff;font-size:clamp(38px,8vw,64px);margin:18px auto;text-shadow:0 3px 5px #000,0 0 26px #f3b5c9}.inicio p{color:#fff4e7;font:600 clamp(16px,3.5vw,20px)/1.6 Georgia,serif;text-shadow:0 2px 4px #000}.inicio button{margin-top:18px;background:#fff1db;color:#5c304f;font-weight:700;box-shadow:0 8px 25px #130b1680}
+main{position:relative;z-index:1;max-width:900px}header{letter-spacing:3px;color:#725369}.libro{box-shadow:7px 7px 0 #eee2d0,12px 12px 0 #d4bfb6,0 30px 80px #5d34462b}.portada{position:relative;background:radial-gradient(ellipse at 0 0,#a46472,transparent 65%),linear-gradient(140deg,#60324f,#302a47);border:10px double #d4b48e;isolation:isolate}.portada:after{content:"";position:absolute;inset:15px;border:1px solid #e3c49955;border-radius:50% 50% 0 0;z-index:-1;pointer-events:none}.portada>*{position:relative;z-index:2}.sello{animation:latido 3s ease-in-out infinite}.portada h1{color:#fff8e9;font-style:italic;text-shadow:0 3px 8px #160c18,0 4px 30px #0008}.portada #dedicatoria{color:#fff3df;text-shadow:0 2px 5px #160c18;font-weight:600}.portada .etiqueta{color:#f2d7aa;text-shadow:0 2px 5px #160c18}.pagina{background-image:linear-gradient(90deg,#bda48415,transparent 8%)}button{transition:transform .2s,box-shadow .2s;background:#84546f;box-shadow:0 5px 16px #64405122}button:hover:not(:disabled){transform:translateY(-3px)}.polaroid{position:relative;transition:transform .4s;transform:rotate(-3deg);border-radius:3px}.polaroid:before{content:"";position:absolute;width:90px;height:28px;background:#d9bba8aa;top:-13px;left:calc(50% - 45px);transform:rotate(5deg);z-index:2}.polaroid:hover{transform:rotate(0deg) scale(1.025)}.polaroid img{object-fit:cover;object-position:center;background:#f2ece7}.secreto{animation:entrada .7s ease;background:#f5e5ec;border-color:#b88e9f}.progreso{height:4px;background:#b79eac44;margin:20px 4px 0;border-radius:8px;overflow:hidden}.progreso span{display:block;height:100%;width:0;background:#99667f;transition:width .5s}.particulas{position:fixed;inset:0;pointer-events:none;overflow:hidden}.particulas span{position:absolute;bottom:-50px;color:#a4799138;animation:flotar 15s linear infinite;font-size:22px}.destello{position:fixed;left:50%;top:55%;pointer-events:none;z-index:10;color:#aa5578;font-size:25px;animation:confeti 1.8s ease-out forwards}.sonido{display:block;margin:16px auto 0;background:transparent;color:#6e5364;box-shadow:none;font-size:12px;padding:8px 14px}.nota{color:#765e70}
+/* Cada fotografía aparece suavemente al abrir su página. */
+.foto-aparece{animation:aparecerFoto 1.5s cubic-bezier(.2,.75,.25,1) both}
+@keyframes latido{50%{transform:scale(1.18) rotate(8deg)}}
+@keyframes flotar{to{transform:translateY(-120vh) rotate(170deg)}}
+@keyframes confeti{to{transform:translate(var(--dx),var(--dy)) rotate(150deg);opacity:0}}
+@keyframes entrada{from{opacity:0;transform:perspective(1200px) rotateY(-16deg) translateX(16px)}to{opacity:1;transform:none}}
+@keyframes aparecerFoto{from{opacity:0;transform:scale(1.1);filter:blur(8px) brightness(.75)}to{opacity:1;transform:scale(1);filter:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.particulas,.destello{display:none}}
+
+/* Tema rojo romántico con textos blancos */
+:root{--papel:#8f1028;--tinta:#fff;--rosa:#fff;--oro:#ffd4dc}
+body{
+  color:#fff;
+  background:#650b1d;
+  background-image:
+    radial-gradient(circle at 15% 5%,#d94560 0,transparent 36%),
+    radial-gradient(circle at 90% 90%,#a91535 0,transparent 42%),
+    linear-gradient(145deg,#8f1028,#420815);
+}
+header{color:#fff;text-shadow:0 2px 8px #35000c}
+.libro{
+  background:#99152f;
+  border:1px solid #ffb9c7;
+  box-shadow:8px 8px 0 #740d23,12px 12px 0 #4d0717,0 30px 80px #21000888;
+}
+.libro:before{background:#ffcad466}
+.pagina{
+  color:#fff;
+  background:
+    radial-gradient(circle at 85% 10%,#d13a56 0,transparent 35%),
+    linear-gradient(145deg,#a71634,#6f0c22);
+}
+.pagina h2,.pagina p,.pagina .numero{color:#fff;text-shadow:0 2px 6px #3d0613}
+.pagina .etiqueta{color:#ffe5ea;text-shadow:0 2px 6px #3d0613}
+.portada{
+  background:
+    radial-gradient(circle at 20% 12%,#e04c67 0,transparent 38%),
+    linear-gradient(145deg,#aa1838,#59091c);
+  border-color:#ffd2da;
+}
+.inicio{
+  background:
+    radial-gradient(circle at 50% 15%,#df4864 0,transparent 38%),
+    linear-gradient(145deg,#a71535,#4a0717);
+}
+.inicio-tarjeta{background:#6c0b20d9;border-color:#fff;box-shadow:0 25px 80px #210008a8,inset 0 0 45px #ffffff12}
+.inicio h1,.inicio p,.inicio .etiqueta{color:#fff}
+.inicio button{background:#fff;color:#8b1430}
+.polaroid{background:#fff;box-shadow:0 15px 38px #35000c99}
+.polaroid .pie-foto{color:#6d1830;text-shadow:none}
+.polaroid:before{background:#ffc2cdbd}
+.secreto{color:#fff!important;background:#ffffff18;border-color:#ffd2da}
+.progreso{background:#ffffff3d}.progreso span{background:#fff}
+#contador,.nota{color:#fff;text-shadow:0 2px 6px #35000c}
+.sonido{color:#fff;border:1px solid #ffffff70;background:#ffffff10}
+.particulas span{color:#ffffff38}
+
+
+/* Cinco entradas diferentes; la fotografía original permanece intacta. */
+.foto-centro{animation:fotoCentro 1.6s cubic-bezier(.2,.7,.2,1) both}
+.foto-lateral{animation:fotoLateral 1.6s cubic-bezier(.2,.7,.2,1) both}
+.foto-cortina{animation:fotoCortina 1.8s ease-in-out both}
+.foto-giro{animation:fotoGiro 1.8s cubic-bezier(.2,.7,.2,1) both}
+.foto-album{transform-origin:left center;animation:fotoAlbum 1.8s ease-out both;backface-visibility:hidden}
+@keyframes fotoCentro{from{opacity:0;transform:scale(.78)}to{opacity:1;transform:scale(1)}}
+@keyframes fotoLateral{from{opacity:0;transform:translateX(55px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fotoCortina{from{clip-path:inset(0 50%);opacity:.4}to{clip-path:inset(0 0);opacity:1}}
+@keyframes fotoGiro{from{opacity:0;transform:rotate(-8deg) scale(.88)}to{opacity:1;transform:rotate(0) scale(1)}}
+@keyframes fotoAlbum{from{opacity:0;transform:perspective(1000px) rotateY(-78deg)}to{opacity:1;transform:perspective(1000px) rotateY(0)}}
+
+</style>
+</head>
+<body>
+<div class="inicio" id="inicio">
+  <div class="inicio-tarjeta">
+    <span class="inicio-corazon" aria-hidden="true">♥</span>
+    <div class="etiqueta">Una sorpresa hecha para ti</div>
+    <h1>Los momentos que guardo contigo</h1>
+    <button id="abrir">Abrir nuestra historia</button>
+  </div>
+</div>
+<div class="particulas" id="particulas" aria-hidden="true"></div>
+<audio id="musica" loop autoplay preload="auto"><source src="musica/cancion.mp3" type="audio/mpeg"></audio>
+<main>
+
+<p id="estadoMusica" role="status" style="font:13px Arial,sans-serif;text-align:center"></p>
+<header>HECHO DE PEQUEÑOS GRANDES MOMENTOS</header>
+<div class="libro" id="libro">
+<section class="pagina portada" id="portada" aria-label="Portada">
+<div class="sello" aria-hidden="true">✧</div>
+<div class="etiqueta">Una historia para guardar</div>
+<h1 id="titulo"></h1><p id="dedicatoria"></p>
+<p class="etiqueta">Nuestra historia está por comenzar…</p>
+</section>
+<section class="pagina" id="contenido" hidden aria-label="Página del libro">
+<div class="etiqueta" id="fecha"></div><h2 id="encabezado" tabindex="-1"></h2>
+<figure class="polaroid" id="marco"><img id="foto" alt="" hidden><div class="ilustracion" id="ilustracion" aria-hidden="true">✿</div><figcaption class="pie-foto" id="pie"></figcaption></figure>
+<p id="texto"></p><button id="revelar" hidden>Hay algo más para ti… 💌</button>
+<p id="secreto" class="secreto" hidden></p><div class="numero" id="numero"></div>
+</section>
+</div>
+<div class="progreso" aria-hidden="true"><span id="avance"></span></div>
+<div style="text-align:center;margin-top:22px"><span id="contador" role="status" aria-live="polite">Portada</span><br><button class="sonido" id="pausar">Pausar recorrido</button><button class="sonido" id="reiniciar" hidden>Volver a ver nuestra historia ↺</button></div>
+<button class="sonido" id="silenciar" hidden aria-pressed="false">Silenciar sonido</button>
+<p class="nota">Las páginas avanzan solas. Disfruta nuestra historia.</p>
+<noscript>Activa JavaScript en tu navegador para abrir el libro.</noscript>
+</main>
+<script>
+// ========================================================
+// PERSONALIZA AQUÍ. Conserva las comillas, comas y llaves.
+// Coloca tus fotos dentro de la carpeta images.
+// Si todavía no hay fotos, se muestra una ilustración.
+// ========================================================
+const CONFIG = {
+  segundosPortada: 4,
+  segundosPorPagina: 9,
+  titulo: "Los momentos que guardo contigo",
+  dedicatoria: "Hay recuerdos que merecen su propio libro. Este es el nuestro.",
+  sorpresa: "Lo mejor de nuestra historia es que todavía nos quedan muchas páginas por escribir. Gracias por ser parte de mi vida. ♥",
+  recuerdos: [
+    {
+      fecha: "El comienzo",
+      titulo: "Donde empezó todo",
+      foto: "images/foto1.png",
+      descripcion: "Nuestra primera foto juntos",
+      pie: "Un instante, muchas sonrisas.",
+      texto: "Quizás ese día no imaginábamos cuántos recuerdos vendrían después. Hoy lo guardo como uno de mis favoritos."
+    },
+    {
+      fecha: "Un día especial",
+      titulo: "Nuestra pequeña aventura",
+      foto: "images/foto2.png",
+      descripcion: "Una aventura compartida",
+      pie: "El mejor destino: compartirlo contigo.",
+      texto: "No fue solo el lugar. Fueron las conversaciones, las risas y esa manera de convertir un día cualquiera en algo especial."
+    },
+    {
+      fecha: "Siempre en mi memoria",
+      titulo: "Las cosas más sencillas",
+      foto: "images/foto3.png",
+      descripcion: "Un momento que queremos recordar",
+      pie: "De esos días que dan ganas de repetir.",
+      texto: "A veces la felicidad cabe en una foto, en una conversación larga o en una risa que no se puede contener."
+    },
+    {
+      fecha: "Una aventura al atardecer",
+      titulo: "Donde el cielo guardó este momento",
+      foto: "images/foto4.png",
+      descripcion: "Un paseo a caballo durante el atardecer",
+      pie: "Un atardecer que siempre querré recordar.",
+      texto: "El cielo cambió de colores y el tiempo pareció detenerse. Hay paisajes hermosos, pero los recuerdos son los que les dan un significado especial."
+    },
+    {
+      fecha: "Un momento para nosotros",
+      titulo: "Juntos, todo se siente especial",
+      foto: "images/foto5.png",
+      descripcion: "Un recuerdo de los dos juntos",
+      pie: "Contigo, hasta lo cotidiano se vuelve inolvidable.",
+      texto: "No importa el lugar ni el momento. Cuando estamos juntos, siempre aparece una razón para sonreír y guardar una nueva página en nuestra historia."
+    }
+  ]
+};
+// JAVASCRIPT: navegación y mensaje final
+const $ = id => document.getElementById(id);
+let pagina = 0;
+const total = CONFIG.recuerdos.length + 1;
+$("titulo").textContent = CONFIG.titulo;
+$("dedicatoria").textContent = CONFIG.dedicatoria;
+$("secreto").textContent = CONFIG.sorpresa;
+function mostrarFoto(recuerdo) {
+  const foto = $("foto");
+  foto.onload = null; foto.onerror = null;
+  foto.removeAttribute("src"); foto.hidden = true;
+  $("ilustracion").hidden = false;
+  foto.alt = recuerdo.descripcion;
+  if (!recuerdo.foto) return;
+  foto.onload = () => {
+    foto.hidden = false;
+    $("ilustracion").hidden = true;
+    foto.className = "";
+    void foto.offsetWidth;
+    const efectos = ["foto-centro", "foto-lateral", "foto-cortina", "foto-giro", "foto-album"];
+    foto.classList.add(efectos[CONFIG.recuerdos.indexOf(recuerdo) % efectos.length]);
+  };
+  foto.onerror = () => { foto.hidden = true; $("ilustracion").hidden = false; };
+  foto.src = recuerdo.foto;
+}
+function mostrar() {
+  $("avance").style.width = (pagina / total * 100) + "%";
+  const portada = pagina === 0;
+  $("portada").hidden = !portada; $("contenido").hidden = portada;
+
+
+  $("contador").textContent = portada ? "Portada" : `Página ${pagina} de ${total}`;
+  $("secreto").hidden = true; $("revelar").setAttribute("aria-expanded", "false");
+  if (portada) return;
+  const final = pagina === total;
+  $("marco").hidden = final; $("revelar").hidden = true;
+  if(final){
+    $("secreto").hidden = false;
+    celebrar();
+    $("fecha").textContent = "Y esto continúa…";
+    $("encabezado").textContent = "Mi recuerdo favorito es contigo";
+    $("texto").textContent = "Este libro es una pequeña manera de decirte cuánto significan para mí los momentos que compartimos.";
+  } else {
+    const r = CONFIG.recuerdos[pagina - 1];
+    $("fecha").textContent = r.fecha; $("encabezado").textContent = r.titulo;
+    $("texto").textContent = r.texto; $("pie").textContent = r.pie;
+    mostrarFoto(r);
+  }
+  $("numero").textContent = String(pagina).padStart(2,"0");
+  $("contenido").style.animation = "none";
+  void $("contenido").offsetWidth;
+  $("contenido").style.animation = "";
+}
+// Recorrido automático: portada, recuerdos y dedicatoria final.
+let temporizador;
+let pausado = false;
+let historiaIniciada = false;
+function programar(){
+  clearTimeout(temporizador);
+  if(!historiaIniciada) return;
+  const final = pagina === total;
+  $("pausar").hidden = final;
+  $("reiniciar").hidden = !final;
+  if(final){
+    desvanecerMusica(0, 3500, true);
+    return;
+  }
+  if(pausado || document.hidden) return;
+  const segundos = pagina === 0 ? CONFIG.segundosPortada : CONFIG.segundosPorPagina;
+  temporizador = setTimeout(()=>{pagina++;mostrar();programar();}, Math.max(1,segundos)*1000);
+}
+$("pausar").onclick = ()=>{
+  pausado = !pausado;
+  $("pausar").textContent = pausado ? "Continuar recorrido" : "Pausar recorrido";
+  if(pausado){
+    desvanecerMusica(0, 1800, true);
+  } else {
+    reproducirMusica().then(()=>desvanecerMusica(0.35, 1800));
+  }
+  programar();
+};
+$("reiniciar").onclick = ()=>{
+  pagina=1;pausado=false;$("pausar").textContent="Pausar recorrido";
+  reproducirMusica().then(()=>desvanecerMusica(0.35, 2200));
+  mostrar();programar();
+};
+document.addEventListener("visibilitychange",programar);
+const musica = $("musica");
+musica.volume = 0.35;
+let intervaloVolumen;
+
+// Baja o sube el volumen gradualmente para evitar cortes bruscos.
+function desvanecerMusica(volumenFinal, duracion = 1800, pausarAlFinal = false){
+  clearInterval(intervaloVolumen);
+  const volumenInicial = musica.volume;
+  const pasos = 30;
+  let paso = 0;
+  intervaloVolumen = setInterval(()=>{
+    paso++;
+    musica.volume = Math.max(0, Math.min(1,
+      volumenInicial + (volumenFinal - volumenInicial) * (paso / pasos)
+    ));
+    if(paso >= pasos){
+      clearInterval(intervaloVolumen);
+      musica.volume = volumenFinal;
+      if(pausarAlFinal && volumenFinal === 0) musica.pause();
+    }
+  }, duracion / pasos);
+}
+// Los navegadores pueden bloquear el sonido hasta el primer gesto real.
+let audioIniciado = false;
+async function reproducirMusica(){
+  try {
+    if(!musica.paused) return;
+    if(musica.volume === 0) musica.volume = 0.01;
+    await musica.play();
+    audioIniciado = true;
+    $("estadoMusica").textContent = "";
+    $("silenciar").hidden = false;
+    document.removeEventListener("click",primerGesto);
+    document.removeEventListener("touchend",primerGesto);
+    document.removeEventListener("keydown",primerGesto);
+  } catch(error) {
+    if(error.name !== "NotAllowedError" && error.name !== "AbortError") {
+      $("estadoMusica").textContent = "La canción no está disponible. El libro sigue abierto para ti.";
+      console.warn("Comprueba que exista musica/cancion.mp3 y sea un MP3 válido.", error);
+    }
+  }
+}
+function primerGesto(){reproducirMusica();}
+document.addEventListener("click",primerGesto);
+document.addEventListener("touchend",primerGesto,{passive:true});
+document.addEventListener("keydown",primerGesto);
+$("silenciar").onclick = () => {
+  musica.muted = !musica.muted;
+  $("silenciar").textContent = musica.muted ? "Restaurar sonido" : "Silenciar sonido";
+  $("silenciar").setAttribute("aria-pressed",String(musica.muted));
+};
+reproducirMusica();
+$('abrir').onclick = async () => {
+  // Este toque permite que Chrome, Android y iPhone autoricen el MP3.
+  musica.volume = 0.01;
+  await reproducirMusica();
+  desvanecerMusica(0.35, 2200);
+  $('inicio').classList.add('oculto');
+  historiaIniciada = true;
+  pagina = 1;
+  mostrar();
+  programar();
+};
+const movimientoReducido = window.matchMedia("(prefers-reduced-motion: reduce)");
+if(!movimientoReducido.matches){
+  for(let i=0;i<12;i++){
+    const estrella=document.createElement("span");estrella.textContent=i%2?"♡":"✧";
+    estrella.style.left=(i*8.5)+"%";estrella.style.animationDelay=(-i*1.7)+"s";
+    estrella.style.animationDuration=(14+i%4*3)+"s";$("particulas").appendChild(estrella);
+  }
+}
+function celebrar(){
+  if(movimientoReducido.matches)return;
+  for(let i=0;i<20;i++){
+    const c=document.createElement("span");c.className="destello";c.textContent=i%2?"♥":"✧";c.setAttribute("aria-hidden","true");
+    c.style.setProperty("--dx",(Math.random()*500-250)+"px");
+    c.style.setProperty("--dy",(Math.random()*400-300)+"px");document.body.appendChild(c);
+    setTimeout(()=>c.remove(),1900);
+  }
+}
+mostrar();
+</script>
+</body>
+</html>
