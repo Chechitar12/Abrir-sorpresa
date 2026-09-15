@@ -4,9 +4,12 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>Los momentos que guardo contigo</title>
+
 
 <style>
 
@@ -15,10 +18,10 @@
 ========================================================= */
 
 :root{
-    --papel:#8f1028;
-    --tinta:#fff;
-    --rosa:#fff;
-    --oro:#ffd4dc;
+    --rojo:#8f1028;
+    --rojo-oscuro:#420815;
+    --rosa:#ffd4dc;
+    --blanco:#ffffff;
 }
 
 *{
@@ -35,7 +38,7 @@ body{
 
     min-height:100svh;
 
-    color:#fff;
+    color:white;
 
     font-family:Georgia,serif;
 
@@ -119,9 +122,9 @@ body{
 
     text-align:center;
 
-    background:#6c0b20d9;
+    background:#6c0b20dd;
 
-    border:1px solid #fff;
+    border:1px solid white;
 
     border-radius:20px;
 
@@ -172,7 +175,7 @@ header{
 
     margin:10px 0 25px;
 
-    color:#fff;
+    color:white;
 
     text-shadow:
         0 2px 8px #35000c;
@@ -235,7 +238,7 @@ p{
 
 
 /* =========================================================
-   BOTÓN INICIAL
+   BOTONES
 ========================================================= */
 
 button{
@@ -244,9 +247,9 @@ button{
 
     border-radius:30px;
 
-    padding:14px 22px;
+    padding:14px 25px;
 
-    background:#fff;
+    background:white;
 
     color:#8b1430;
 
@@ -260,7 +263,8 @@ button{
 
     transition:
         transform .2s ease,
-        filter .2s ease;
+        filter .2s ease,
+        box-shadow .2s ease;
 }
 
 button:hover{
@@ -268,12 +272,15 @@ button:hover{
     filter:brightness(1.08);
 
     transform:translateY(-2px);
+
+    box-shadow:
+        0 8px 20px #30000c55;
 }
 
 button:focus-visible{
 
     outline:
-        3px solid #d2a84e;
+        3px solid #ffd4dc;
 
     outline-offset:4px;
 }
@@ -349,7 +356,7 @@ main{
 
     min-height:530px;
 
-    color:#fff;
+    color:white;
 
     background:
 
@@ -367,8 +374,6 @@ main{
 
     animation:
         entrada .45s ease;
-
-    transform-origin:left center;
 }
 
 [hidden]{
@@ -437,14 +442,14 @@ main{
 
 
 /* =========================================================
-   POLAROID
+   FOTOS
 ========================================================= */
 
 .polaroid{
 
     position:relative;
 
-    background:#fff;
+    background:white;
 
     padding:
         12px 12px 28px;
@@ -456,7 +461,12 @@ main{
 
     margin:22px auto;
 
-    transform:rotate(-2deg);
+    /*
+       IMPORTANTE:
+       EL MARCO YA NO SE INCLINA
+    */
+
+    transform:none;
 
     cursor:pointer;
 
@@ -467,9 +477,7 @@ main{
 
 .polaroid:hover{
 
-    transform:
-        rotate(0deg)
-        scale(1.01);
+    transform:scale(1.01);
 
     box-shadow:
         0 18px 45px #35000cbb;
@@ -525,7 +533,7 @@ main{
 
 
 /* =========================================================
-   ANIMACIONES DE LAS FOTOS
+   ANIMACIONES DE FOTOS
 ========================================================= */
 
 .foto-centro{
@@ -562,8 +570,6 @@ main{
 
 .foto-album{
 
-    transform-origin:left center;
-
     animation:
         fotoAlbum 1.8s
         ease-out
@@ -572,15 +578,25 @@ main{
     backface-visibility:hidden;
 }
 
+
+/*
+   Las animaciones se aplican SOLO a la imagen.
+   Así el marco siempre permanece derecho.
+*/
+
 @keyframes fotoCentro{
 
     from{
+
         opacity:0;
+
         transform:scale(.78);
     }
 
     to{
+
         opacity:1;
+
         transform:scale(1);
     }
 }
@@ -588,12 +604,16 @@ main{
 @keyframes fotoLateral{
 
     from{
+
         opacity:0;
+
         transform:translateX(55px);
     }
 
     to{
+
         opacity:1;
+
         transform:translateX(0);
     }
 }
@@ -601,12 +621,16 @@ main{
 @keyframes fotoCortina{
 
     from{
+
         clip-path:inset(0 50%);
+
         opacity:.4;
     }
 
     to{
+
         clip-path:inset(0 0);
+
         opacity:1;
     }
 }
@@ -614,14 +638,18 @@ main{
 @keyframes fotoGiro{
 
     from{
+
         opacity:0;
+
         transform:
             rotate(-8deg)
             scale(.88);
     }
 
     to{
+
         opacity:1;
+
         transform:
             rotate(0)
             scale(1);
@@ -631,14 +659,18 @@ main{
 @keyframes fotoAlbum{
 
     from{
+
         opacity:0;
+
         transform:
             perspective(1000px)
             rotateY(-78deg);
     }
 
     to{
+
         opacity:1;
+
         transform:
             perspective(1000px)
             rotateY(0);
@@ -668,9 +700,9 @@ main{
 
     border-radius:30px;
 
-    background:#550817e8;
+    background:#550817ee;
 
-    color:#fff;
+    color:white;
 
     font:
         14px Arial,
@@ -691,7 +723,7 @@ main{
 
 
 /* =========================================================
-   CONTADOR Y PROGRESO
+   PROGRESO
 ========================================================= */
 
 #contador{
@@ -700,7 +732,7 @@ main{
         12px Arial,
         sans-serif;
 
-    color:#fff;
+    color:white;
 
     text-align:center;
 
@@ -731,7 +763,7 @@ main{
 
     width:0%;
 
-    background:#fff;
+    background:white;
 
     transition:
         width .4s ease;
@@ -741,7 +773,7 @@ main{
 
     text-align:center;
 
-    color:#fff;
+    color:white;
 
     font:
         12px Arial,
@@ -755,12 +787,12 @@ main{
 
 
 /* =========================================================
-   ÚLTIMA PÁGINA
+   PÁGINA FINAL
 ========================================================= */
 
 .pagina.final{
 
-    min-height:700px;
+    min-height:760px;
 
     display:flex;
 
@@ -768,113 +800,253 @@ main{
 
     align-items:center;
 
-    justify-content:flex-start;
+    justify-content:center;
 
     padding:
-        25px 20px 35px;
+        45px 20px 40px;
 
-    overflow:hidden;
+    text-align:center;
 }
 
 
 /* =========================================================
-   GIRASOLES
+   FINAL ANTES DE VER
+========================================================= */
+
+.final-intro{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:100%;
+
+    min-height:550px;
+}
+
+.final-intro h2{
+
+    margin-bottom:15px;
+}
+
+.final-intro p{
+
+    max-width:540px;
+}
+
+
+/* =========================================================
+   ZONA DE GIRASOLES
 ========================================================= */
 
 .girasoles{
 
     position:relative;
 
-    width:min(620px,100%);
+    width:
+        min(620px,100%);
 
-    height:350px;
+    height:410px;
 
     margin:
-        0 auto 0;
+        10px auto 0;
 
-    display:flex;
+    display:block;
 
-    align-items:flex-end;
-
-    justify-content:center;
-
-    gap:2px;
-}
-
-
-/* Cada girasol */
-
-.girasol{
-
-    position:relative;
-
-    width:105px;
-
-    height:315px;
+    overflow:visible;
 
     opacity:0;
 
-    transform:
-        translateY(100px)
-        scale(.15);
+    transition:
+        opacity .5s ease;
+}
+
+.girasoles.visible{
+
+    opacity:1;
+}
+
+
+/* =========================================================
+   GIRASOL INDIVIDUAL
+========================================================= */
+
+.girasol{
+
+    position:absolute;
+
+    width:85px;
+
+    height:300px;
+
+    left:50%;
+
+    bottom:15px;
+
+    transform-origin:
+        bottom center;
+
+    opacity:0;
 
     animation:
-        aparecerGirasol 2s
-        cubic-bezier(.2,.8,.2,1)
+        crecerGirasol
+        2.2s
+        cubic-bezier(.2,.75,.2,1)
         forwards;
 }
 
 
-/* Formación uno por uno */
+/*
+   POSICIONES DEL CORAZÓN
+
+             🌻       🌻
+          🌻             🌻
+        🌻                 🌻
+         🌻               🌻
+            🌻         🌻
+               🌻 🌻
+*/
 
 .girasol:nth-child(1){
-    animation-delay:.1s;
+
+    --x:-180px;
+
+    --y:-125px;
+
+    --r:-28deg;
+
+    animation-delay:.15s;
 }
 
 .girasol:nth-child(2){
-    animation-delay:.4s;
+
+    --x:-105px;
+
+    --y:-175px;
+
+    --r:-15deg;
+
+    animation-delay:.45s;
 }
 
 .girasol:nth-child(3){
-    animation-delay:.7s;
+
+    --x:-25px;
+
+    --y:-205px;
+
+    --r:-5deg;
+
+    animation-delay:.75s;
 }
 
 .girasol:nth-child(4){
+
+    --x:55px;
+
+    --y:-195px;
+
+    --r:8deg;
+
     animation-delay:1s;
 }
 
 .girasol:nth-child(5){
-    animation-delay:1.3s;
+
+    --x:130px;
+
+    --y:-150px;
+
+    --r:18deg;
+
+    animation-delay:1.25s;
 }
 
 .girasol:nth-child(6){
-    animation-delay:1.6s;
+
+    --x:-110px;
+
+    --y:-65px;
+
+    --r:-12deg;
+
+    animation-delay:1.5s;
 }
 
 .girasol:nth-child(7){
-    animation-delay:1.9s;
+
+    --x:105px;
+
+    --y:-65px;
+
+    --r:12deg;
+
+    animation-delay:1.75s;
 }
 
-@keyframes aparecerGirasol{
+.girasol:nth-child(8){
+
+    --x:-45px;
+
+    --y:-5px;
+
+    --r:-8deg;
+
+    animation-delay:2s;
+}
+
+.girasol:nth-child(9){
+
+    --x:40px;
+
+    --y:-5px;
+
+    --r:8deg;
+
+    animation-delay:2.25s;
+}
+
+@keyframes crecerGirasol{
 
     0%{
 
         opacity:0;
 
         transform:
-            translateY(100px)
-            scale(.15)
-            rotate(-20deg);
+            translate(
+                0,
+                100px
+            )
+            rotate(0deg)
+            scale(.05);
     }
 
-    60%{
+    45%{
 
         opacity:1;
 
         transform:
-            translateY(-10px)
-            scale(1.08)
-            rotate(5deg);
+            translate(
+                var(--x),
+                calc(var(--y) + 20px)
+            )
+            rotate(var(--r))
+            scale(.65);
+    }
+
+    75%{
+
+        transform:
+            translate(
+                var(--x),
+                calc(var(--y) - 8px)
+            )
+            rotate(var(--r))
+            scale(1.08);
     }
 
     100%{
@@ -882,26 +1054,31 @@ main{
         opacity:1;
 
         transform:
-            translateY(0)
-            scale(1)
-            rotate(0);
+            translate(
+                var(--x),
+                var(--y)
+            )
+            rotate(var(--r))
+            scale(1);
     }
 }
 
 
-/* Tallo */
+/* =========================================================
+   TALLO
+========================================================= */
 
 .tallo{
 
     position:absolute;
 
-    bottom:0;
-
     left:50%;
+
+    bottom:0;
 
     width:7px;
 
-    height:190px;
+    height:185px;
 
     transform:
         translateX(-50%);
@@ -918,7 +1095,9 @@ main{
 }
 
 
-/* Hojas */
+/* =========================================================
+   HOJAS
+========================================================= */
 
 .hoja{
 
@@ -936,7 +1115,8 @@ main{
 
 .hoja.izquierda{
 
-    left:calc(50% - 48px);
+    left:
+        calc(50% - 48px);
 
     bottom:75px;
 
@@ -946,7 +1126,8 @@ main{
 
 .hoja.derecha{
 
-    right:calc(50% - 48px);
+    right:
+        calc(50% - 48px);
 
     bottom:115px;
 
@@ -955,7 +1136,9 @@ main{
 }
 
 
-/* Cabeza */
+/* =========================================================
+   CABEZA DEL GIRASOL
+========================================================= */
 
 .cabeza{
 
@@ -965,18 +1148,18 @@ main{
 
     top:0;
 
-    width:105px;
+    width:90px;
 
-    height:105px;
+    height:90px;
 
     transform:
         translateX(-50%);
-
-    border-radius:50%;
 }
 
 
-/* Pétalos */
+/* =========================================================
+   PÉTALOS
+========================================================= */
 
 .petalo{
 
@@ -986,26 +1169,26 @@ main{
 
     top:50%;
 
-    width:34px;
+    width:29px;
 
-    height:58px;
+    height:52px;
 
-    margin-left:-17px;
+    margin-left:-14.5px;
 
-    margin-top:-29px;
+    margin-top:-26px;
 
     background:
         linear-gradient(
             to bottom,
             #ffe45b,
-            #f2a900
+            #efa600
         );
 
     border-radius:
         50% 50% 45% 45%;
 
     transform-origin:
-        center 50px;
+        center 45px;
 
     box-shadow:
         0 2px 5px #5b320044;
@@ -1044,7 +1227,9 @@ main{
 }
 
 
-/* Centro */
+/* =========================================================
+   CENTRO DEL GIRASOL
+========================================================= */
 
 .centro{
 
@@ -1054,9 +1239,9 @@ main{
 
     top:50%;
 
-    width:42px;
+    width:38px;
 
-    height:42px;
+    height:38px;
 
     transform:
         translate(-50%,-50%);
@@ -1082,30 +1267,41 @@ main{
 
 .mensaje-final{
 
-    position:relative;
-
-    z-index:10;
-
-    width:min(600px,100%);
+    width:
+        min(600px,100%);
 
     margin:
-        -10px auto 0;
-
-    padding:
-        0 15px;
+        -15px auto 0;
 
     text-align:center;
+
+    opacity:0;
+
+    transform:
+        translateY(25px);
+
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
+}
+
+.mensaje-final.visible{
+
+    opacity:1;
+
+    transform:
+        translateY(0);
 }
 
 .mensaje-final h2{
 
     margin:
-        0 0 10px;
+        0 0 12px;
 
     font-size:
         clamp(28px,5vw,42px);
 
-    color:#fff;
+    color:white;
 
     text-shadow:
         0 3px 10px #3d0613;
@@ -1120,7 +1316,7 @@ main{
 
     line-height:1.7;
 
-    color:#fff;
+    color:white;
 
     text-shadow:
         0 2px 7px #3d0613;
@@ -1128,7 +1324,7 @@ main{
 
 .continuara{
 
-    margin-top:16px!important;
+    margin-top:18px!important;
 
     font-size:21px!important;
 
@@ -1140,6 +1336,35 @@ main{
 
     text-shadow:
         0 2px 8px #3d0613;
+}
+
+
+/* =========================================================
+   BOTÓN VER
+========================================================= */
+
+#verFinal{
+
+    margin-top:25px;
+
+    padding:
+        15px 35px;
+
+    font-size:16px;
+
+    background:white;
+
+    color:#8b1430;
+
+    box-shadow:
+        0 8px 25px #30000c66;
+}
+
+#verFinal:hover{
+
+    transform:
+        translateY(-3px)
+        scale(1.03);
 }
 
 
@@ -1191,64 +1416,30 @@ main{
 
 @media(max-width:700px){
 
-    .pagina{
-
-        padding:
-            30px 20px;
-
-        min-height:600px;
-    }
-
     .pagina.final{
 
-        min-height:680px;
+        min-height:700px;
+
+        padding:
+            35px 15px;
     }
 
     .girasoles{
 
-        height:310px;
+        height:380px;
 
-        width:100%;
-    }
-
-    .girasol{
-
-        width:80px;
-
-        height:280px;
-    }
-
-    .cabeza{
-
-        width:80px;
-
-        height:80px;
-    }
-
-    .petalo{
-
-        width:27px;
-
-        height:48px;
-
-        margin-left:-13.5px;
-
-        margin-top:-24px;
+        transform:
+            scale(.82);
 
         transform-origin:
-            center 42px;
+            top center;
+
+        margin-bottom:-45px;
     }
 
-    .centro{
+    .mensaje-final{
 
-        width:32px;
-
-        height:32px;
-    }
-
-    .tallo{
-
-        height:175px;
+        margin-top:-10px;
     }
 }
 
@@ -1282,28 +1473,23 @@ main{
 
     .girasoles{
 
-        height:280px;
+        transform:
+            scale(.62);
+
+        height:330px;
+
+        margin-bottom:-95px;
     }
 
-    .girasol{
+    .mensaje-final h2{
 
-        width:62px;
-
-        height:250px;
+        font-size:30px;
     }
 
-    .girasol:nth-child(1),
-    .girasol:nth-child(7){
+    .mensaje-final p{
 
-        display:none;
+        font-size:15px;
     }
-
-    .mensaje-final{
-
-        padding:
-            0 5px;
-    }
-
 }
 
 
@@ -1330,7 +1516,7 @@ main{
 
 
 <!-- =======================================================
-     PANTALLA DE INICIO
+     INICIO
 ======================================================= -->
 
 <div
@@ -1382,7 +1568,7 @@ main{
 
 
 <!-- =======================================================
-     MENSAJE DE PAUSA
+     MENSAJE PAUSA
 ======================================================= -->
 
 <div
@@ -1474,7 +1660,7 @@ main{
 
 
         <!-- =================================================
-             PÁGINA DE CONTENIDO
+             CONTENIDO
         ================================================== -->
 
         <section
@@ -1482,12 +1668,10 @@ main{
             id="contenido"
             hidden>
 
-
             <div
                 class="etiqueta"
                 id="fecha">
             </div>
-
 
             <h2
                 id="encabezado">
@@ -1500,12 +1684,10 @@ main{
                 class="polaroid"
                 id="marco">
 
-
                 <img
                     id="foto"
                     alt=""
                     hidden>
-
 
                 <div
                     class="ilustracion"
@@ -1515,12 +1697,10 @@ main{
 
                 </div>
 
-
                 <figcaption
                     class="pie-foto"
                     id="pie">
                 </figcaption>
-
 
             </figure>
 
@@ -1531,6 +1711,43 @@ main{
             <div
                 class="numero"
                 id="numero">
+            </div>
+
+
+            <!-- =================================================
+                 INTRO FINAL
+            ================================================== -->
+
+            <div
+                class="final-intro"
+                id="finalIntro"
+                hidden>
+
+                <div class="etiqueta">
+
+                    Una última sorpresa
+
+                </div>
+
+                <h2>
+
+                    Y todavía queda algo más… ♥
+
+                </h2>
+
+                <p>
+
+                    Hay momentos que merecen terminar
+                    de una manera especial.
+
+                </p>
+
+                <button id="verFinal">
+
+                    Ver ♥
+
+                </button>
+
             </div>
 
 
@@ -1793,9 +2010,6 @@ const foto =
 const marco =
     document.getElementById("marco");
 
-const ilustracion =
-    document.getElementById("ilustracion");
-
 const pie =
     document.getElementById("pie");
 
@@ -1820,6 +2034,12 @@ const mensajeFinal =
 const sorpresaFinal =
     document.getElementById("sorpresaFinal");
 
+const finalIntro =
+    document.getElementById("finalIntro");
+
+const verFinal =
+    document.getElementById("verFinal");
+
 const pausaMensaje =
     document.getElementById("pausaMensaje");
 
@@ -1835,6 +2055,8 @@ let temporizador = null;
 let pausado = false;
 
 let historiaIniciada = false;
+
+let finalIniciado = false;
 
 
 /* =========================================================
@@ -1855,7 +2077,9 @@ dedicatoria.textContent =
 function crearParticulas(){
 
     const contenedor =
-        document.getElementById("particulas");
+        document.getElementById(
+            "particulas"
+        );
 
     const simbolos = [
         "♥",
@@ -1871,7 +2095,9 @@ function crearParticulas(){
     ){
 
         const span =
-            document.createElement("span");
+            document.createElement(
+                "span"
+            );
 
         span.textContent =
             simbolos[
@@ -1882,18 +2108,32 @@ function crearParticulas(){
             ];
 
         span.style.left =
-            Math.random()*100 + "%";
+            Math.random()*100 +
+            "%";
 
         span.style.fontSize =
-            (10 + Math.random()*18) + "px";
+            (
+                10 +
+                Math.random()*18
+            ) +
+            "px";
 
         span.style.animationDuration =
-            (7 + Math.random()*8) + "s";
+            (
+                7 +
+                Math.random()*8
+            ) +
+            "s";
 
         span.style.animationDelay =
-            (Math.random()*8) + "s";
+            (
+                Math.random()*8
+            ) +
+            "s";
 
-        contenedor.appendChild(span);
+        contenedor.appendChild(
+            span
+        );
     }
 }
 
@@ -1906,7 +2146,8 @@ async function iniciarMusica(){
 
     try{
 
-        musica.volume = 0.35;
+        musica.volume =
+            0.35;
 
         await musica.play();
 
@@ -1933,12 +2174,14 @@ abrir.addEventListener(
 
         await iniciarMusica();
 
-        historiaIniciada = true;
+        historiaIniciada =
+            true;
 
-        inicio.classList.add("oculto");
+        inicio.classList.add(
+            "oculto"
+        );
 
         mostrar(-1);
-
     }
 );
 
@@ -1949,21 +2192,26 @@ abrir.addEventListener(
 
 function mostrar(indice){
 
-    clearTimeout(temporizador);
+    clearTimeout(
+        temporizador
+    );
 
     paginaActual =
         indice;
 
-    pausado = false;
+    pausado =
+        false;
 
 
     /* PORTADA */
 
     if(indice === -1){
 
-        portada.hidden = false;
+        portada.hidden =
+            false;
 
-        contenido.hidden = true;
+        contenido.hidden =
+            true;
 
         contador.textContent =
             "Portada";
@@ -1976,14 +2224,15 @@ function mostrar(indice){
                 ()=>{
                     mostrar(0);
                 },
-                CONFIG.segundosPortada * 1000
+                CONFIG.segundosPortada *
+                1000
             );
 
         return;
     }
 
 
-    /* ÚLTIMA PÁGINA */
+    /* FINAL */
 
     if(
         indice >=
@@ -1998,21 +2247,30 @@ function mostrar(indice){
 
     /* PÁGINA NORMAL */
 
-    portada.hidden = true;
+    portada.hidden =
+        true;
 
-    contenido.hidden = false;
+    contenido.hidden =
+        false;
 
-    contenido.classList.remove("final");
+    contenido.classList.remove(
+        "final"
+    );
 
-    girasoles.hidden = true;
+    finalIntro.hidden =
+        true;
 
-    mensajeFinal.hidden = true;
+    girasoles.hidden =
+        true;
 
-    marco.hidden = false;
+    mensajeFinal.hidden =
+        true;
 
-    foto.hidden = false;
+    marco.hidden =
+        false;
 
-    ilustracion.hidden = true;
+    foto.hidden =
+        false;
 
 
     const recuerdo =
@@ -2042,25 +2300,37 @@ function mostrar(indice){
         recuerdo.foto;
 
 
-    /* Animación de cada fotografía */
+    /*
+       Animaciones únicamente
+       sobre la fotografía.
+    */
 
     const animaciones = [
 
         "foto-centro",
+
         "foto-lateral",
+
         "foto-cortina",
+
         "foto-giro",
+
         "foto-album"
 
     ];
 
+
     animaciones.forEach(
         clase=>{
-            foto.classList.remove(clase);
+            foto.classList.remove(
+                clase
+            );
         }
     );
 
+
     void foto.offsetWidth;
+
 
     foto.classList.add(
         animaciones[
@@ -2079,21 +2349,22 @@ function mostrar(indice){
             ((indice + 1) /
             CONFIG.recuerdos.length) *
             100
-        ) + "%";
+        ) +
+        "%";
 
-
-    /* 15 segundos */
 
     temporizador =
         setTimeout(
             ()=>{
                 if(!pausado){
+
                     mostrar(
                         indice + 1
                     );
                 }
             },
-            CONFIG.segundosPorPagina * 1000
+            CONFIG.segundosPorPagina *
+            1000
         );
 }
 
@@ -2104,21 +2375,31 @@ function mostrar(indice){
 
 function mostrarFinal(){
 
-    clearTimeout(temporizador);
+    clearTimeout(
+        temporizador
+    );
 
     paginaActual =
         CONFIG.recuerdos.length;
 
-    portada.hidden = true;
+    finalIniciado =
+        false;
 
-    contenido.hidden = false;
+    portada.hidden =
+        true;
 
-    contenido.classList.add("final");
+    contenido.hidden =
+        false;
 
-    marco.hidden = true;
+    contenido.classList.add(
+        "final"
+    );
+
+    marco.hidden =
+        true;
 
     fecha.textContent =
-        "Una última página";
+        "";
 
     encabezado.textContent =
         "";
@@ -2130,22 +2411,128 @@ function mostrarFinal(){
         "";
 
     contador.textContent =
-        "Continuará…";
+        "Una última sorpresa";
 
     avance.style.width =
         "100%";
 
 
-    /* Formar girasoles */
+    /*
+       Primero solamente mostramos
+       el botón VER.
+    */
+
+    finalIntro.hidden =
+        false;
+
+    girasoles.hidden =
+        true;
+
+    mensajeFinal.hidden =
+        true;
+
+    girasoles.classList.remove(
+        "visible"
+    );
+
+    mensajeFinal.classList.remove(
+        "visible"
+    );
+}
+
+
+/* =========================================================
+   BOTÓN VER
+========================================================= */
+
+verFinal.addEventListener(
+    "click",
+    function(event){
+
+        event.stopPropagation();
+
+        if(finalIniciado){
+
+            return;
+        }
+
+        finalIniciado =
+            true;
+
+        iniciarFinal();
+    }
+);
+
+
+/* =========================================================
+   INICIAR ANIMACIÓN FINAL
+========================================================= */
+
+function iniciarFinal(){
+
+    finalIntro.hidden =
+        true;
+
+    girasoles.innerHTML =
+        "";
+
+    mensajeFinal.hidden =
+        true;
 
     formarGirasoles();
 
-    girasoles.hidden = false;
+    girasoles.hidden =
+        false;
 
-    mensajeFinal.hidden = false;
+    void girasoles.offsetWidth;
 
-    sorpresaFinal.textContent =
-        CONFIG.sorpresa;
+    girasoles.classList.add(
+        "visible"
+    );
+
+
+    /*
+       Los girasoles tardan aproximadamente
+       4.5 segundos en formar el corazón.
+    */
+
+    setTimeout(
+        ()=>{
+
+            mensajeFinal.hidden =
+                false;
+
+            void mensajeFinal.offsetWidth;
+
+            mensajeFinal.classList.add(
+                "visible"
+            );
+
+        },
+        4800
+    );
+
+
+    /*
+       Cuando termina toda la animación,
+       detenemos la canción.
+    */
+
+    setTimeout(
+        ()=>{
+
+            musica.pause();
+
+            musica.currentTime =
+                0;
+
+            mostrarAvisoPausa(
+                "♥ Nuestra historia continúa..."
+            );
+
+        },
+        7200
+    );
 }
 
 
@@ -2155,59 +2542,76 @@ function mostrarFinal(){
 
 function formarGirasoles(){
 
-    girasoles.innerHTML = "";
+    girasoles.innerHTML =
+        "";
 
 
     for(
         let i=0;
-        i<7;
+        i<9;
         i++
     ){
 
         const girasol =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         girasol.className =
             "girasol";
 
 
-        /* Tallo */
+        /*
+           Tallo
+        */
 
         const tallo =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         tallo.className =
             "tallo";
 
 
-        /* Hoja izquierda */
+        /*
+           Hojas
+        */
 
         const hojaIzquierda =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         hojaIzquierda.className =
             "hoja izquierda";
 
 
-        /* Hoja derecha */
-
         const hojaDerecha =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         hojaDerecha.className =
             "hoja derecha";
 
 
-        /* Cabeza */
+        /*
+           Cabeza
+        */
 
         const cabeza =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         cabeza.className =
             "cabeza";
 
 
-        /* Pétalos */
+        /*
+           Pétalos
+        */
 
         for(
             let j=0;
@@ -2216,7 +2620,9 @@ function formarGirasoles(){
         ){
 
             const petalo =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             petalo.className =
                 "petalo";
@@ -2227,10 +2633,14 @@ function formarGirasoles(){
         }
 
 
-        /* Centro */
+        /*
+           Centro
+        */
 
         const centro =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         centro.className =
             "centro";
@@ -2240,7 +2650,9 @@ function formarGirasoles(){
         );
 
 
-        /* Construir flor */
+        /*
+           Construcción
+        */
 
         girasol.appendChild(
             tallo
@@ -2267,16 +2679,10 @@ function formarGirasoles(){
 
 
 /* =========================================================
-   PAUSAR / CONTINUAR
-   RECORRIDO + MÚSICA
+   PAUSA / CONTINUAR
 ========================================================= */
 
 function alternarPausa(){
-
-    /*
-       Si todavía no se abrió la historia,
-       no hacemos nada.
-    */
 
     if(!historiaIniciada){
 
@@ -2285,8 +2691,8 @@ function alternarPausa(){
 
 
     /*
-       En la última página ya no hay
-       recorrido que pausar.
+       Durante el final no pausamos
+       la animación con un toque.
     */
 
     if(
@@ -2298,41 +2704,25 @@ function alternarPausa(){
     }
 
 
-    /* =============================================
-       PAUSAR
-    ============================================= */
-
     if(!pausado){
 
-        pausado = true;
+        pausado =
+            true;
 
         clearTimeout(
             temporizador
         );
 
-
-        /* PAUSAR MÚSICA */
-
         musica.pause();
-
 
         mostrarAvisoPausa(
             "⏸ Recorrido pausado"
         );
 
-    }
+    }else{
 
-
-    /* =============================================
-       CONTINUAR
-    ============================================= */
-
-    else{
-
-        pausado = false;
-
-
-        /* CONTINUAR MÚSICA */
+        pausado =
+            false;
 
         musica.play().catch(
             error=>{
@@ -2344,10 +2734,6 @@ function alternarPausa(){
         );
 
 
-        /*
-           Continuar con el recorrido.
-        */
-
         temporizador =
             setTimeout(
                 ()=>{
@@ -2355,7 +2741,8 @@ function alternarPausa(){
                         paginaActual + 1
                     );
                 },
-                CONFIG.segundosPorPagina * 1000
+                CONFIG.segundosPorPagina *
+                1000
             );
 
 
@@ -2367,10 +2754,12 @@ function alternarPausa(){
 
 
 /* =========================================================
-   MENSAJE DE PAUSA
+   AVISO
 ========================================================= */
 
-function mostrarAvisoPausa(mensaje){
+function mostrarAvisoPausa(
+    mensaje
+){
 
     pausaMensaje.textContent =
         mensaje;
@@ -2385,13 +2774,13 @@ function mostrarAvisoPausa(mensaje){
                 "mostrar"
             );
         },
-        900
+        1000
     );
 }
 
 
 /* =========================================================
-   TOCAR CUALQUIER PARTE DE LA PANTALLA
+   TOCAR PANTALLA
 ========================================================= */
 
 document.addEventListener(
@@ -2399,8 +2788,8 @@ document.addEventListener(
     function(event){
 
         /*
-           El botón de inicio ya tiene
-           su propia función.
+           No interferir con el botón
+           de abrir.
         */
 
         if(
@@ -2412,9 +2801,16 @@ document.addEventListener(
 
 
         /*
-           Si la historia todavía no
-           comenzó, no hacemos nada.
+           No interferir con VER.
         */
+
+        if(
+            event.target === verFinal
+        ){
+
+            return;
+        }
+
 
         if(!historiaIniciada){
 
@@ -2454,4 +2850,5 @@ crearParticulas();
 </script>
 
 </body>
+
 </html>
