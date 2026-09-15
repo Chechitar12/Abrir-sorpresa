@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,183 +5,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Los momentos que guardo contigo</title>
+    <title>Nuestra Historia ♥</title>
 
     <style>
 
-        /* =====================================================
-           CONFIGURACIÓN GENERAL
-        ===================================================== */
-
-        *{
-            box-sizing:border-box;
-            margin:0;
-            padding:0;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         html,
-        body{
-            width:100%;
-            min-height:100%;
+        body {
+            width: 100%;
+            min-height: 100%;
         }
 
-        body{
-            font-family:Georgia, "Times New Roman", serif;
-            color:white;
-            overflow-x:hidden;
-
+        body {
             background:
-                radial-gradient(circle at 15% 5%, #d94560 0, transparent 36%),
-                radial-gradient(circle at 90% 90%, #a91535 0, transparent 42%),
-                linear-gradient(145deg, #8f1028, #420815);
+                radial-gradient(circle at top, #8f1025 0%, #4d0715 45%, #21030a 100%);
+            color: white;
+            font-family: Georgia, "Times New Roman", serif;
+            overflow-x: hidden;
+        }
+
+        button {
+            font-family: inherit;
         }
 
 
         /* =====================================================
-           FONDO CON PARTICULAS
+           FONDO
         ===================================================== */
 
-        .particulas{
-            position:fixed;
-            inset:0;
-            pointer-events:none;
-            overflow:hidden;
-            z-index:0;
+        .particulas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
         }
 
-        .particula{
-            position:absolute;
-            color:#ffd5df;
-            opacity:.55;
-            animation:flotar linear infinite;
+        .particula {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.65);
+            animation: caer linear infinite;
         }
 
-        @keyframes flotar{
+        @keyframes caer {
 
-            0%{
-                transform:translateY(110vh) rotate(0deg);
-                opacity:0;
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 0;
             }
 
-            15%{
-                opacity:.6;
+            15% {
+                opacity: 1;
             }
 
-            85%{
-                opacity:.6;
-            }
-
-            100%{
-                transform:translateY(-10vh) rotate(360deg);
-                opacity:0;
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
             }
 
         }
 
 
         /* =====================================================
-           INICIO / PORTADA
+           INTRO
         ===================================================== */
 
-        .inicio{
-            position:fixed;
-            inset:0;
-            z-index:1000;
-
-            display:flex;
-            align-items:center;
-            justify-content:center;
-
-            padding:20px;
-
+        #intro {
+            position: fixed;
+            inset: 0;
             background:
-                radial-gradient(circle at 20% 12%, #e04c67 0, transparent 38%),
-                linear-gradient(145deg,#aa1838,#59091c);
-
-            transition:opacity .8s ease;
+                radial-gradient(circle at center,
+                    #a51d39 0%,
+                    #650c21 45%,
+                    #25040c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 9999;
+            transition: opacity 1s ease;
         }
 
-        .inicio.ocultar{
-            opacity:0;
-            pointer-events:none;
+        #intro.ocultar {
+            opacity: 0;
+            pointer-events: none;
         }
 
-        .inicio-tarjeta{
-            width:min(650px,92vw);
-            padding:55px 35px;
-
-            text-align:center;
-
-            border:1px solid #ffd2da;
-            border-radius:25px;
-
-            background:rgba(95,8,27,.55);
-
-            box-shadow:
-                0 30px 80px rgba(30,0,8,.5),
-                inset 0 0 40px rgba(255,255,255,.04);
+        .intro-corazon {
+            font-size: 100px;
+            animation: latido 1.3s infinite;
+            text-shadow: 0 0 30px rgba(255, 100, 130, 0.8);
         }
 
-        .inicio-corazon{
-            display:block;
-            margin-bottom:15px;
+        @keyframes latido {
 
-            font-size:80px;
-            color:#fff;
-            text-shadow:
-                0 0 15px #ffb7c7,
-                0 0 35px #ff6f91;
-
-            animation:latido 1.5s infinite;
-        }
-
-        @keyframes latido{
-
-            0%,100%{
-                transform:scale(1);
+            0%,
+            100% {
+                transform: scale(1);
             }
 
-            50%{
-                transform:scale(1.12);
+            50% {
+                transform: scale(1.18);
             }
 
         }
 
-        .etiqueta{
-            font-size:14px;
-            letter-spacing:3px;
-            text-transform:uppercase;
-            opacity:.9;
-            margin-bottom:15px;
+        .intro-texto {
+            margin-top: 25px;
+            font-size: 25px;
+            letter-spacing: 2px;
+            text-align: center;
         }
 
-        .inicio h1{
-            font-size:clamp(32px,6vw,55px);
-            line-height:1.1;
-            margin-bottom:30px;
+        .intro-subtexto {
+            margin-top: 12px;
+            font-size: 15px;
+            opacity: 0.8;
         }
 
-        #abrir{
-            border:none;
-            padding:15px 30px;
 
-            border-radius:30px;
+        /* =====================================================
+           CONTENEDOR
+        ===================================================== */
 
-            background:#fff;
-            color:#8f1028;
-
-            font-size:17px;
-            font-family:inherit;
-            font-weight:bold;
-
-            cursor:pointer;
-
-            transition:.3s;
-        }
-
-        #abrir:hover{
-            transform:translateY(-3px) scale(1.03);
-            box-shadow:0 10px 30px rgba(0,0,0,.3);
+        .contenedor {
+            position: relative;
+            z-index: 2;
+            width: min(1000px, 94vw);
+            margin: auto;
+            padding: 30px 0 60px;
         }
 
 
@@ -190,27 +146,22 @@
            ENCABEZADO
         ===================================================== */
 
-        header{
-            position:relative;
-            z-index:2;
-
-            text-align:center;
-
-            padding:35px 20px 20px;
-
-            color:#fff;
-
-            text-shadow:0 2px 8px #35000c;
+        header {
+            text-align: center;
+            padding: 25px 10px 35px;
         }
 
-        header h1{
-            font-size:clamp(28px,5vw,48px);
-            margin-bottom:8px;
+        header h1 {
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: normal;
+            letter-spacing: 2px;
+            text-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
         }
 
-        header p{
-            font-size:17px;
-            opacity:.9;
+        header p {
+            margin-top: 12px;
+            font-size: 17px;
+            opacity: 0.85;
         }
 
 
@@ -218,183 +169,178 @@
            LIBRO
         ===================================================== */
 
-        .libro{
-            position:relative;
-            z-index:2;
-
-            width:min(1000px,94vw);
-            min-height:650px;
-
-            margin:20px auto 50px;
-
-            background:#99152f;
-
-            border:1px solid #ffb9c7;
-            border-radius:18px;
-
-            box-shadow:
-                8px 8px 0 #740d23,
-                12px 12px 0 #4d0717,
-                0 30px 80px #21000888;
-
-            overflow:hidden;
+        .libro {
+            position: relative;
+            min-height: 650px;
+            perspective: 1500px;
         }
 
-
-        /* =====================================================
-           PAGINAS
-        ===================================================== */
-
-        .pagina{
-            position:relative;
-
-            min-height:650px;
-
-            padding:45px 35px;
-
-            text-align:center;
-
-            color:#fff;
+        .pagina {
+            position: relative;
+            width: 100%;
+            min-height: 650px;
+            padding: 45px 35px;
+            border-radius: 10px;
 
             background:
-                radial-gradient(circle at 85% 10%,#d13a56 0,transparent 35%),
-                linear-gradient(145deg,#a71634,#6f0c22);
-        }
+                linear-gradient(
+                    rgba(255, 248, 245, 0.97),
+                    rgba(255, 238, 240, 0.97)
+                );
 
-        .pagina[hidden]{
-            display:none;
-        }
-
-        .pagina h2{
-            font-size:clamp(28px,5vw,42px);
-            margin-bottom:12px;
-        }
-
-        .pagina > p{
-            max-width:700px;
-            margin:0 auto 20px;
-            line-height:1.7;
-            font-size:17px;
-        }
-
-
-        /* =====================================================
-           PORTADA DEL LIBRO
-        ===================================================== */
-
-        .portada{
-            display:flex;
-            align-items:center;
-            justify-content:center;
-
-            min-height:650px;
-
-            background:
-                radial-gradient(circle at 20% 12%,#e04c67 0,transparent 38%),
-                linear-gradient(145deg,#aa1838,#59091c);
-
-            border-color:#ffd2da;
-        }
-
-        .portada-contenido{
-            max-width:700px;
-        }
-
-        .portada .corazon-pequeno{
-            font-size:70px;
-            margin-bottom:10px;
-
-            text-shadow:
-                0 0 15px #ffb7c7,
-                0 0 35px #ff6f91;
-        }
-
-        .portada h2{
-            font-size:clamp(35px,6vw,58px);
-        }
-
-
-        /* =====================================================
-           POLAROID / FOTOS
-        ===================================================== */
-
-        .polaroid{
-            width:min(560px,92vw);
-
-            background:#fff;
-
-            padding:12px 12px 18px;
-
-            margin:22px auto;
-
-            border-radius:3px;
+            color: #4b2028;
 
             box-shadow:
-                0 15px 38px #35000c99;
+                0 25px 70px rgba(0, 0, 0, 0.45),
+                inset 0 0 35px rgba(120, 30, 50, 0.08);
 
-            transform:none !important;
+            overflow: hidden;
         }
 
-        .polaroid img{
-            display:block;
-
-            width:100%;
-
-            aspect-ratio:4/3;
-
-            object-fit:cover;
-            object-position:center;
-
-            transform:none !important;
-
-            animation:none !important;
-            transition:none !important;
-        }
-
-        .polaroid .pie{
-            color:#4a4a4a;
-
-            padding-top:12px;
-
-            font-size:17px;
-            font-style:italic;
-        }
-
-        .descripcion{
-            max-width:650px;
-
-            margin:15px auto;
-
-            line-height:1.8;
-
-            font-size:17px;
+        .pagina[hidden] {
+            display: none;
         }
 
 
         /* =====================================================
-           INDICADOR DE TIEMPO
+           PORTADA
         ===================================================== */
 
-        .temporizador{
-            width:min(560px,90vw);
-            height:5px;
-
-            margin:20px auto 0;
-
-            background:rgba(255,255,255,.2);
-
-            border-radius:20px;
-
-            overflow:hidden;
+        .portada {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
 
-        .temporizador-barra{
-            height:100%;
-            width:0;
+        .portada-contenido {
+            max-width: 750px;
+        }
 
-            background:#fff;
+        .portada .corazon {
+            font-size: 85px;
+            color: #a20f2f;
+            animation: latido 1.5s infinite;
+            margin-bottom: 20px;
+        }
 
-            transition:width linear;
+        .portada h2 {
+            font-size: clamp(35px, 6vw, 62px);
+            font-weight: normal;
+            color: #741329;
+            margin-bottom: 20px;
+        }
+
+        .portada p {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #71323c;
+        }
+
+        .linea-decorativa {
+            width: 100px;
+            height: 2px;
+            background: #a92b48;
+            margin: 25px auto;
+        }
+
+
+        /* =====================================================
+           ETIQUETA
+        ===================================================== */
+
+        .etiqueta {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 30px;
+            background: #8d1b36;
+            color: white;
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+
+        /* =====================================================
+           PAGINA DE FOTO
+        ===================================================== */
+
+        .contenido-pagina {
+            text-align: center;
+        }
+
+        .contenido-pagina h2 {
+            font-size: clamp(28px, 5vw, 43px);
+            color: #76152c;
+            font-weight: normal;
+            margin-bottom: 8px;
+        }
+
+        .contenido-pagina .descripcion {
+            color: #81404b;
+            font-size: 17px;
+            margin-bottom: 10px;
+        }
+
+
+        /* =====================================================
+           POLAROID
+        ===================================================== */
+
+        .polaroid {
+            max-width: 560px;
+            margin: 22px auto;
+            padding: 14px 14px 25px;
+            background: white;
+            box-shadow: 0 15px 35px rgba(80, 0, 20, 0.25);
+            transform: none !important;
+        }
+
+        .polaroid img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .polaroid .pie {
+            color: #632936;
+            font-size: 16px;
+            margin-top: 16px;
+            font-style: italic;
+        }
+
+
+        /* =====================================================
+           TEXTO DE RECUERDO
+        ===================================================== */
+
+        .texto-recuerdo {
+            max-width: 700px;
+            margin: 20px auto 0;
+            padding: 20px 25px;
+            border-left: 3px solid #9b2844;
+            background: rgba(255, 255, 255, 0.45);
+            text-align: left;
+            line-height: 1.8;
+            font-size: 17px;
+            color: #63313c;
+        }
+
+
+        /* =====================================================
+           INDICADOR DE PAGINA
+        ===================================================== */
+
+        .indicador {
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 13px;
+            color: #8b4a56;
+            opacity: 0.8;
         }
 
 
@@ -402,198 +348,387 @@
            PAGINA FINAL
         ===================================================== */
 
-        .final{
-            min-height:650px;
-
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-
-            padding-top:35px;
+        .final {
+            text-align: center;
+            padding-top: 30px;
         }
 
-        .final .etiqueta{
-            margin-bottom:0;
+        .final .etiqueta {
+            margin-bottom: 0;
         }
 
 
         /* =====================================================
-           CORAZÓN DE GIRASOLES
-           
-           SOLO FLORES:
-           SIN HOJAS
-           SIN TALLOS
+           RAMO DE TULIPANES
         ===================================================== */
 
-        .corazon-girasoles{
-            position:relative;
-
-            width:min(650px,94vw);
-            height:450px;
-
-            margin:5px auto 0;
-
-            overflow:hidden;
+        .ramo-tulipanes {
+            position: relative;
+            width: min(760px, 96vw);
+            height: 500px;
+            margin: 0 auto;
+            overflow: hidden;
         }
 
-        .girasol{
-            position:absolute;
 
-            width:30px;
-            height:30px;
+        /* -----------------------------------------------------
+           TULIPAN INDIVIDUAL
+        ----------------------------------------------------- */
 
-            opacity:0;
+        .tulipan {
+            position: absolute;
+            width: 90px;
+            height: 230px;
+
+            opacity: 0;
 
             transform:
-                translate(var(--inicio-x),var(--inicio-y))
-                scale(.1);
+                translate(
+                    var(--inicio-x),
+                    var(--inicio-y)
+                )
+                rotate(var(--rotacion))
+                scale(0.15);
 
             transition:
-                opacity .7s ease,
-                transform 1s cubic-bezier(.2,.8,.2,1);
+                opacity 0.9s ease,
+                transform 1.5s cubic-bezier(.18, .82, .2, 1);
         }
 
-        .girasol.visible{
-            opacity:1;
+        .tulipan.visible {
+            opacity: 1;
 
             transform:
-                translate(0,0)
+                translate(0, 0)
+                rotate(var(--rotacion))
                 scale(1);
         }
 
 
-        /* =====================================================
-           PÉTALOS DEL GIRASOL
-        ===================================================== */
+        /* -----------------------------------------------------
+           TALLO
+        ----------------------------------------------------- */
 
-        .petalos{
-            position:absolute;
+        .tallo {
+            position: absolute;
+            left: 50%;
+            bottom: 50px;
 
-            left:50%;
-            top:50%;
+            width: 7px;
+            height: 160px;
 
-            width:30px;
-            height:30px;
-
-            transform:translate(-50%,-50%);
-        }
-
-        .petalo{
-            position:absolute;
-
-            width:9px;
-            height:17px;
-
-            left:10.5px;
-            top:6px;
-
-            border-radius:50%;
-
-            background:#ffd21f;
-
-            transform-origin:4.5px 9px;
-        }
-
-
-        /* 12 pétalos */
-
-        .petalo:nth-child(1){
-            transform:rotate(0deg) translateY(-7px);
-        }
-
-        .petalo:nth-child(2){
-            transform:rotate(30deg) translateY(-7px);
-        }
-
-        .petalo:nth-child(3){
-            transform:rotate(60deg) translateY(-7px);
-        }
-
-        .petalo:nth-child(4){
-            transform:rotate(90deg) translateY(-7px);
-        }
-
-        .petalo:nth-child(5){
-            transform:rotate(120deg) translateY(-7px);
-        }
-
-        .petalo:nth-child(6){
-            transform:rotate(150deg) translateY(-7px);
-        }
-
-        .petalo:nth-child(7){
-            transform:rotate(180deg) translateY(-7px);
-        }
-
-        .petalo:nth-child(8){
-            transform:rotate(210deg) translateY(-7px);
-        }
-
-        .petalo:nth-child(9){
-            transform:rotate(240deg) translateY(-7px);
-        }
-
-        .petalo:nth-child(10){
-            transform:rotate(270deg) translateY(-7px);
-        }
-
-        .petalo:nth-child(11){
-            transform:rotate(300deg) translateY(-7px);
-        }
-
-        .petalo:nth-child(12){
-            transform:rotate(330deg) translateY(-7px);
-        }
-
-
-        /* =====================================================
-           CENTRO DEL GIRASOL
-        ===================================================== */
-
-        .centro{
-            position:absolute;
-
-            left:50%;
-            top:50%;
-
-            width:11px;
-            height:11px;
-
-            transform:translate(-50%,-50%);
-
-            border-radius:50%;
+            transform: translateX(-50%);
 
             background:
-                radial-gradient(
-                    circle,
-                    #3b1800 0 30%,
-                    #6b2d00 31% 65%,
-                    #321300 66% 100%
+                linear-gradient(
+                    to right,
+                    #286c37,
+                    #4e9a54,
+                    #286c37
                 );
 
-            box-shadow:
-                0 0 0 1px #8a4b00;
+            border-radius: 10px;
         }
 
 
-        /* =====================================================
-           BRILLO
-        ===================================================== */
+        /* -----------------------------------------------------
+           HOJAS
+        ----------------------------------------------------- */
 
-        .girasol.brillo::after{
-            content:"";
+        .hoja {
+            position: absolute;
 
-            position:absolute;
+            width: 55px;
+            height: 105px;
 
-            inset:-5px;
+            bottom: 82px;
 
-            border-radius:50%;
+            background:
+                linear-gradient(
+                    120deg,
+                    #2b7739,
+                    #63aa63
+                );
 
-            background:rgba(255,220,40,.25);
+            border-radius: 100% 0 100% 0;
+        }
 
-            filter:blur(5px);
+        .hoja.izquierda {
+            left: 3px;
+            transform: rotate(-38deg);
+            transform-origin: bottom right;
+        }
 
-            z-index:-1;
+        .hoja.derecha {
+            right: 3px;
+            transform: scaleX(-1) rotate(-38deg);
+            transform-origin: bottom right;
+        }
+
+
+        /* -----------------------------------------------------
+           FLOR DEL TULIPAN
+        ----------------------------------------------------- */
+
+        .flor-tulipan {
+            position: absolute;
+            left: 50%;
+            top: 10px;
+
+            width: 74px;
+            height: 70px;
+
+            transform: translateX(-50%);
+        }
+
+        .petalo-tulipan {
+            position: absolute;
+            bottom: 0;
+
+            width: 39px;
+            height: 62px;
+
+            border-radius:
+                55% 55% 42% 42% /
+                70% 70% 35% 35%;
+
+            box-shadow:
+                inset 4px 0 8px rgba(255, 255, 255, 0.2),
+                inset -5px -5px 10px rgba(120, 0, 30, 0.12);
+        }
+
+        .petalo-tulipan:nth-child(1) {
+            left: 2px;
+            transform: rotate(-19deg);
+            z-index: 1;
+        }
+
+        .petalo-tulipan:nth-child(2) {
+            left: 18px;
+            bottom: 4px;
+            width: 42px;
+            height: 68px;
+            z-index: 3;
+        }
+
+        .petalo-tulipan:nth-child(3) {
+            right: 1px;
+            transform: rotate(19deg);
+            z-index: 2;
+        }
+
+
+        /* Colores de los tulipanes */
+
+        .rojo .petalo-tulipan {
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff5b76,
+                    #c5163d
+                );
+        }
+
+        .rosado .petalo-tulipan {
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff91ac,
+                    #d9476c
+                );
+        }
+
+        .vino .petalo-tulipan {
+            background:
+                linear-gradient(
+                    135deg,
+                    #b92c52,
+                    #75112e
+                );
+        }
+
+        .coral .petalo-tulipan {
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff7c75,
+                    #db3d4e
+                );
+        }
+
+
+        /* -----------------------------------------------------
+           ENVOLTURA DEL RAMO
+        ----------------------------------------------------- */
+
+        .envoltura {
+            position: absolute;
+            left: 50%;
+            bottom: 18px;
+
+            width: 330px;
+            height: 145px;
+
+            transform: translateX(-50%);
+
+            background:
+                linear-gradient(
+                    110deg,
+                    #f7d9df,
+                    #fff1f2 45%,
+                    #eabcc7
+                );
+
+            clip-path: polygon(
+                14% 0,
+                86% 0,
+                100% 100%,
+                0 100%
+            );
+
+            opacity: 0;
+            transform-origin: bottom center;
+            scale: 0.2;
+
+            transition:
+                opacity 1.2s ease,
+                scale 1.2s cubic-bezier(.2,.8,.2,1);
+        }
+
+        .envoltura.visible {
+            opacity: 1;
+            scale: 1;
+        }
+
+
+        /* -----------------------------------------------------
+           LINEAS DE LA ENVOLTURA
+        ----------------------------------------------------- */
+
+        .envoltura::before,
+        .envoltura::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 3px;
+            height: 100%;
+            background: rgba(170, 80, 100, 0.18);
+        }
+
+        .envoltura::before {
+            left: 35%;
+            transform: rotate(8deg);
+        }
+
+        .envoltura::after {
+            right: 35%;
+            transform: rotate(-8deg);
+        }
+
+
+        /* -----------------------------------------------------
+           CINTA
+        ----------------------------------------------------- */
+
+        .cinta {
+            position: absolute;
+            left: 50%;
+            bottom: 84px;
+
+            width: 115px;
+            height: 23px;
+
+            transform:
+                translateX(-50%)
+                rotate(-4deg);
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    #a41439,
+                    #721029
+                );
+
+            border-radius: 4px;
+
+            opacity: 0;
+            transition: opacity 0.8s ease 0.8s;
+        }
+
+        .cinta.visible {
+            opacity: 1;
+        }
+
+
+        /* -----------------------------------------------------
+           LAZO
+        ----------------------------------------------------- */
+
+        .lazo {
+            position: absolute;
+            left: 50%;
+            bottom: 69px;
+
+            width: 70px;
+            height: 50px;
+
+            transform:
+                translateX(-50%)
+                rotate(-3deg);
+
+            opacity: 0;
+
+            transition:
+                opacity 0.8s ease 1s;
+        }
+
+        .lazo.visible {
+            opacity: 1;
+        }
+
+        .lazo::before,
+        .lazo::after {
+            content: "";
+
+            position: absolute;
+            top: 5px;
+
+            width: 38px;
+            height: 35px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #cf3459,
+                    #82102e
+                );
+
+            border-radius: 70% 20% 70% 20%;
+        }
+
+        .lazo::before {
+            right: 50%;
+            transform: rotate(25deg);
+        }
+
+        .lazo::after {
+            left: 50%;
+            transform: scaleX(-1) rotate(25deg);
+        }
+
+        .lazo-centro {
+            position: absolute;
+            left: 50%;
+            top: 10px;
+
+            width: 18px;
+            height: 30px;
+
+            transform: translateX(-50%);
+
+            background: #9c1738;
+            border-radius: 50%;
+            z-index: 3;
         }
 
 
@@ -601,66 +736,85 @@
            MENSAJE FINAL
         ===================================================== */
 
-        .mensaje-final{
-            max-width:700px;
+        .mensaje-final {
+            max-width: 700px;
+            margin: 10px auto 0;
 
-            opacity:0;
+            opacity: 0;
+            transform: translateY(25px);
 
-            transform:translateY(20px);
-
-            transition:1s ease;
-
-            pointer-events:none;
+            transition:
+                opacity 1.5s ease,
+                transform 1.5s ease;
         }
 
-        .mensaje-final.visible{
-            opacity:1;
-            transform:translateY(0);
-
-            pointer-events:auto;
+        .mensaje-final.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .mensaje-final h2{
-            margin-bottom:10px;
+        .mensaje-final h2 {
+            color: #77162d;
+            font-size: 38px;
+            font-weight: normal;
+            margin-bottom: 15px;
         }
 
-        .mensaje-final p{
-            line-height:1.8;
-            font-size:17px;
-            margin-bottom:20px;
+        .mensaje-final p {
+            color: #69323c;
+            font-size: 18px;
+            line-height: 1.8;
         }
 
-        #volverVer{
-            border:none;
 
-            padding:14px 25px;
+        /* =====================================================
+           BOTON FINAL
+        ===================================================== */
 
-            border-radius:30px;
+        #volverVer {
+            margin-top: 25px;
 
-            background:#fff;
+            padding: 13px 25px;
 
-            color:#8f1028;
+            border: none;
+            border-radius: 30px;
 
-            font-family:inherit;
-            font-size:16px;
-            font-weight:bold;
+            background: #851633;
+            color: white;
 
-            cursor:pointer;
+            cursor: pointer;
 
-            opacity:0;
+            font-size: 15px;
 
-            transform:translateY(10px);
+            box-shadow:
+                0 8px 20px rgba(90, 0, 20, 0.25);
 
-            transition:.4s;
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease;
         }
 
-        #volverVer.visible{
-            opacity:1;
-            transform:translateY(0);
+        #volverVer:hover {
+            background: #a51d42;
+            transform: translateY(-3px);
         }
 
-        #volverVer:hover{
-            transform:translateY(-3px) scale(1.03);
+
+        /* =====================================================
+           INDICADOR DE TIEMPO
+        ===================================================== */
+
+        .barra-tiempo {
+            position: fixed;
+            left: 0;
+            top: 0;
+
+            height: 3px;
+            width: 0%;
+
+            background: rgba(255, 255, 255, 0.8);
+
+            z-index: 10000;
         }
 
 
@@ -668,39 +822,60 @@
            RESPONSIVE
         ===================================================== */
 
-        @media(max-width:600px){
+        @media (max-width: 700px) {
 
-            .libro{
-                width:94vw;
-                margin-top:10px;
+            .contenedor {
+                width: 95vw;
+                padding-top: 15px;
             }
 
-            .pagina{
-                padding:30px 18px;
-                min-height:600px;
+            .pagina {
+                padding: 30px 17px;
+                min-height: 620px;
             }
 
-            .portada{
-                min-height:600px;
+            .intro-corazon {
+                font-size: 75px;
             }
 
-            .polaroid{
-                width:100%;
+            .intro-texto {
+                font-size: 20px;
             }
 
-            .corazon-girasoles{
-                height:360px;
+            .portada h2 {
+                font-size: 35px;
             }
 
-            .girasol{
-                width:25px;
-                height:25px;
+            .portada p {
+                font-size: 17px;
             }
 
-            .petalos{
-                transform:
-                    translate(-50%,-50%)
-                    scale(.82);
+            .polaroid {
+                padding: 9px 9px 18px;
+            }
+
+            .texto-recuerdo {
+                font-size: 15px;
+                padding: 15px;
+            }
+
+            .ramo-tulipanes {
+                width: 100%;
+                height: 430px;
+                transform: scale(0.9);
+                transform-origin: center top;
+            }
+
+            .envoltura {
+                width: 280px;
+            }
+
+            .mensaje-final {
+                margin-top: -55px;
+            }
+
+            .mensaje-final h2 {
+                font-size: 30px;
             }
 
         }
@@ -711,208 +886,254 @@
 
 <body>
 
-
     <!-- =====================================================
-         PARTICULAS DEL FONDO
+         INTRO
     ====================================================== -->
 
-    <div class="particulas" id="particulas"></div>
+    <div id="intro">
 
+        <div class="intro-corazon">
+            ♥
+        </div>
 
-    <!-- =====================================================
-         PANTALLA INICIAL
-    ====================================================== -->
+        <div class="intro-texto">
+            Preparé algo especial para ti...
+        </div>
 
-    <div class="inicio" id="inicio">
-
-        <div class="inicio-tarjeta">
-
-            <span class="inicio-corazon">♥</span>
-
-            <div class="etiqueta">
-                Una sorpresa hecha para ti
-            </div>
-
-            <h1>
-                Los momentos que guardo contigo
-            </h1>
-
-            <button id="abrir">
-                Abrir nuestra historia
-            </button>
-
+        <div class="intro-subtexto">
+            Espera un momento ♥
         </div>
 
     </div>
 
 
     <!-- =====================================================
-         MÚSICA
-    ===================================================== -->
+         BARRA DE TIEMPO
+    ====================================================== -->
 
-    <audio id="musica" preload="auto">
-
-        <source src="cancion.mp3" type="audio/mpeg">
-
-    </audio>
+    <div class="barra-tiempo" id="barraTiempo"></div>
 
 
     <!-- =====================================================
-         TITULO
-    ===================================================== -->
+         PARTICULAS
+    ====================================================== -->
 
-    <header>
-
-        <h1>
-            Los momentos que guardo contigo
-        </h1>
-
-        <p>
-            Hay recuerdos que merecen su propio libro. Este es el nuestro.
-        </p>
-
-    </header>
+    <div class="particulas" id="particulas"></div>
 
 
     <!-- =====================================================
-         LIBRO
-    ===================================================== -->
+         CONTENEDOR PRINCIPAL
+    ====================================================== -->
 
-    <main class="libro">
+    <main class="contenedor">
 
+        <header>
 
-        <!-- =================================================
-             PORTADA
-        ================================================== -->
+            <h1 id="tituloPrincipal">
+                Los momentos que guardo contigo
+            </h1>
 
-        <section class="pagina portada" id="portada">
-
-            <div class="portada-contenido">
-
-                <div class="corazon-pequeno">
-                    ♥
-                </div>
-
-                <div class="etiqueta">
-                    Nuestra historia
-                </div>
-
-                <h2>
-                    Los momentos que guardo contigo
-                </h2>
-
-                <p>
-                    Cada fotografía guarda una parte de nuestra historia.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             PAGINA DE RECUERDO
-        ================================================== -->
-
-        <section class="pagina" id="paginaRecuerdo" hidden>
-
-            <div class="etiqueta" id="fecha">
-                El comienzo
-            </div>
-
-            <h2 id="titulo">
-                Donde empezó todo
-            </h2>
-
-            <div class="polaroid">
-
-                <img
-                    id="foto"
-                    src="foto1.png"
-                    alt="Recuerdo"
-                >
-
-                <div class="pie" id="pie">
-                    Un instante, muchas sonrisas.
-                </div>
-
-            </div>
-
-            <p
-                class="descripcion"
-                id="descripcion"
-            >
-                Nuestra primera foto juntos
+            <p id="dedicatoria">
+                Hay recuerdos que merecen su propio libro.
+                Este es el nuestro.
             </p>
 
-            <p
-                class="descripcion"
-                id="texto"
-            >
-                Quizás ese día no imaginábamos cuántos recuerdos vendrían después.
-                Hoy lo guardo como uno de mis favoritos.
-            </p>
+        </header>
 
-            <div class="temporizador">
+
+        <div class="libro">
+
+
+            <!-- =================================================
+                 PORTADA
+            ================================================== -->
+
+            <section class="pagina portada" id="portada">
+
+                <div class="portada-contenido">
+
+                    <div class="corazon">
+                        ♥
+                    </div>
+
+                    <h2>
+                        Nuestra Historia
+                    </h2>
+
+                    <div class="linea-decorativa"></div>
+
+                    <p>
+                        Una pequeña colección de momentos,
+                        recuerdos y sonrisas que quiero guardar
+                        para siempre.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PAGINAS DINAMICAS
+            ================================================== -->
+
+            <section
+                class="pagina"
+                id="paginaRecuerdo"
+                hidden
+            >
+
+                <div class="contenido-pagina">
+
+                    <div
+                        class="etiqueta"
+                        id="fecha"
+                    >
+                        El comienzo
+                    </div>
+
+                    <h2 id="tituloRecuerdo">
+                        Donde empezó todo
+                    </h2>
+
+                    <p
+                        class="descripcion"
+                        id="descripcionRecuerdo"
+                    >
+                        Nuestra primera foto juntos
+                    </p>
+
+
+                    <div class="polaroid">
+
+                        <img
+                            id="fotoRecuerdo"
+                            src="foto1.png"
+                            alt="Nuestro recuerdo"
+                        >
+
+                        <div
+                            class="pie"
+                            id="pieFoto"
+                        >
+                            Un instante, muchas sonrisas.
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="texto-recuerdo"
+                        id="textoRecuerdo"
+                    >
+                        Quizás ese día no imaginábamos
+                        cuántos recuerdos vendrían después.
+                        Hoy lo guardo como uno de mis favoritos.
+                    </div>
+
+                </div>
+
 
                 <div
-                    class="temporizador-barra"
-                    id="barra"
-                ></div>
+                    class="indicador"
+                    id="indicadorPagina"
+                >
+                    Página 1 de 5
+                </div>
 
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             PAGINA FINAL - GIRASOLES
-        ================================================== -->
-
-        <section
-            class="pagina final"
-            id="final"
-            hidden
-        >
-
-            <div class="etiqueta">
-                Y todavía quedan muchas páginas...
-            </div>
+            </section>
 
 
-            <!-- CORAZÓN FORMADO POR MUCHOS GIRASOLES -->
+            <!-- =================================================
+                 PAGINA FINAL
+            ================================================== -->
 
-            <div
-                class="corazon-girasoles"
-                id="corazonGirasoles"
-            ></div>
-
-
-            <!-- MENSAJE FINAL -->
-
-            <div
-                class="mensaje-final"
-                id="mensajeFinal"
+            <section
+                class="pagina final"
+                id="final"
+                hidden
             >
 
-                <h2>
-                    Continuará…
-                </h2>
+                <div class="etiqueta">
+                    Y todavía quedan muchas páginas...
+                </div>
 
-                <p>
-                    Porque nuestra historia todavía tiene muchas páginas por escribir. ♥
-                </p>
 
-                <button id="volverVer">
-                    Volver a ver nuestra historia ♥
-                </button>
+                <!-- =================================================
+                     RAMO DE TULIPANES
+                ================================================== -->
 
-            </div>
+                <div
+                    class="ramo-tulipanes"
+                    id="ramoTulipanes"
+                >
 
-        </section>
+                    <!-- Los tulipanes serán creados por JavaScript -->
 
+                    <div
+                        class="envoltura"
+                        id="envolturaRamo"
+                    ></div>
+
+                    <div
+                        class="cinta"
+                        id="cintaRamo"
+                    ></div>
+
+                    <div
+                        class="lazo"
+                        id="lazoRamo"
+                    >
+
+                        <div class="lazo-centro"></div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     MENSAJE
+                ================================================== -->
+
+                <div
+                    class="mensaje-final"
+                    id="mensajeFinal"
+                >
+
+                    <h2>
+                        Continuará…
+                    </h2>
+
+                    <p>
+                        Porque nuestra historia todavía tiene
+                        muchas páginas por escribir.
+                        Gracias por ser parte de mi vida. ♥
+                    </p>
+
+                    <button id="volverVer">
+                        Volver a ver nuestra historia ♥
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
 
     </main>
+
+
+    <!-- =====================================================
+         MUSICA
+    ====================================================== -->
+
+    <audio
+        id="musica"
+        src="cancion.mp3"
+        preload="auto"
+        loop
+    ></audio>
 
 
     <script>
@@ -923,11 +1144,11 @@
 
         const CONFIG = {
 
-            segundosPortada:4,
+            segundosPortada: 4,
 
-            segundosPorPagina:15,
+            segundosPorPagina: 15,
 
-            titulo:"Los momentos que guardo contigo",
+            titulo: "Los momentos que guardo contigo",
 
             dedicatoria:
                 "Hay recuerdos que merecen su propio libro. Este es el nuestro.",
@@ -935,54 +1156,63 @@
             sorpresa:
                 "Lo mejor de nuestra historia es que todavía nos quedan muchas páginas por escribir. Gracias por ser parte de mi vida. ♥",
 
-            recuerdos:[
+            recuerdos: [
 
                 {
-                    fecha:"El comienzo",
-                    titulo:"Donde empezó todo",
-                    foto:"foto1.png",
-                    descripcion:"Nuestra primera foto juntos",
-                    pie:"Un instante, muchas sonrisas.",
+                    fecha: "El comienzo",
+                    titulo: "Donde empezó todo",
+                    foto: "foto1.png",
+                    descripcion: "Nuestra primera foto juntos",
+                    pie: "Un instante, muchas sonrisas.",
                     texto:
                         "Quizás ese día no imaginábamos cuántos recuerdos vendrían después. Hoy lo guardo como uno de mis favoritos."
                 },
 
                 {
-                    fecha:"Un día especial",
-                    titulo:"Nuestra pequeña aventura",
-                    foto:"foto2.png",
-                    descripcion:"Una aventura compartida",
-                    pie:"El mejor destino: compartirlo contigo.",
+                    fecha: "Un día especial",
+                    titulo: "Nuestra pequeña aventura",
+                    foto: "foto2.png",
+                    descripcion: "Una aventura compartida",
+                    pie:
+                        "El mejor destino: compartirlo contigo.",
                     texto:
                         "No fue solo el lugar. Fueron las conversaciones, las risas y esa manera de convertir un día cualquiera en algo especial."
                 },
 
                 {
-                    fecha:"Siempre en mi memoria",
-                    titulo:"Las cosas más sencillas",
-                    foto:"foto3.png",
-                    descripcion:"Un momento que queremos recordar",
-                    pie:"De esos días que dan ganas de repetir.",
+                    fecha: "Siempre en mi memoria",
+                    titulo: "Las cosas más sencillas",
+                    foto: "foto3.png",
+                    descripcion:
+                        "Un momento que queremos recordar",
+                    pie:
+                        "De esos días que dan ganas de repetir.",
                     texto:
                         "A veces la felicidad cabe en una foto, en una conversación larga o en una risa que no se puede contener."
                 },
 
                 {
-                    fecha:"Una aventura al atardecer",
-                    titulo:"Donde el cielo guardó este momento",
-                    foto:"foto4.png",
-                    descripcion:"Un paseo a caballo durante el atardecer",
-                    pie:"Un atardecer que siempre querré recordar.",
+                    fecha: "Una aventura al atardecer",
+                    titulo:
+                        "Donde el cielo guardó este momento",
+                    foto: "foto4.png",
+                    descripcion:
+                        "Un paseo a caballo durante el atardecer",
+                    pie:
+                        "Un atardecer que siempre querré recordar.",
                     texto:
                         "El cielo cambió de colores y el tiempo pareció detenerse. Hay paisajes hermosos, pero los recuerdos son los que les dan un significado especial."
                 },
 
                 {
-                    fecha:"Un momento para nosotros",
-                    titulo:"Juntos, todo se siente especial",
-                    foto:"foto5.png",
-                    descripcion:"Un recuerdo de los dos juntos",
-                    pie:"Contigo, hasta lo cotidiano se vuelve inolvidable.",
+                    fecha: "Un momento para nosotros",
+                    titulo:
+                        "Juntos, todo se siente especial",
+                    foto: "foto5.png",
+                    descripcion:
+                        "Un recuerdo de los dos juntos",
+                    pie:
+                        "Contigo, hasta lo cotidiano se vuelve inolvidable.",
                     texto:
                         "No importa el lugar ni el momento. Cuando estamos juntos, siempre aparece una razón para sonreír y guardar una nueva página en nuestra historia."
                 }
@@ -993,17 +1223,11 @@
 
 
         /* =====================================================
-           ELEMENTOS
+           VARIABLES
         ===================================================== */
 
-        const inicio =
-            document.getElementById("inicio");
-
-        const abrir =
-            document.getElementById("abrir");
-
-        const musica =
-            document.getElementById("musica");
+        const intro =
+            document.getElementById("intro");
 
         const portada =
             document.getElementById("portada");
@@ -1011,101 +1235,104 @@
         const paginaRecuerdo =
             document.getElementById("paginaRecuerdo");
 
-        const paginaFinal =
+        const final =
             document.getElementById("final");
 
-        const fecha =
-            document.getElementById("fecha");
+        const musica =
+            document.getElementById("musica");
 
-        const titulo =
-            document.getElementById("titulo");
+        const barraTiempo =
+            document.getElementById("barraTiempo");
 
-        const foto =
-            document.getElementById("foto");
+        const tituloPrincipal =
+            document.getElementById("tituloPrincipal");
 
-        const pie =
-            document.getElementById("pie");
+        const dedicatoria =
+            document.getElementById("dedicatoria");
 
-        const descripcion =
-            document.getElementById("descripcion");
-
-        const texto =
-            document.getElementById("texto");
-
-        const barra =
-            document.getElementById("barra");
-
-        const corazonGirasoles =
-            document.getElementById("corazonGirasoles");
-
-        const mensajeFinal =
-            document.getElementById("mensajeFinal");
-
-        const volverVer =
-            document.getElementById("volverVer");
-
-
-        /* =====================================================
-           VARIABLES DE CONTROL
-        ===================================================== */
-
-        let indice = 0;
+        let paginaActual = -1;
 
         let temporizador = null;
-
-        let iniciado = false;
 
         let pausado = false;
 
         let finalizado = false;
 
+        let tiempoInicio = 0;
+
+        let tiempoRestante = 0;
+
 
         /* =====================================================
-           CREAR PARTICULAS
+           CONFIGURAR TEXTO
         ===================================================== */
 
-        function crearParticulas(){
+        tituloPrincipal.textContent =
+            CONFIG.titulo;
+
+        dedicatoria.textContent =
+            CONFIG.dedicatoria;
+
+
+        /* =====================================================
+           PARTICULAS
+        ===================================================== */
+
+        function crearParticulas() {
 
             const contenedor =
                 document.getElementById("particulas");
 
-            const simbolos = [
-                "♥",
-                "✦",
-                "•",
-                "♡"
-            ];
+            for (let i = 0; i < 35; i++) {
 
-            for(let i=0;i<35;i++){
+                const p =
+                    document.createElement("div");
 
-                const elemento =
-                    document.createElement("span");
+                p.className = "particula";
 
-                elemento.className =
-                    "particula";
+                p.textContent =
+                    Math.random() > 0.5
+                        ? "♥"
+                        : "✦";
 
-                elemento.textContent =
-                    simbolos[
-                        Math.floor(
-                            Math.random()*simbolos.length
-                        )
-                    ];
+                p.style.left =
+                    Math.random() * 100 + "%";
 
-                elemento.style.left =
-                    Math.random()*100 + "%";
+                p.style.fontSize =
+                    (8 + Math.random() * 14) + "px";
 
-                elemento.style.fontSize =
-                    (8 + Math.random()*15) + "px";
+                p.style.animationDuration =
+                    (7 + Math.random() * 9) + "s";
 
-                elemento.style.animationDuration =
-                    (8 + Math.random()*12) + "s";
+                p.style.animationDelay =
+                    (-Math.random() * 15) + "s";
 
-                elemento.style.animationDelay =
-                    (-Math.random()*15) + "s";
-
-                contenedor.appendChild(elemento);
-
+                contenedor.appendChild(p);
             }
+
+        }
+
+        crearParticulas();
+
+
+        /* =====================================================
+           MOSTRAR PORTADA
+        ===================================================== */
+
+        function mostrarPortada() {
+
+            portada.hidden = false;
+            paginaRecuerdo.hidden = true;
+            final.hidden = true;
+
+            paginaActual = -1;
+
+            barraTiempo.style.width = "0%";
+
+            iniciarTemporizador(
+                CONFIG.segundosPortada,
+                siguientePagina
+            );
 
         }
 
@@ -1114,60 +1341,80 @@
            MOSTRAR RECUERDO
         ===================================================== */
 
-        function mostrarRecuerdo(){
+        function mostrarRecuerdo(indice) {
 
-            if(indice >= CONFIG.recuerdos.length){
-
+            if (
+                indice < 0 ||
+                indice >= CONFIG.recuerdos.length
+            ) {
                 mostrarFinal();
-
                 return;
-
             }
 
             const recuerdo =
                 CONFIG.recuerdos[indice];
 
-            fecha.textContent =
-                recuerdo.fecha;
-
-            titulo.textContent =
-                recuerdo.titulo;
-
-            foto.src =
-                recuerdo.foto;
-
-            foto.alt =
-                recuerdo.descripcion;
-
-            pie.textContent =
-                recuerdo.pie;
-
-            descripcion.textContent =
-                recuerdo.descripcion;
-
-            texto.textContent =
-                recuerdo.texto;
-
             portada.hidden = true;
-
-            paginaFinal.hidden = true;
-
             paginaRecuerdo.hidden = false;
+            final.hidden = true;
 
-            barra.style.transition = "none";
+            document.getElementById("fecha")
+                .textContent = recuerdo.fecha;
 
-            barra.style.width = "0%";
+            document.getElementById("tituloRecuerdo")
+                .textContent = recuerdo.titulo;
 
-            setTimeout(()=>{
+            document.getElementById("descripcionRecuerdo")
+                .textContent = recuerdo.descripcion;
 
-                barra.style.transition =
-                    `width ${CONFIG.segundosPorPagina}s linear`;
+            document.getElementById("fotoRecuerdo")
+                .src = recuerdo.foto;
 
-                barra.style.width = "100%";
+            document.getElementById("pieFoto")
+                .textContent = recuerdo.pie;
 
-            },50);
+            document.getElementById("textoRecuerdo")
+                .textContent = recuerdo.texto;
 
-            iniciarTemporizador();
+            document.getElementById("indicadorPagina")
+                .textContent =
+                `Página ${indice + 1} de ${CONFIG.recuerdos.length}`;
+
+            barraTiempo.style.width = "0%";
+
+            iniciarTemporizador(
+                CONFIG.segundosPorPagina,
+                siguientePagina
+            );
+
+        }
+
+
+        /* =====================================================
+           SIGUIENTE PAGINA
+        ===================================================== */
+
+        function siguientePagina() {
+
+            if (finalizado || pausado) {
+                return;
+            }
+
+            paginaActual++;
+
+            if (
+                paginaActual >= CONFIG.recuerdos.length
+            ) {
+
+                mostrarFinal();
+
+            } else {
+
+                mostrarRecuerdo(
+                    paginaActual
+                );
+
+            }
 
         }
 
@@ -1176,308 +1423,360 @@
            TEMPORIZADOR
         ===================================================== */
 
-        function iniciarTemporizador(){
+        function iniciarTemporizador(
+            segundos,
+            callback
+        ) {
 
-            clearTimeout(temporizador);
+            clearInterval(temporizador);
+
+            const duracion =
+                segundos * 1000;
+
+            tiempoInicio =
+                Date.now();
+
+            tiempoRestante =
+                duracion;
+
+            barraTiempo.style.width = "0%";
 
             temporizador =
-                setTimeout(()=>{
+                setInterval(() => {
 
-                    if(!pausado){
+                    if (pausado) {
+                        return;
+                    }
 
-                        indice++;
+                    const transcurrido =
+                        Date.now() - tiempoInicio;
 
-                        mostrarRecuerdo();
+                    const porcentaje =
+                        Math.min(
+                            100,
+                            (transcurrido / duracion) * 100
+                        );
+
+                    barraTiempo.style.width =
+                        porcentaje + "%";
+
+                    if (
+                        transcurrido >= duracion
+                    ) {
+
+                        clearInterval(
+                            temporizador
+                        );
+
+                        callback();
 
                     }
 
-                },CONFIG.segundosPorPagina*1000);
+                }, 50);
 
         }
-
-
-        /* =====================================================
-           INICIAR HISTORIA
-        ===================================================== */
-
-        function iniciarHistoria(){
-
-            if(iniciado)
-                return;
-
-            iniciado = true;
-
-            inicio.classList.add("ocultar");
-
-            musica.volume = 1;
-
-            musica.currentTime = 0;
-
-            musica.play().catch(()=>{});
-
-
-            portada.hidden = false;
-
-            paginaRecuerdo.hidden = true;
-
-            paginaFinal.hidden = true;
-
-
-            setTimeout(()=>{
-
-                indice = 0;
-
-                mostrarRecuerdo();
-
-            },CONFIG.segundosPortada*1000);
-
-        }
-
-
-        /* =====================================================
-           BOTÓN ABRIR
-        ===================================================== */
-
-        abrir.addEventListener(
-            "click",
-            function(e){
-
-                e.stopPropagation();
-
-                iniciarHistoria();
-
-            }
-        );
 
 
         /* =====================================================
            PAUSAR / CONTINUAR
         ===================================================== */
 
-        document.addEventListener(
-            "click",
-            function(e){
+        function pausarHistoria() {
 
-                if(
-                    e.target === abrir ||
-                    e.target === volverVer
-                ){
-
-                    return;
-
-                }
-
-                if(!iniciado || finalizado){
-
-                    return;
-
-                }
-
-                pausado = !pausado;
-
-                if(pausado){
-
-                    clearTimeout(temporizador);
-
-                    musica.pause();
-
-                }else{
-
-                    musica.play().catch(()=>{});
-
-                    iniciarTemporizador();
-
-                }
-
-            }
-        );
-
-
-        /* =====================================================
-           CREAR CORAZÓN DE GIRASOLES
-           
-           230 GIRASOLES
-           SOLO FLORES
-           SIN HOJAS
-           SIN TALLOS
-        ===================================================== */
-
-        function crearGirasoles(){
-
-            corazonGirasoles.innerHTML = "";
-
-            const cantidad = 230;
-
-            const ancho =
-                corazonGirasoles.clientWidth;
-
-            const alto =
-                corazonGirasoles.clientHeight;
-
-
-            for(let i = 0; i < cantidad; i++){
-
-                const girasol =
-                    document.createElement("div");
-
-                girasol.className =
-                    "girasol";
-
-
-                /*
-                    Buscamos una posición
-                    dentro del corazón.
-                */
-
-                let x;
-                let y;
-
-                do{
-
-                    x =
-                        Math.random() * 2 - 1;
-
-                    y =
-                        Math.random() * 2 - 1;
-
-                }while(!dentroDelCorazon(x,y));
-
-
-                /*
-                    Posición del girasol.
-                */
-
-                const posX =
-                    ancho / 2 +
-                    x * ancho * .47;
-
-                const posY =
-                    alto / 2 +
-                    y * alto * .43;
-
-
-                girasol.style.left =
-                    (posX - 15) + "px";
-
-                girasol.style.top =
-                    (posY - 15) + "px";
-
-
-                /*
-                    Punto de partida
-                    de cada flor.
-                */
-
-                const inicioX =
-                    Math.random() * ancho - posX;
-
-                const inicioY =
-                    Math.random() * alto - posY;
-
-
-                girasol.style.setProperty(
-                    "--inicio-x",
-                    inicioX + "px"
-                );
-
-                girasol.style.setProperty(
-                    "--inicio-y",
-                    inicioY + "px"
-                );
-
-
-                /*
-                    Creamos los 12 pétalos.
-                */
-
-                const petalos =
-                    document.createElement("div");
-
-                petalos.className =
-                    "petalos";
-
-
-                for(let p = 0; p < 12; p++){
-
-                    const petalo =
-                        document.createElement("span");
-
-                    petalo.className =
-                        "petalo";
-
-                    petalos.appendChild(petalo);
-
-                }
-
-
-                /*
-                    Centro marrón.
-                */
-
-                const centro =
-                    document.createElement("div");
-
-                centro.className =
-                    "centro";
-
-
-                girasol.appendChild(petalos);
-
-                girasol.appendChild(centro);
-
-                corazonGirasoles.appendChild(girasol);
-
-
-                /*
-                    Aparición progresiva.
-                */
-
-                setTimeout(()=>{
-
-                    girasol.classList.add("visible");
-
-                }, i * 35);
-
+            if (finalizado) {
+                return;
             }
 
+            pausado = !pausado;
 
-            /*
-                Esperamos a que todos
-                los girasoles terminen.
-            */
+            if (pausado) {
 
-            const tiempoFinal =
-                cantidad * 35 + 1800;
+                clearInterval(
+                    temporizador
+                );
 
+                musica.pause();
 
-            setTimeout(()=>{
+            } else {
 
-                mensajeFinal.classList.add("visible");
+                const ancho =
+                    parseFloat(
+                        barraTiempo.style.width
+                    ) || 0;
 
-                volverVer.classList.add("visible");
+                let duracion;
 
-                bajarMusica();
+                if (paginaActual === -1) {
 
-            }, tiempoFinal);
+                    duracion =
+                        CONFIG.segundosPortada * 1000;
+
+                } else {
+
+                    duracion =
+                        CONFIG.segundosPorPagina * 1000;
+
+                }
+
+                tiempoRestante =
+                    duracion *
+                    (1 - ancho / 100);
+
+                tiempoInicio =
+                    Date.now();
+
+                clearInterval(
+                    temporizador
+                );
+
+                temporizador =
+                    setInterval(() => {
+
+                        if (pausado) {
+                            return;
+                        }
+
+                        const transcurrido =
+                            Date.now() - tiempoInicio;
+
+                        const porcentaje =
+                            ancho +
+                            (
+                                transcurrido /
+                                duracion
+                            ) *
+                            (100 - ancho);
+
+                        barraTiempo.style.width =
+                            Math.min(
+                                100,
+                                porcentaje
+                            ) + "%";
+
+                        if (
+                            transcurrido >=
+                            tiempoRestante
+                        ) {
+
+                            clearInterval(
+                                temporizador
+                            );
+
+                            siguientePagina();
+
+                        }
+
+                    }, 50);
+
+                musica.play()
+                    .catch(() => {});
+
+            }
 
         }
 
 
         /* =====================================================
-           FORMA DEL CORAZÓN
+           CREAR TULIPAN
         ===================================================== */
 
-        function dentroDelCorazon(x,y){
+        function crearTulipan(
+            clase,
+            x,
+            y,
+            rotacion,
+            retraso,
+            inicioX,
+            inicioY
+        ) {
 
-            const formula =
-                Math.pow(
-                    x*x + y*y - 1,
-                    3
-                )
-                -
-                x*x*Math.pow(y,3);
+            const tulipan =
+                document.createElement("div");
 
-            return formula <= 0;
+            tulipan.className =
+                "tulipan " + clase;
+
+            tulipan.style.left =
+                x + "px";
+
+            tulipan.style.top =
+                y + "px";
+
+            tulipan.style.setProperty(
+                "--rotacion",
+                rotacion + "deg"
+            );
+
+            tulipan.style.setProperty(
+                "--inicio-x",
+                inicioX + "px"
+            );
+
+            tulipan.style.setProperty(
+                "--inicio-y",
+                inicioY + "px"
+            );
+
+            tulipan.innerHTML = `
+
+                <div class="flor-tulipan">
+
+                    <div class="petalo-tulipan"></div>
+
+                    <div class="petalo-tulipan"></div>
+
+                    <div class="petalo-tulipan"></div>
+
+                </div>
+
+                <div class="tallo"></div>
+
+                <div class="hoja izquierda"></div>
+
+                <div class="hoja derecha"></div>
+
+            `;
+
+            document
+                .getElementById("ramoTulipanes")
+                .appendChild(tulipan);
+
+            setTimeout(() => {
+
+                tulipan.classList.add(
+                    "visible"
+                );
+
+            }, retraso);
+
+        }
+
+
+        /* =====================================================
+           CREAR RAMO
+        ===================================================== */
+
+        function crearRamoTulipanes() {
+
+            const ramo =
+                document.getElementById(
+                    "ramoTulipanes"
+                );
+
+            /* Limpiar tulipanes anteriores */
+
+            ramo
+                .querySelectorAll(".tulipan")
+                .forEach(t => t.remove());
+
+
+            /*
+                Cada objeto representa:
+
+                color
+                posición X
+                posición Y
+                rotación
+                retraso
+                movimiento inicial
+            */
+
+            const tulipanes = [
+
+                ["rojo", 330, 105, -2, 300, -150, 180],
+
+                ["rosado", 260, 125, -14, 550, -210, 200],
+
+                ["vino", 395, 115, 10, 800, 180, 220],
+
+                ["coral", 205, 150, -20, 1050, -250, 180],
+
+                ["rojo", 455, 150, 18, 1300, 260, 190],
+
+                ["rosado", 315, 65, -5, 1550, -120, 240],
+
+                ["vino", 365, 70, 8, 1800, 120, 230],
+
+                ["coral", 150, 185, -25, 2050, -300, 170],
+
+                ["rojo", 505, 185, 24, 2300, 300, 160],
+
+                ["rosado", 245, 75, -12, 2550, -190, 230],
+
+                ["rojo", 425, 70, 14, 2800, 300, 220],
+
+                ["vino", 300, 145, -3, 3050, -80, 250],
+
+                ["coral", 380, 145, 7, 3300, 100, 250],
+
+                ["rosado", 185, 125, -19, 3550, -260, 220],
+
+                ["rojo", 475, 125, 20, 3800, 270, 210],
+
+                ["vino", 335, 35, 0, 4050, -50, 260],
+
+                ["rosado", 275, 110, -7, 4300, -150, 240],
+
+                ["rojo", 400, 105, 9, 4550, 170, 250]
+
+            ];
+
+
+            tulipanes.forEach(
+                datos => crearTulipan(...datos)
+            );
+
+
+            /* Mostrar envoltura */
+
+            setTimeout(() => {
+
+                document
+                    .getElementById(
+                        "envolturaRamo"
+                    )
+                    .classList.add("visible");
+
+            }, 4800);
+
+
+            /* Mostrar cinta */
+
+            setTimeout(() => {
+
+                document
+                    .getElementById(
+                        "cintaRamo"
+                    )
+                    .classList.add("visible");
+
+            }, 5100);
+
+
+            /* Mostrar lazo */
+
+            setTimeout(() => {
+
+                document
+                    .getElementById(
+                        "lazoRamo"
+                    )
+                    .classList.add("visible");
+
+            }, 5300);
+
+
+            /* Mostrar mensaje */
+
+            setTimeout(() => {
+
+                document
+                    .getElementById(
+                        "mensajeFinal"
+                    )
+                    .classList.add("visible");
+
+            }, 6100);
 
         }
 
@@ -1486,138 +1785,215 @@
            MOSTRAR FINAL
         ===================================================== */
 
-        function mostrarFinal(){
+        function mostrarFinal() {
 
-            clearTimeout(temporizador);
-
-            paginaRecuerdo.hidden = true;
-
-            portada.hidden = true;
-
-            paginaFinal.hidden = false;
+            clearInterval(
+                temporizador
+            );
 
             finalizado = true;
 
-            pausado = false;
+            portada.hidden = true;
 
-            mensajeFinal.classList.remove("visible");
+            paginaRecuerdo.hidden = true;
 
-            volverVer.classList.remove("visible");
+            final.hidden = false;
 
-            crearGirasoles();
+            barraTiempo.style.width =
+                "100%";
+
+            crearRamoTulipanes();
+
+            bajarMusica();
 
         }
 
 
         /* =====================================================
-           BAJAR VOLUMEN DE LA MÚSICA
+           BAJAR MUSICA
         ===================================================== */
 
-        function bajarMusica(){
+        function bajarMusica() {
 
-            const duracion = 6500;
-
-            const pasos = 65;
-
-            const intervalo =
-                duracion / pasos;
-
-            let paso = 0;
-
-            const volumenInicial =
+            let volumen =
                 musica.volume;
 
+            const intervalo =
+                setInterval(() => {
 
-            const fade =
-                setInterval(()=>{
+                    volumen -= 0.05;
 
-                    paso++;
+                    if (volumen <= 0) {
 
-                    musica.volume =
-                        Math.max(
-                            0,
-                            volumenInicial *
-                            (1 - paso / pasos)
-                        );
+                        volumen = 0;
 
-
-                    if(paso >= pasos){
-
-                        clearInterval(fade);
+                        musica.volume = 0;
 
                         musica.pause();
 
                         musica.currentTime = 0;
 
-                        musica.volume = 1;
+                        clearInterval(
+                            intervalo
+                        );
+
+                    } else {
+
+                        musica.volume =
+                            volumen;
 
                     }
 
-                },intervalo);
+                }, 300);
 
         }
 
 
         /* =====================================================
-           VOLVER A VER LA HISTORIA
+           VOLVER A VER
         ===================================================== */
 
-        volverVer.addEventListener(
+        document
+            .getElementById("volverVer")
+            .addEventListener(
+                "click",
+                () => {
+
+                    clearInterval(
+                        temporizador
+                    );
+
+                    finalizado = false;
+
+                    pausado = false;
+
+                    musica.pause();
+
+                    musica.currentTime = 0;
+
+                    musica.volume = 1;
+
+                    document
+                        .getElementById(
+                            "mensajeFinal"
+                        )
+                        .classList.remove(
+                            "visible"
+                        );
+
+                    document
+                        .getElementById(
+                            "envolturaRamo"
+                        )
+                        .classList.remove(
+                            "visible"
+                        );
+
+                    document
+                        .getElementById(
+                            "cintaRamo"
+                        )
+                        .classList.remove(
+                            "visible"
+                        );
+
+                    document
+                        .getElementById(
+                            "lazoRamo"
+                        )
+                        .classList.remove(
+                            "visible"
+                        );
+
+                    document
+                        .querySelectorAll(
+                            ".tulipan"
+                        )
+                        .forEach(
+                            tulipan =>
+                                tulipan.remove()
+                        );
+
+                    paginaActual = -1;
+
+                    mostrarPortada();
+
+                    musica.play()
+                        .catch(() => {});
+
+                }
+            );
+
+
+        /* =====================================================
+           CLICK PARA PAUSAR / CONTINUAR
+        ===================================================== */
+
+        document.addEventListener(
             "click",
-            function(e){
+            function (evento) {
 
-                e.stopPropagation();
+                if (
+                    evento.target.closest(
+                        "#volverVer"
+                    )
+                ) {
+                    return;
+                }
 
-                clearTimeout(temporizador);
+                if (
+                    evento.target.closest(
+                        "button"
+                    )
+                ) {
+                    return;
+                }
 
-                finalizado = false;
+                if (finalizado) {
+                    return;
+                }
 
-                pausado = false;
-
-                iniciado = true;
-
-                indice = 0;
-
-                mensajeFinal.classList.remove("visible");
-
-                volverVer.classList.remove("visible");
-
-                corazonGirasoles.innerHTML = "";
-
-                paginaFinal.hidden = true;
-
-                portada.hidden = false;
-
-                musica.volume = 1;
-
-                musica.currentTime = 0;
-
-                musica.play().catch(()=>{});
-
-
-                setTimeout(()=>{
-
-                    mostrarRecuerdo();
-
-                },CONFIG.segundosPortada*1000);
+                pausarHistoria();
 
             }
         );
 
 
         /* =====================================================
-           PREPARAR PÁGINA
+           INICIAR EXPERIENCIA
         ===================================================== */
 
-        crearParticulas();
+        window.addEventListener(
+            "load",
+            () => {
 
-        paginaRecuerdo.hidden = true;
+                setTimeout(() => {
 
-        paginaFinal.hidden = true;
+                    intro.classList.add(
+                        "ocultar"
+                    );
+
+                    setTimeout(() => {
+
+                        intro.style.display =
+                            "none";
+
+                        mostrarPortada();
+
+                        musica.volume = 1;
+
+                        musica.play()
+                            .catch(() => {});
+
+                    }, 1000);
+
+                }, 4000);
+
+            }
+        );
 
     </script>
 
 </body>
 
 </html>
-```
