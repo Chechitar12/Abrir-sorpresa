@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 
@@ -18,8 +19,8 @@
 ========================================================= */
 
 :root{
-    --rojo:#8f1028;
-    --rojo-oscuro:#420815;
+    --rojo:#d81b3d;
+    --rojo-oscuro:#9f1230;
     --rosa:#ffd4dc;
     --blanco:#ffffff;
 }
@@ -42,27 +43,7 @@ body{
 
     font-family:Georgia,serif;
 
-    background:#650b1d;
-
-    background-image:
-
-        radial-gradient(
-            circle at 15% 5%,
-            #d94560 0,
-            transparent 36%
-        ),
-
-        radial-gradient(
-            circle at 90% 90%,
-            #a91535 0,
-            transparent 42%
-        ),
-
-        linear-gradient(
-            145deg,
-            #8f1028,
-            #420815
-        );
+    background:#d81b3d;
 }
 
 
@@ -86,19 +67,7 @@ body{
 
     padding:20px;
 
-    background:
-
-        radial-gradient(
-            circle at 50% 15%,
-            #df4864 0,
-            transparent 38%
-        ),
-
-        linear-gradient(
-            145deg,
-            #a71535,
-            #4a0717
-        );
+    background:#d81b3d;
 
     transition:
         opacity .8s ease,
@@ -122,15 +91,14 @@ body{
 
     text-align:center;
 
-    background:#6c0b20dd;
+    background:#d81b3d;
 
     border:1px solid white;
 
     border-radius:20px;
 
     box-shadow:
-
-        0 25px 80px #210008a8,
+        0 25px 80px #7a071c88,
 
         inset 0 0 45px #ffffff12;
 }
@@ -178,7 +146,7 @@ header{
     color:white;
 
     text-shadow:
-        0 2px 8px #35000c;
+        0 2px 8px #7a071c;
 }
 
 .etiqueta{
@@ -196,7 +164,7 @@ header{
     color:#ffe5ea;
 
     text-shadow:
-        0 2px 6px #3d0613;
+        0 2px 6px #7a071c;
 }
 
 h1{
@@ -251,7 +219,7 @@ button{
 
     background:white;
 
-    color:#8b1430;
+    color:#b31332;
 
     cursor:pointer;
 
@@ -274,7 +242,7 @@ button:hover{
     transform:translateY(-2px);
 
     box-shadow:
-        0 8px 20px #30000c55;
+        0 8px 20px #6d071855;
 }
 
 button:focus-visible{
@@ -303,7 +271,7 @@ main{
 
     position:relative;
 
-    background:#99152f;
+    background:#d81b3d;
 
     border:1px solid #ffb9c7;
 
@@ -312,11 +280,11 @@ main{
 
     box-shadow:
 
-        8px 8px 0 #740d23,
+        8px 8px 0 #b31332,
 
-        12px 12px 0 #4d0717,
+        12px 12px 0 #8e0c27,
 
-        0 30px 80px #21000888;
+        0 30px 80px #65051888;
 
     overflow:hidden;
 }
@@ -358,19 +326,7 @@ main{
 
     color:white;
 
-    background:
-
-        radial-gradient(
-            circle at 85% 10%,
-            #d13a56 0,
-            transparent 35%
-        ),
-
-        linear-gradient(
-            145deg,
-            #a71634,
-            #6f0c22
-        );
+    background:#d81b3d;
 
     animation:
         entrada .45s ease;
@@ -416,19 +372,7 @@ main{
 
     min-height:580px;
 
-    background:
-
-        radial-gradient(
-            circle at 20% 12%,
-            #e04c67 0,
-            transparent 38%
-        ),
-
-        linear-gradient(
-            145deg,
-            #aa1838,
-            #59091c
-        );
+    background:#d81b3d;
 
     border:12px double #ffd2da;
 }
@@ -449,22 +393,18 @@ main{
 
     position:relative;
 
-    background:white;
+    background:transparent;
 
-    padding:
-        12px 12px 28px;
+    padding:0;
 
     box-shadow:
-        0 15px 38px #35000c99;
+        0 15px 38px #65051899;
+
+    width:min(560px,100%);
 
     max-width:560px;
 
     margin:22px auto;
-
-    /*
-       IMPORTANTE:
-       EL MARCO YA NO SE INCLINA
-    */
 
     transform:none;
 
@@ -473,6 +413,10 @@ main{
     transition:
         transform .25s ease,
         box-shadow .25s ease;
+
+    overflow:hidden;
+
+    border-radius:12px;
 }
 
 .polaroid:hover{
@@ -480,7 +424,7 @@ main{
     transform:scale(1.01);
 
     box-shadow:
-        0 18px 45px #35000cbb;
+        0 18px 45px #650518bb;
 }
 
 .polaroid img{
@@ -489,13 +433,19 @@ main{
 
     width:100%;
 
+    height:auto;
+
     aspect-ratio:4/3;
 
     object-fit:cover;
 
-    object-position:center;
+    object-position:center center;
 
-    background:#eee;
+    background:#d81b3d;
+
+    margin:0;
+
+    padding:0;
 }
 
 .pie-foto{
@@ -504,11 +454,14 @@ main{
 
     font-size:14px;
 
-    margin:12px 0 0;
+    margin:0;
 
-    color:#6d1830;
+    padding:12px 8px;
 
-    text-shadow:none;
+    color:white;
+
+    text-shadow:
+        0 2px 5px #650518;
 }
 
 .ilustracion{
@@ -519,14 +472,9 @@ main{
 
     place-content:center;
 
-    background:
-        linear-gradient(
-            150deg,
-            #d8d6c8,
-            #f2dcc9
-        );
+    background:#d81b3d;
 
-    color:#71695f;
+    color:white;
 
     font-size:72px;
 }
@@ -579,10 +527,9 @@ main{
 }
 
 
-/*
-   Las animaciones se aplican SOLO a la imagen.
-   Así el marco siempre permanece derecho.
-*/
+/* =========================================================
+   ANIMACIONES DE LAS FOTOS
+========================================================= */
 
 @keyframes fotoCentro{
 
@@ -700,7 +647,7 @@ main{
 
     border-radius:30px;
 
-    background:#550817ee;
+    background:#8f1028ee;
 
     color:white;
 
@@ -737,7 +684,7 @@ main{
     text-align:center;
 
     text-shadow:
-        0 2px 6px #35000c;
+        0 2px 6px #650518;
 }
 
 .progreso{
@@ -782,7 +729,7 @@ main{
     margin:25px 0;
 
     text-shadow:
-        0 2px 6px #35000c;
+        0 2px 6px #650518;
 }
 
 
@@ -840,22 +787,24 @@ main{
 
 
 /* =========================================================
-   ZONA DE GIRASOLES
+   OSITO FINAL
 ========================================================= */
 
-.girasoles{
+.osito-final{
 
     position:relative;
 
-    width:
-        min(620px,100%);
+    width:min(620px,100%);
 
-    height:410px;
+    height:430px;
 
-    margin:
-        10px auto 0;
+    margin:10px auto 0;
 
-    display:block;
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
 
     overflow:visible;
 
@@ -865,399 +814,518 @@ main{
         opacity .5s ease;
 }
 
-.girasoles.visible{
+.osito-final.visible{
 
     opacity:1;
 }
 
 
 /* =========================================================
-   GIRASOL INDIVIDUAL
+   OSO
 ========================================================= */
 
-.girasol{
+.oso{
+
+    position:relative;
+
+    width:220px;
+
+    height:310px;
+
+    animation:
+        movimientoOso 2.5s ease-in-out infinite;
+
+    z-index:5;
+}
+
+
+/* =========================================================
+   CABEZA
+========================================================= */
+
+.cabeza-oso{
 
     position:absolute;
 
-    width:85px;
+    left:50%;
 
-    height:300px;
+    top:20px;
+
+    width:180px;
+
+    height:165px;
+
+    transform:translateX(-50%);
+
+    background:#b97845;
+
+    border-radius:50%;
+
+    box-shadow:
+        inset -12px -12px 0 #9e6038,
+        0 10px 25px #65051866;
+
+    z-index:3;
+}
+
+
+/* =========================================================
+   OREJAS
+========================================================= */
+
+.oreja{
+
+    position:absolute;
+
+    width:65px;
+
+    height:65px;
+
+    top:5px;
+
+    background:#a8663d;
+
+    border-radius:50%;
+
+    z-index:1;
+}
+
+.oreja.izquierda{
+
+    left:18px;
+}
+
+.oreja.derecha{
+
+    right:18px;
+}
+
+.oreja::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:38px;
+
+    height:38px;
+
+    top:13px;
+
+    left:13px;
+
+    background:#e5a27e;
+
+    border-radius:50%;
+}
+
+
+/* =========================================================
+   OJOS
+========================================================= */
+
+.ojo{
+
+    position:absolute;
+
+    top:62px;
+
+    width:13px;
+
+    height:17px;
+
+    background:#24120e;
+
+    border-radius:50%;
+
+    animation:
+        parpadeo 4s infinite;
+}
+
+.ojo.izquierdo{
+
+    left:53px;
+}
+
+.ojo.derecho{
+
+    right:53px;
+}
+
+
+/* =========================================================
+   HOCICO
+========================================================= */
+
+.hocico{
+
+    position:absolute;
+
+    left:50%;
+
+    top:85px;
+
+    width:75px;
+
+    height:60px;
+
+    transform:translateX(-50%);
+
+    background:#e8aa88;
+
+    border-radius:50%;
+}
+
+.nariz{
+
+    position:absolute;
+
+    left:50%;
+
+    top:13px;
+
+    width:25px;
+
+    height:17px;
+
+    transform:translateX(-50%);
+
+    background:#3a1c17;
+
+    border-radius:50%;
+}
+
+.boca{
+
+    position:absolute;
+
+    left:50%;
+
+    top:27px;
+
+    width:25px;
+
+    height:13px;
+
+    transform:translateX(-50%);
+
+    border-bottom:3px solid #3a1c17;
+
+    border-radius:50%;
+}
+
+
+/* =========================================================
+   CUERPO
+========================================================= */
+
+.cuerpo-oso{
+
+    position:absolute;
 
     left:50%;
 
     bottom:15px;
 
-    transform-origin:
-        bottom center;
+    width:150px;
+
+    height:145px;
+
+    transform:translateX(-50%);
+
+    background:#b97845;
+
+    border-radius:50px 50px 40px 40px;
+
+    box-shadow:
+        inset -10px -10px 0 #9e6038,
+        0 10px 25px #65051855;
+
+    z-index:2;
+}
+
+
+/* =========================================================
+   BRAZOS
+========================================================= */
+
+.brazo{
+
+    position:absolute;
+
+    top:30px;
+
+    width:55px;
+
+    height:100px;
+
+    background:#a8663d;
+
+    border-radius:50px;
+}
+
+.brazo.izquierdo{
+
+    left:-30px;
+
+    transform:rotate(25deg);
+}
+
+.brazo.derecho{
+
+    right:-30px;
+
+    transform:rotate(-25deg);
+}
+
+
+/* =========================================================
+   CORAZÓN DEL OSO
+========================================================= */
+
+.corazon-oso{
+
+    position:absolute;
+
+    left:50%;
+
+    top:43px;
+
+    transform:translateX(-50%);
+
+    font-size:48px;
+
+    animation:
+        latidoOso 1.3s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   PIES
+========================================================= */
+
+.pie-oso{
+
+    position:absolute;
+
+    bottom:0;
+
+    width:65px;
+
+    height:48px;
+
+    background:#a8663d;
+
+    border-radius:50%;
+
+    z-index:1;
+}
+
+.pie-oso.izquierdo{
+
+    left:38px;
+}
+
+.pie-oso.derecho{
+
+    right:38px;
+}
+
+
+/* =========================================================
+   ANIMACIÓN DEL OSO
+========================================================= */
+
+@keyframes movimientoOso{
+
+    0%,100%{
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+    }
+
+    25%{
+
+        transform:
+            translateY(-8px)
+            rotate(-2deg);
+    }
+
+    50%{
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+    }
+
+    75%{
+
+        transform:
+            translateY(-8px)
+            rotate(2deg);
+    }
+}
+
+@keyframes parpadeo{
+
+    0%,45%,100%{
+        transform:scaleY(1);
+    }
+
+    47%,50%{
+        transform:scaleY(.1);
+    }
+}
+
+@keyframes latidoOso{
+
+    0%,100%{
+
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+
+    50%{
+
+        transform:
+            translateX(-50%)
+            scale(1.2);
+    }
+}
+
+
+/* =========================================================
+   CORAZONES FLOTANDO
+========================================================= */
+
+.corazones{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:10;
+}
+
+.corazones span{
+
+    position:absolute;
+
+    font-size:28px;
 
     opacity:0;
 
     animation:
-        crecerGirasol
-        2.2s
-        cubic-bezier(.2,.75,.2,1)
-        forwards;
+        corazonesFlotando 4s ease-in-out infinite;
 }
 
+.corazones span:nth-child(1){
 
-/*
-   POSICIONES DEL CORAZÓN
+    left:15%;
 
-             🌻       🌻
-          🌻             🌻
-        🌻                 🌻
-         🌻               🌻
-            🌻         🌻
-               🌻 🌻
-*/
+    bottom:30px;
 
-.girasol:nth-child(1){
-
-    --x:-180px;
-
-    --y:-125px;
-
-    --r:-28deg;
-
-    animation-delay:.15s;
+    animation-delay:.2s;
 }
 
-.girasol:nth-child(2){
+.corazones span:nth-child(2){
 
-    --x:-105px;
+    left:27%;
 
-    --y:-175px;
-
-    --r:-15deg;
-
-    animation-delay:.45s;
-}
-
-.girasol:nth-child(3){
-
-    --x:-25px;
-
-    --y:-205px;
-
-    --r:-5deg;
-
-    animation-delay:.75s;
-}
-
-.girasol:nth-child(4){
-
-    --x:55px;
-
-    --y:-195px;
-
-    --r:8deg;
+    bottom:90px;
 
     animation-delay:1s;
 }
 
-.girasol:nth-child(5){
+.corazones span:nth-child(3){
 
-    --x:130px;
+    left:38%;
 
-    --y:-150px;
+    bottom:20px;
 
-    --r:18deg;
-
-    animation-delay:1.25s;
+    animation-delay:1.8s;
 }
 
-.girasol:nth-child(6){
+.corazones span:nth-child(4){
 
-    --x:-110px;
+    right:35%;
 
-    --y:-65px;
+    bottom:80px;
 
-    --r:-12deg;
+    animation-delay:.6s;
+}
+
+.corazones span:nth-child(5){
+
+    right:22%;
+
+    bottom:25px;
 
     animation-delay:1.5s;
 }
 
-.girasol:nth-child(7){
+.corazones span:nth-child(6){
 
-    --x:105px;
+    right:12%;
 
-    --y:-65px;
+    bottom:120px;
 
-    --r:12deg;
-
-    animation-delay:1.75s;
+    animation-delay:2.2s;
 }
 
-.girasol:nth-child(8){
+.corazones span:nth-child(7){
 
-    --x:-45px;
+    left:45%;
 
-    --y:-5px;
+    bottom:150px;
 
-    --r:-8deg;
-
-    animation-delay:2s;
+    animation-delay:2.8s;
 }
 
-.girasol:nth-child(9){
+.corazones span:nth-child(8){
 
-    --x:40px;
+    right:45%;
 
-    --y:-5px;
+    bottom:170px;
 
-    --r:8deg;
-
-    animation-delay:2.25s;
+    animation-delay:3.2s;
 }
 
-@keyframes crecerGirasol{
+@keyframes corazonesFlotando{
 
     0%{
 
         opacity:0;
 
         transform:
-            translate(
-                0,
-                100px
-            )
-            rotate(0deg)
-            scale(.05);
+            translateY(40px)
+            scale(.5)
+            rotate(-15deg);
     }
 
-    45%{
+    20%{
 
         opacity:1;
-
-        transform:
-            translate(
-                var(--x),
-                calc(var(--y) + 20px)
-            )
-            rotate(var(--r))
-            scale(.65);
     }
 
-    75%{
+    70%{
 
-        transform:
-            translate(
-                var(--x),
-                calc(var(--y) - 8px)
-            )
-            rotate(var(--r))
-            scale(1.08);
+        opacity:1;
     }
 
     100%{
 
-        opacity:1;
+        opacity:0;
 
         transform:
-            translate(
-                var(--x),
-                var(--y)
-            )
-            rotate(var(--r))
-            scale(1);
+            translateY(-180px)
+            scale(1.2)
+            rotate(15deg);
     }
-}
-
-
-/* =========================================================
-   TALLO
-========================================================= */
-
-.tallo{
-
-    position:absolute;
-
-    left:50%;
-
-    bottom:0;
-
-    width:7px;
-
-    height:185px;
-
-    transform:
-        translateX(-50%);
-
-    border-radius:10px;
-
-    background:
-        linear-gradient(
-            to right,
-            #28551d,
-            #57943b,
-            #28551d
-        );
-}
-
-
-/* =========================================================
-   HOJAS
-========================================================= */
-
-.hoja{
-
-    position:absolute;
-
-    width:55px;
-
-    height:26px;
-
-    background:#4f8b35;
-
-    border-radius:
-        100% 0 100% 0;
-}
-
-.hoja.izquierda{
-
-    left:
-        calc(50% - 48px);
-
-    bottom:75px;
-
-    transform:
-        rotate(25deg);
-}
-
-.hoja.derecha{
-
-    right:
-        calc(50% - 48px);
-
-    bottom:115px;
-
-    transform:
-        rotate(155deg);
-}
-
-
-/* =========================================================
-   CABEZA DEL GIRASOL
-========================================================= */
-
-.cabeza{
-
-    position:absolute;
-
-    left:50%;
-
-    top:0;
-
-    width:90px;
-
-    height:90px;
-
-    transform:
-        translateX(-50%);
-}
-
-
-/* =========================================================
-   PÉTALOS
-========================================================= */
-
-.petalo{
-
-    position:absolute;
-
-    left:50%;
-
-    top:50%;
-
-    width:29px;
-
-    height:52px;
-
-    margin-left:-14.5px;
-
-    margin-top:-26px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #ffe45b,
-            #efa600
-        );
-
-    border-radius:
-        50% 50% 45% 45%;
-
-    transform-origin:
-        center 45px;
-
-    box-shadow:
-        0 2px 5px #5b320044;
-}
-
-.petalo:nth-child(1){
-    transform:rotate(0deg);
-}
-
-.petalo:nth-child(2){
-    transform:rotate(45deg);
-}
-
-.petalo:nth-child(3){
-    transform:rotate(90deg);
-}
-
-.petalo:nth-child(4){
-    transform:rotate(135deg);
-}
-
-.petalo:nth-child(5){
-    transform:rotate(180deg);
-}
-
-.petalo:nth-child(6){
-    transform:rotate(225deg);
-}
-
-.petalo:nth-child(7){
-    transform:rotate(270deg);
-}
-
-.petalo:nth-child(8){
-    transform:rotate(315deg);
-}
-
-
-/* =========================================================
-   CENTRO DEL GIRASOL
-========================================================= */
-
-.centro{
-
-    position:absolute;
-
-    left:50%;
-
-    top:50%;
-
-    width:38px;
-
-    height:38px;
-
-    transform:
-        translate(-50%,-50%);
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            #5c3015 0,
-            #7c4419 45%,
-            #3e200d 100%
-        );
-
-    box-shadow:
-        inset 0 0 0 4px #4c280f55;
 }
 
 
@@ -1304,7 +1372,7 @@ main{
     color:white;
 
     text-shadow:
-        0 3px 10px #3d0613;
+        0 3px 10px #650518;
 }
 
 .mensaje-final p{
@@ -1319,7 +1387,7 @@ main{
     color:white;
 
     text-shadow:
-        0 2px 7px #3d0613;
+        0 2px 7px #650518;
 }
 
 .continuara{
@@ -1335,7 +1403,7 @@ main{
     letter-spacing:2px;
 
     text-shadow:
-        0 2px 8px #3d0613;
+        0 2px 8px #650518;
 }
 
 
@@ -1354,10 +1422,10 @@ main{
 
     background:white;
 
-    color:#8b1430;
+    color:#b31332;
 
     box-shadow:
-        0 8px 25px #30000c66;
+        0 8px 25px #65051866;
 }
 
 #verFinal:hover{
@@ -1424,7 +1492,7 @@ main{
             35px 15px;
     }
 
-    .girasoles{
+    .osito-final{
 
         height:380px;
 
@@ -1471,7 +1539,7 @@ main{
             45px 22px;
     }
 
-    .girasoles{
+    .osito-final{
 
         transform:
             scale(.62);
@@ -1500,7 +1568,7 @@ main{
 @media(prefers-reduced-motion:reduce){
 
     .pagina,
-    .girasol,
+    .oso,
     .inicio-corazon{
 
         animation:none;
@@ -1752,13 +1820,90 @@ main{
 
 
             <!-- =================================================
-                 GIRASOLES
+                 OSITO FINAL
             ================================================== -->
 
             <div
-                class="girasoles"
-                id="girasoles"
+                class="osito-final"
+                id="ositoFinal"
                 hidden>
+
+                <div class="corazones">
+
+                    <span>❤️</span>
+                    <span>💕</span>
+                    <span>❤️</span>
+                    <span>💗</span>
+                    <span>❤️</span>
+                    <span>💕</span>
+                    <span>💖</span>
+                    <span>❤️</span>
+
+                </div>
+
+
+                <div class="oso">
+
+                    <div
+                        class="oreja izquierda">
+                    </div>
+
+                    <div
+                        class="oreja derecha">
+                    </div>
+
+
+                    <div class="cabeza-oso">
+
+                        <div
+                            class="ojo izquierdo">
+                        </div>
+
+                        <div
+                            class="ojo derecho">
+                        </div>
+
+
+                        <div class="hocico">
+
+                            <div class="nariz"></div>
+
+                            <div class="boca"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="cuerpo-oso">
+
+                        <div
+                            class="brazo izquierdo">
+                        </div>
+
+                        <div
+                            class="brazo derecho">
+                        </div>
+
+                        <div class="corazon-oso">
+
+                            ❤️
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="pie-oso izquierdo">
+                    </div>
+
+                    <div
+                        class="pie-oso derecho">
+                    </div>
+
+                </div>
+
             </div>
 
 
@@ -2025,8 +2170,8 @@ const contador =
 const avance =
     document.getElementById("avance");
 
-const girasoles =
-    document.getElementById("girasoles");
+const ositoFinal =
+    document.getElementById("ositoFinal");
 
 const mensajeFinal =
     document.getElementById("mensajeFinal");
@@ -2260,11 +2405,19 @@ function mostrar(indice){
     finalIntro.hidden =
         true;
 
-    girasoles.hidden =
+    ositoFinal.hidden =
         true;
 
     mensajeFinal.hidden =
         true;
+
+    ositoFinal.classList.remove(
+        "visible"
+    );
+
+    mensajeFinal.classList.remove(
+        "visible"
+    );
 
     marco.hidden =
         false;
@@ -2425,13 +2578,13 @@ function mostrarFinal(){
     finalIntro.hidden =
         false;
 
-    girasoles.hidden =
+    ositoFinal.hidden =
         true;
 
     mensajeFinal.hidden =
         true;
 
-    girasoles.classList.remove(
+    ositoFinal.classList.remove(
         "visible"
     );
 
@@ -2473,27 +2626,29 @@ function iniciarFinal(){
     finalIntro.hidden =
         true;
 
-    girasoles.innerHTML =
-        "";
-
     mensajeFinal.hidden =
         true;
 
-    formarGirasoles();
+    sorpresaFinal.textContent =
+        CONFIG.sorpresa;
 
-    girasoles.hidden =
+
+    /*
+       Mostramos el osito.
+    */
+
+    ositoFinal.hidden =
         false;
 
-    void girasoles.offsetWidth;
+    void ositoFinal.offsetWidth;
 
-    girasoles.classList.add(
+    ositoFinal.classList.add(
         "visible"
     );
 
 
     /*
-       Los girasoles tardan aproximadamente
-       4.5 segundos en formar el corazón.
+       Después aparece el mensaje.
     */
 
     setTimeout(
@@ -2509,12 +2664,12 @@ function iniciarFinal(){
             );
 
         },
-        4800
+        3500
     );
 
 
     /*
-       Cuando termina toda la animación,
+       Cuando termina la animación
        detenemos la canción.
     */
 
@@ -2533,148 +2688,6 @@ function iniciarFinal(){
         },
         7200
     );
-}
-
-
-/* =========================================================
-   FORMAR GIRASOLES
-========================================================= */
-
-function formarGirasoles(){
-
-    girasoles.innerHTML =
-        "";
-
-
-    for(
-        let i=0;
-        i<9;
-        i++
-    ){
-
-        const girasol =
-            document.createElement(
-                "div"
-            );
-
-        girasol.className =
-            "girasol";
-
-
-        /*
-           Tallo
-        */
-
-        const tallo =
-            document.createElement(
-                "div"
-            );
-
-        tallo.className =
-            "tallo";
-
-
-        /*
-           Hojas
-        */
-
-        const hojaIzquierda =
-            document.createElement(
-                "div"
-            );
-
-        hojaIzquierda.className =
-            "hoja izquierda";
-
-
-        const hojaDerecha =
-            document.createElement(
-                "div"
-            );
-
-        hojaDerecha.className =
-            "hoja derecha";
-
-
-        /*
-           Cabeza
-        */
-
-        const cabeza =
-            document.createElement(
-                "div"
-            );
-
-        cabeza.className =
-            "cabeza";
-
-
-        /*
-           Pétalos
-        */
-
-        for(
-            let j=0;
-            j<8;
-            j++
-        ){
-
-            const petalo =
-                document.createElement(
-                    "div"
-                );
-
-            petalo.className =
-                "petalo";
-
-            cabeza.appendChild(
-                petalo
-            );
-        }
-
-
-        /*
-           Centro
-        */
-
-        const centro =
-            document.createElement(
-                "div"
-            );
-
-        centro.className =
-            "centro";
-
-        cabeza.appendChild(
-            centro
-        );
-
-
-        /*
-           Construcción
-        */
-
-        girasol.appendChild(
-            tallo
-        );
-
-        girasol.appendChild(
-            hojaIzquierda
-        );
-
-        girasol.appendChild(
-            hojaDerecha
-        );
-
-        girasol.appendChild(
-            cabeza
-        );
-
-
-        girasoles.appendChild(
-            girasol
-        );
-    }
 }
 
 
@@ -2852,3 +2865,4 @@ crearParticulas();
 </body>
 
 </html>
+```
