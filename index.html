@@ -21,10 +21,6 @@
             overflow-x: hidden;
         }
 
-        /* =========================
-           PORTADA
-        ========================= */
-
         .portada {
             position: fixed;
             inset: 0;
@@ -88,10 +84,6 @@
             background: #6d5244;
         }
 
-        /* =========================
-           LIBRO
-        ========================= */
-
         .libro {
             min-height: 100vh;
             padding: 35px 20px;
@@ -145,10 +137,6 @@
             }
         }
 
-        /* =========================
-           ENCABEZADO
-        ========================= */
-
         .encabezado {
             text-align: center;
             margin-bottom: 35px;
@@ -174,10 +162,6 @@
             background: #b9957f;
             margin: auto;
         }
-
-        /* =========================
-           FOTO
-        ========================= */
 
         .foto-contenedor {
             width: 100%;
@@ -220,10 +204,6 @@
             color: #8c7669;
         }
 
-        /* =========================
-           TEXTO
-        ========================= */
-
         .descripcion {
             max-width: 760px;
             margin: 0 auto;
@@ -241,10 +221,6 @@
             line-height: 1.9;
             color: #5e5048;
         }
-
-        /* =========================
-           PAGINA FINAL
-        ========================= */
 
         .final {
             min-height: 560px;
@@ -274,10 +250,6 @@
             line-height: 2;
             color: #66544a;
         }
-
-        /* =========================
-           CONTROLES
-        ========================= */
 
         .controles {
             display: flex;
@@ -310,10 +282,6 @@
             text-align: center;
         }
 
-        /* =========================
-           MUSICA
-        ========================= */
-
         .indicador-musica {
             position: fixed;
             right: 20px;
@@ -334,10 +302,6 @@
         .indicador-musica.pausada {
             opacity: .55;
         }
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
 
         @media (max-width: 700px) {
 
@@ -375,9 +339,7 @@
 
 <body>
 
-    <!-- =========================================
-         PORTADA
-    ========================================== -->
+    <!-- PORTADA -->
 
     <section class="portada" id="portada">
 
@@ -401,16 +363,11 @@
     </section>
 
 
-    <!-- =========================================
-         LIBRO
-    ========================================== -->
+    <!-- LIBRO -->
 
     <main class="libro">
 
         <div class="hoja" id="hoja">
-
-
-            <!-- PAGINAS DINAMICAS -->
 
             <section class="pagina activa" id="pagina">
 
@@ -471,9 +428,7 @@
             </section>
 
 
-            <!-- =================================
-                 PAGINA FINAL
-            ================================== -->
+            <!-- PAGINA FINAL -->
 
             <section class="pagina final" id="paginaFinal">
 
@@ -496,17 +451,11 @@
     </main>
 
 
-    <!-- =========================================
-         MUSICA
-         CORREGIDO:
-         antes: musica/cancion.mp3
-         ahora: cancion.mp3
-    ========================================== -->
+    <!-- MUSICA -->
 
     <audio
         id="musica"
         loop
-        autoplay
         preload="auto">
 
         <source
@@ -555,11 +504,6 @@
 
                     titulo: "Donde empezó todo",
 
-                    /*
-                       CORREGIDO:
-                       antes: images/foto1.png
-                       ahora: foto1.png
-                    */
                     foto: "foto1.png",
 
                     descripcion: "Nuestra primera foto juntos",
@@ -570,15 +514,11 @@
                         "Quizás ese día no imaginábamos cuántos recuerdos vendrían después. Hoy lo guardo como uno de mis favoritos."
                 },
 
-
                 {
                     fecha: "Un día especial",
 
                     titulo: "Nuestra pequeña aventura",
 
-                    /*
-                       CORREGIDO
-                    */
                     foto: "foto2.png",
 
                     descripcion: "Una aventura compartida",
@@ -590,15 +530,11 @@
                         "No fue solo el lugar. Fueron las conversaciones, las risas y esa manera de convertir un día cualquiera en algo especial."
                 },
 
-
                 {
                     fecha: "Siempre en mi memoria",
 
                     titulo: "Las cosas más sencillas",
 
-                    /*
-                       CORREGIDO
-                    */
                     foto: "foto3.png",
 
                     descripcion:
@@ -611,16 +547,12 @@
                         "A veces la felicidad cabe en una foto, en una conversación larga o en una risa que no se puede contener."
                 },
 
-
                 {
                     fecha: "Una aventura al atardecer",
 
                     titulo:
                         "Donde el cielo guardó este momento",
 
-                    /*
-                       CORREGIDO
-                    */
                     foto: "foto4.png",
 
                     descripcion:
@@ -633,16 +565,12 @@
                         "El cielo cambió de colores y el tiempo pareció detenerse. Hay paisajes hermosos, pero los recuerdos son los que les dan un significado especial."
                 },
 
-
                 {
                     fecha: "Un momento para nosotros",
 
                     titulo:
                         "Juntos, todo se siente especial",
 
-                    /*
-                       CORREGIDO
-                    */
                     foto: "foto5.png",
 
                     descripcion:
@@ -724,8 +652,6 @@
 
         let intervalo = null;
 
-        let musicaActiva = false;
-
 
         /* =========================================
            MOSTRAR FOTO
@@ -737,9 +663,16 @@
 
             ilustracion.classList.remove("mostrar");
 
+            /*
+             * La ruta ahora corresponde exactamente
+             * al lugar donde están las imágenes
+             * dentro del repositorio.
+             */
+
             foto.src = recuerdo.foto;
 
             foto.alt = recuerdo.descripcion;
+
 
             foto.onload = function () {
 
@@ -752,8 +685,8 @@
 
             foto.onerror = function () {
 
-                console.warn(
-                    "No se pudo cargar:",
+                console.error(
+                    "ERROR: No se pudo cargar la imagen:",
                     recuerdo.foto
                 );
 
@@ -925,21 +858,29 @@
 
             try {
 
-                await musica.play();
+                musica.volume = 0.8;
 
-                musicaActiva = true;
+                await musica.play();
 
                 indicadorMusica.classList.remove(
                     "pausada"
+                );
+
+                console.log(
+                    "Música reproduciéndose correctamente."
                 );
 
             }
 
             catch (error) {
 
-                console.warn(
+                console.error(
                     "No se pudo reproducir la música:",
                     error
+                );
+
+                indicadorMusica.classList.add(
+                    "pausada"
                 );
 
             }
@@ -950,8 +891,6 @@
         function pausarMusica() {
 
             musica.pause();
-
-            musicaActiva = false;
 
             indicadorMusica.classList.add(
                 "pausada"
@@ -966,22 +905,33 @@
 
         abrir.onclick = async function () {
 
-            portada.classList.add("oculta");
-
-
             /*
-               El clic del usuario permite intentar
-               reproducir la música.
-            */
-
-            musica.volume = 0.8;
+             * Primero reproducimos la música
+             * aprovechando el clic del usuario.
+             */
 
             await reproducirMusica();
 
 
+            /*
+             * Luego ocultamos la portada.
+             */
+
+            portada.classList.add("oculta");
+
+
+            /*
+             * Mostramos la primera página.
+             */
+
             paginaActual = 0;
 
             mostrar();
+
+
+            /*
+             * Iniciamos el cambio automático.
+             */
 
             iniciarAutomatico();
 
@@ -989,7 +939,7 @@
 
 
         /* =========================================
-           BOTONES
+           BOTON SIGUIENTE
         ========================================== */
 
         siguiente.onclick =
@@ -999,6 +949,10 @@
 
             };
 
+
+        /* =========================================
+           BOTON ANTERIOR
+        ========================================== */
 
         anterior.onclick =
             function () {
@@ -1020,6 +974,7 @@
                     await reproducirMusica();
 
                 }
+
                 else {
 
                     pausarMusica();
@@ -1037,8 +992,6 @@
             "play",
             function () {
 
-                musicaActiva = true;
-
                 indicadorMusica.classList.remove(
                     "pausada"
                 );
@@ -1050,8 +1003,6 @@
         musica.addEventListener(
             "pause",
             function () {
-
-                musicaActiva = false;
 
                 indicadorMusica.classList.add(
                     "pausada"
@@ -1065,8 +1016,8 @@
             "error",
             function () {
 
-                console.warn(
-                    "La canción no pudo cargarse. Verifica que cancion.mp3 esté en la raíz del repositorio."
+                console.error(
+                    "ERROR: No se pudo cargar cancion.mp3"
                 );
 
             }
@@ -1074,14 +1025,10 @@
 
 
         /* =========================================
-           INICIO
+           MOSTRAR PRIMERA PAGINA
         ========================================== */
 
-        pagina.classList.add("activa");
-
-        paginaFinal.classList.remove("activa");
-
-        indicadorMusica.classList.add("pausada");
+        mostrar();
 
     </script>
 
