@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Los momentos que guardo contigo</title>
+    <title>Nuestra Historia ♥</title>
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -15,346 +17,338 @@
 
         body {
             font-family: Georgia, 'Times New Roman', serif;
-            background: #efe6dc;
-            color: #4b3b32;
+            background: #f8eeee;
+            color: #4b3434;
             min-height: 100vh;
             overflow-x: hidden;
         }
 
+        /* =========================
+           PORTADA
+        ========================= */
+
         .portada {
             position: fixed;
             inset: 0;
-            background:
-                radial-gradient(circle at top left, rgba(255,255,255,.55), transparent 35%),
-                linear-gradient(135deg, #e9d8c8, #f5eee8);
+            background: linear-gradient(
+                135deg,
+                #f8dede,
+                #fff8f8,
+                #efd0d0
+            );
+
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            transition: opacity 1s ease, visibility 1s ease;
-        }
-
-        .portada.oculta {
-            opacity: 0;
-            visibility: hidden;
+            text-align: center;
+            padding: 20px;
         }
 
         .portada-contenido {
-            text-align: center;
-            width: 90%;
             max-width: 650px;
-            padding: 40px;
         }
 
-        .portada-contenido .decoracion {
-            font-size: 35px;
+        .corazon {
+            font-size: 65px;
             margin-bottom: 20px;
-            color: #9c7661;
         }
 
-        .portada-contenido h1 {
-            font-size: clamp(38px, 7vw, 72px);
-            font-weight: normal;
-            line-height: 1.1;
-            margin-bottom: 25px;
+        .portada h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #6d4141;
         }
 
-        .portada-contenido p {
+        .portada p {
             font-size: 20px;
-            line-height: 1.8;
+            line-height: 1.7;
             margin-bottom: 35px;
-            color: #69554a;
         }
 
-        .btn-abrir {
+        #abrir {
             border: none;
-            background: #806454;
+            background: #9d5c5c;
             color: white;
-            padding: 16px 34px;
-            border-radius: 40px;
-            font-family: inherit;
-            font-size: 17px;
+            padding: 16px 35px;
+            border-radius: 30px;
+            font-size: 18px;
             cursor: pointer;
-            transition: .3s;
-            box-shadow: 0 10px 25px rgba(80, 55, 40, .2);
+            transition: 0.3s;
         }
 
-        .btn-abrir:hover {
-            transform: translateY(-3px);
-            background: #6d5244;
+        #abrir:hover {
+            background: #7d4141;
+            transform: scale(1.05);
         }
 
-        .libro {
+        /* =========================
+           CONTENEDOR PRINCIPAL
+        ========================= */
+
+        .contenedor {
             min-height: 100vh;
-            padding: 35px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 40px 20px;
         }
+
+        .libro {
+            width: 900px;
+            max-width: 100%;
+            background: #fffdfb;
+            border-radius: 18px;
+            box-shadow: 0 15px 50px rgba(80, 40, 40, 0.18);
+            overflow: hidden;
+            border: 1px solid #ead1d1;
+        }
+
+        /* =========================
+           HOJA
+        ========================= */
 
         .hoja {
-            width: 100%;
-            max-width: 1000px;
-            min-height: 680px;
-            background: #fffdf9;
-            border-radius: 8px;
-            padding: 50px;
-            box-shadow:
-                0 25px 60px rgba(60, 40, 25, .18),
-                0 2px 8px rgba(60, 40, 25, .1);
+            min-height: 650px;
+            padding: 45px;
             position: relative;
-            overflow: hidden;
         }
 
-        .hoja::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 35px;
-            bottom: 0;
-            width: 1px;
-            background: rgba(150, 120, 100, .12);
-        }
-
-        .pagina {
-            display: none;
-            animation: aparecer .8s ease;
-        }
-
-        .pagina.activa {
-            display: block;
-        }
-
-        @keyframes aparecer {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        /* =========================
+           ENCABEZADO
+        ========================= */
 
         .encabezado {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
 
         .fecha {
+            color: #a86b6b;
+            font-size: 15px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 13px;
-            color: #9c7661;
+            margin-bottom: 10px;
+        }
+
+        .titulo {
+            font-size: 35px;
+            color: #603c3c;
             margin-bottom: 12px;
         }
 
-        .encabezado h2 {
-            font-size: clamp(28px, 5vw, 46px);
-            font-weight: normal;
-            margin-bottom: 15px;
+        .descripcion {
+            font-size: 17px;
+            color: #806565;
         }
 
-        .linea {
-            width: 70px;
-            height: 2px;
-            background: #b9957f;
-            margin: auto;
-        }
+        /* =========================
+           FOTO
+        ========================= */
 
         .foto-contenedor {
             width: 100%;
-            max-width: 700px;
+            max-width: 650px;
             margin: 0 auto 25px;
             text-align: center;
         }
 
-        .foto {
+        .foto-contenedor img {
             display: block;
             width: 100%;
-            max-height: 420px;
+            max-height: 400px;
             object-fit: contain;
-            border-radius: 5px;
-            box-shadow: 0 12px 30px rgba(60, 40, 25, .18);
-            background: #eee5dc;
-        }
-
-        .foto.oculta {
-            display: none;
-        }
-
-        .ilustracion {
-            display: none;
-            padding: 60px 20px;
-            text-align: center;
-            font-size: 65px;
-            background: #f3ebe3;
-            border-radius: 5px;
-        }
-
-        .ilustracion.mostrar {
-            display: block;
+            border-radius: 14px;
+            box-shadow: 0 8px 25px rgba(80, 40, 40, 0.18);
+            background: #f6eeee;
         }
 
         .pie-foto {
             margin-top: 12px;
-            font-size: 14px;
             font-style: italic;
-            color: #8c7669;
+            color: #8b6969;
+            font-size: 15px;
         }
 
-        .descripcion {
-            max-width: 760px;
+        /* =========================
+           TEXTO
+        ========================= */
+
+        .texto {
+            max-width: 700px;
             margin: 0 auto;
             text-align: center;
-        }
-
-        .descripcion h3 {
-            font-size: 22px;
-            font-weight: normal;
-            margin-bottom: 15px;
-        }
-
-        .descripcion p {
+            line-height: 1.8;
             font-size: 17px;
-            line-height: 1.9;
-            color: #5e5048;
+            color: #5d4b4b;
         }
 
-        .final {
-            min-height: 560px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* =========================
+           PAGINA FINAL
+        ========================= */
+
+        .pagina-final {
+            display: none;
             text-align: center;
+            padding: 60px 35px;
+            min-height: 650px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
 
-        .final-contenido {
-            max-width: 700px;
+        .pagina-final.visible {
+            display: flex;
         }
 
-        .final-contenido .corazon {
-            font-size: 60px;
+        .pagina-final .corazon-final {
+            font-size: 65px;
+            margin-bottom: 20px;
+        }
+
+        .pagina-final h2 {
+            font-size: 38px;
+            color: #603c3c;
             margin-bottom: 25px;
         }
 
-        .final-contenido h2 {
-            font-size: clamp(35px, 6vw, 58px);
-            font-weight: normal;
-            margin-bottom: 25px;
+        .pagina-final p {
+            max-width: 650px;
+            line-height: 1.9;
+            font-size: 18px;
         }
 
-        .final-contenido p {
-            font-size: 19px;
-            line-height: 2;
-            color: #66544a;
-        }
+        /* =========================
+           CONTROLES
+        ========================= */
 
         .controles {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 15px;
-            margin-top: 35px;
+            margin-top: 30px;
         }
 
-        .btn-control {
-            border: 1px solid #b9957f;
-            background: transparent;
-            color: #705849;
-            padding: 10px 18px;
+        .boton {
+            border: none;
+            background: #9d5c5c;
+            color: white;
+            padding: 12px 20px;
             border-radius: 25px;
             cursor: pointer;
-            font-family: inherit;
-            transition: .3s;
+            font-size: 15px;
+            transition: 0.3s;
         }
 
-        .btn-control:hover {
-            background: #806454;
-            color: white;
+        .boton:hover {
+            background: #7d4141;
         }
 
         .contador {
+            color: #806565;
             font-size: 14px;
-            color: #8b766a;
-            min-width: 70px;
-            text-align: center;
         }
 
-        .indicador-musica {
+        /* =========================
+           MUSICA
+        ========================= */
+
+        .musica-control {
             position: fixed;
             right: 20px;
             bottom: 20px;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: #806454;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
             z-index: 500;
-            box-shadow: 0 5px 15px rgba(0,0,0,.15);
         }
 
-        .indicador-musica.pausada {
-            opacity: .55;
+        #botonMusica {
+            width: 52px;
+            height: 52px;
+            border: none;
+            border-radius: 50%;
+            background: #9d5c5c;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(80, 40, 40, 0.25);
         }
+
+        #botonMusica:hover {
+            background: #7d4141;
+        }
+
+        /* =========================
+           MENSAJE DE ERROR
+        ========================= */
+
+        .error-foto {
+            display: none;
+            color: #a33;
+            background: #fff0f0;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
 
         @media (max-width: 700px) {
 
-            .libro {
-                padding: 15px;
+            .portada h1 {
+                font-size: 35px;
             }
 
-            .hoja {
-                padding: 30px 25px;
-                min-height: 600px;
-            }
-
-            .hoja::before {
-                left: 15px;
-            }
-
-            .portada-contenido {
-                padding: 25px;
-            }
-
-            .portada-contenido p {
+            .portada p {
                 font-size: 17px;
             }
 
-            .foto {
+            .hoja {
+                padding: 25px 18px;
+                min-height: 600px;
+            }
+
+            .titulo {
+                font-size: 28px;
+            }
+
+            .foto-contenedor img {
                 max-height: 350px;
             }
 
-            .descripcion p {
-                font-size: 16px;
+            .pagina-final h2 {
+                font-size: 30px;
             }
         }
+
     </style>
+
 </head>
 
 <body>
 
-    <!-- PORTADA -->
+    <!-- =========================
+         PORTADA
+    ========================= -->
 
     <section class="portada" id="portada">
 
         <div class="portada-contenido">
 
-            <div class="decoracion">♥</div>
+            <div class="corazon">
+                ♥
+            </div>
 
-            <h1>Los momentos que guardo contigo</h1>
+            <h1>Nuestra Historia</h1>
 
             <p>
                 Hay recuerdos que merecen su propio libro.
+                <br>
                 Este es el nuestro.
             </p>
 
-            <button class="btn-abrir" id="abrir">
+            <button id="abrir">
                 Abrir nuestra historia
             </button>
 
@@ -363,63 +357,88 @@
     </section>
 
 
-    <!-- LIBRO -->
+    <!-- =========================
+         LIBRO
+    ========================= -->
 
-    <main class="libro">
+    <main class="contenedor">
 
-        <div class="hoja" id="hoja">
+        <div class="libro">
 
-            <section class="pagina activa" id="pagina">
+            <section class="hoja" id="hoja">
 
                 <div class="encabezado">
 
-                    <div class="fecha" id="fecha"></div>
+                    <div class="fecha" id="fecha">
+                        El comienzo
+                    </div>
 
-                    <h2 id="titulo"></h2>
+                    <h1 class="titulo" id="titulo">
+                        Donde empezó todo
+                    </h1>
 
-                    <div class="linea"></div>
+                    <p class="descripcion" id="descripcion">
+                        Nuestra primera foto juntos
+                    </p>
 
                 </div>
 
 
                 <div class="foto-contenedor">
 
+                    <!-- FOTO 1 SE CARGA DIRECTAMENTE -->
                     <img
                         id="foto"
-                        class="foto"
-                        src=""
-                        alt=""
+                        src="foto1.png"
+                        alt="Nuestra primera foto"
                     >
 
-                    <div class="ilustracion" id="ilustracion">
-                        ♥
+                    <div
+                        class="error-foto"
+                        id="errorFoto"
+                    >
+                        No se pudo cargar esta fotografía.
                     </div>
 
-                    <div class="pie-foto" id="pie"></div>
+                    <p
+                        class="pie-foto"
+                        id="pie"
+                    >
+                        Un instante, muchas sonrisas.
+                    </p>
 
                 </div>
 
 
-                <div class="descripcion">
-
-                    <h3 id="descripcion"></h3>
-
-                    <p id="texto"></p>
-
-                </div>
+                <p
+                    class="texto"
+                    id="texto"
+                >
+                    Quizás ese día no imaginábamos cuántos recuerdos
+                    vendrían después. Hoy lo guardo como uno de mis favoritos.
+                </p>
 
 
                 <div class="controles">
 
-                    <button class="btn-control" id="anterior">
+                    <button
+                        class="boton"
+                        id="anterior"
+                    >
                         ← Anterior
                     </button>
 
-                    <div class="contador" id="contador">
+                    <span
+                        class="contador"
+                        id="contador"
+                    >
                         1 / 5
-                    </div>
+                    </span>
 
-                    <button class="btn-control" id="siguiente">
+                    <button
+                        class="boton"
+                        id="siguiente"
+                    >
                         Siguiente →
                     </button>
 
@@ -428,19 +447,37 @@
             </section>
 
 
-            <!-- PAGINA FINAL -->
+            <!-- =========================
+                 PAGINA FINAL
+            ========================= -->
 
-            <section class="pagina final" id="paginaFinal">
+            <section
+                class="pagina-final"
+                id="paginaFinal"
+            >
 
-                <div class="final-contenido">
+                <div class="corazon-final">
+                    ♥
+                </div>
 
-                    <div class="corazon">
-                        ♥
-                    </div>
+                <h2>
+                    Nuestra historia continúa...
+                </h2>
 
-                    <h2>Una última página...</h2>
+                <p id="sorpresa">
+                    Lo mejor de nuestra historia es que todavía nos quedan
+                    muchas páginas por escribir.
+                    Gracias por ser parte de mi vida. ♥
+                </p>
 
-                    <p id="sorpresa"></p>
+                <div class="controles">
+
+                    <button
+                        class="boton"
+                        id="volver"
+                    >
+                        ← Volver a los recuerdos
+                    </button>
 
                 </div>
 
@@ -451,45 +488,57 @@
     </main>
 
 
-    <!-- MUSICA -->
+    <!-- =========================
+         BOTON DE MUSICA
+    ========================= -->
 
-    <audio
-        id="musica"
-        loop
-        preload="auto">
+    <div class="musica-control">
 
-        <source
-            src="cancion.mp3"
-            type="audio/mpeg">
-
-    </audio>
-
-
-    <!-- BOTON DE MUSICA -->
-
-    <div
-        class="indicador-musica pausada"
-        id="indicadorMusica"
-        title="Reproducir / pausar música">
-
-        ♪
+        <button
+            id="botonMusica"
+            title="Reproducir / pausar música"
+        >
+            ▶
+        </button>
 
     </div>
 
 
+    <!-- =========================
+         MUSICA
+    ========================= -->
+
+    <audio
+        id="musica"
+        loop
+        preload="auto"
+    >
+        <source
+            src="cancion.mp3"
+            type="audio/mpeg"
+        >
+
+        Tu navegador no puede reproducir este audio.
+
+    </audio>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
     <script>
 
-        /* =========================================
-           CONFIGURACION
-        ========================================== */
+        /* =========================
+           CONFIGURACIÓN
+        ========================= */
 
         const CONFIG = {
 
-            segundosPortada: 4,
-
             segundosPorPagina: 9,
 
-            titulo: "Los momentos que guardo contigo",
+            titulo:
+                "Los momentos que guardo contigo",
 
             dedicatoria:
                 "Hay recuerdos que merecen su propio libro. Este es el nuestro.",
@@ -506,9 +555,11 @@
 
                     foto: "foto1.png",
 
-                    descripcion: "Nuestra primera foto juntos",
+                    descripcion:
+                        "Nuestra primera foto juntos",
 
-                    pie: "Un instante, muchas sonrisas.",
+                    pie:
+                        "Un instante, muchas sonrisas.",
 
                     texto:
                         "Quizás ese día no imaginábamos cuántos recuerdos vendrían después. Hoy lo guardo como uno de mis favoritos."
@@ -521,7 +572,8 @@
 
                     foto: "foto2.png",
 
-                    descripcion: "Una aventura compartida",
+                    descripcion:
+                        "Una aventura compartida",
 
                     pie:
                         "El mejor destino: compartirlo contigo.",
@@ -588,9 +640,13 @@
         };
 
 
-        /* =========================================
-           ELEMENTOS
-        ========================================== */
+        /* =========================
+           VARIABLES
+        ========================= */
+
+        let paginaActual = 0;
+
+        let intervalo = null;
 
         const portada =
             document.getElementById("portada");
@@ -598,11 +654,14 @@
         const abrir =
             document.getElementById("abrir");
 
+        const hoja =
+            document.getElementById("hoja");
+
+        const paginaFinal =
+            document.getElementById("paginaFinal");
+
         const foto =
             document.getElementById("foto");
-
-        const ilustracion =
-            document.getElementById("ilustracion");
 
         const fecha =
             document.getElementById("fecha");
@@ -622,17 +681,17 @@
         const contador =
             document.getElementById("contador");
 
+        const errorFoto =
+            document.getElementById("errorFoto");
+
         const anterior =
             document.getElementById("anterior");
 
         const siguiente =
             document.getElementById("siguiente");
 
-        const paginaFinal =
-            document.getElementById("paginaFinal");
-
-        const pagina =
-            document.getElementById("pagina");
+        const volver =
+            document.getElementById("volver");
 
         const sorpresa =
             document.getElementById("sorpresa");
@@ -640,90 +699,57 @@
         const musica =
             document.getElementById("musica");
 
-        const indicadorMusica =
-            document.getElementById("indicadorMusica");
+        const botonMusica =
+            document.getElementById("botonMusica");
 
 
-        /* =========================================
-           VARIABLES
-        ========================================== */
-
-        let paginaActual = 0;
-
-        let intervalo = null;
-
-
-        /* =========================================
+        /* =========================
            MOSTRAR FOTO
-        ========================================== */
+        ========================= */
 
         function mostrarFoto(recuerdo) {
 
-            foto.classList.remove("oculta");
+            errorFoto.style.display = "none";
 
-            ilustracion.classList.remove("mostrar");
-
-            /*
-             * La ruta ahora corresponde exactamente
-             * al lugar donde están las imágenes
-             * dentro del repositorio.
-             */
+            foto.style.display = "block";
 
             foto.src = recuerdo.foto;
 
             foto.alt = recuerdo.descripcion;
 
-
             foto.onload = function () {
 
-                foto.classList.remove("oculta");
-
-                ilustracion.classList.remove("mostrar");
+                console.log(
+                    "Foto cargada correctamente:",
+                    recuerdo.foto
+                );
 
             };
-
 
             foto.onerror = function () {
 
                 console.error(
-                    "ERROR: No se pudo cargar la imagen:",
+                    "No se pudo cargar:",
                     recuerdo.foto
                 );
 
-                foto.classList.add("oculta");
+                foto.style.display = "none";
 
-                ilustracion.classList.add("mostrar");
+                errorFoto.style.display = "block";
 
             };
 
         }
 
 
-        /* =========================================
+        /* =========================
            MOSTRAR PAGINA
-        ========================================== */
+        ========================= */
 
-        function mostrar() {
-
-            if (
-                paginaActual >=
-                CONFIG.recuerdos.length
-            ) {
-
-                mostrarPaginaFinal();
-
-                return;
-            }
-
+        function mostrarPagina() {
 
             const recuerdo =
                 CONFIG.recuerdos[paginaActual];
-
-
-            pagina.classList.add("activa");
-
-            paginaFinal.classList.remove("activa");
-
 
             fecha.textContent =
                 recuerdo.fecha;
@@ -740,68 +766,43 @@
             texto.textContent =
                 recuerdo.texto;
 
-
             contador.textContent =
-                `${paginaActual + 1} / ${CONFIG.recuerdos.length}`;
-
+                (paginaActual + 1) +
+                " / " +
+                CONFIG.recuerdos.length;
 
             mostrarFoto(recuerdo);
 
-
-            anterior.disabled =
-                paginaActual === 0;
-
-
-            siguiente.textContent =
-                paginaActual ===
-                CONFIG.recuerdos.length - 1
-                    ? "Final →"
-                    : "Siguiente →";
-
         }
 
 
-        /* =========================================
-           PAGINA FINAL
-        ========================================== */
-
-        function mostrarPaginaFinal() {
-
-            pagina.classList.remove("activa");
-
-            paginaFinal.classList.add("activa");
-
-            sorpresa.textContent =
-                CONFIG.sorpresa;
-
-            detenerAutomatico();
-
-        }
-
-
-        /* =========================================
+        /* =========================
            SIGUIENTE
-        ========================================== */
+        ========================= */
 
         function siguientePagina() {
 
             if (
                 paginaActual <
-                CONFIG.recuerdos.length
+                CONFIG.recuerdos.length - 1
             ) {
 
                 paginaActual++;
 
-                mostrar();
+                mostrarPagina();
+
+            } else {
+
+                mostrarFinal();
 
             }
 
         }
 
 
-        /* =========================================
+        /* =========================
            ANTERIOR
-        ========================================== */
+        ========================= */
 
         function anteriorPagina() {
 
@@ -809,21 +810,184 @@
 
                 paginaActual--;
 
-                mostrar();
+                mostrarPagina();
 
             }
 
         }
 
 
-        /* =========================================
-           AUTOMATICO
-        ========================================== */
+        /* =========================
+           PAGINA FINAL
+        ========================= */
+
+        function mostrarFinal() {
+
+            hoja.style.display = "none";
+
+            paginaFinal.classList.add("visible");
+
+            sorpresa.textContent =
+                CONFIG.sorpresa;
+
+        }
+
+
+        /* =========================
+           VOLVER
+        ========================= */
+
+        function volverRecuerdos() {
+
+            paginaFinal.classList.remove(
+                "visible"
+            );
+
+            hoja.style.display = "block";
+
+            paginaActual = 0;
+
+            mostrarPagina();
+
+        }
+
+
+        /* =========================
+           MUSICA
+        ========================= */
+
+        async function reproducirMusica() {
+
+            try {
+
+                await musica.play();
+
+                botonMusica.textContent = "❚❚";
+
+                console.log(
+                    "La música comenzó correctamente."
+                );
+
+            } catch (error) {
+
+                console.log(
+                    "El navegador bloqueó la reproducción:",
+                    error
+                );
+
+                botonMusica.textContent = "▶";
+
+            }
+
+        }
+
+
+        function pausarMusica() {
+
+            musica.pause();
+
+            botonMusica.textContent = "▶";
+
+        }
+
+
+        /* =========================
+           BOTON ABRIR
+        ========================= */
+
+        abrir.addEventListener(
+            "click",
+            function () {
+
+                /*
+                 * La música se inicia aquí porque
+                 * el navegador permite reproducir
+                 * audio después de una acción del usuario.
+                 */
+
+                reproducirMusica();
+
+                portada.style.display = "none";
+
+                paginaActual = 0;
+
+                mostrarPagina();
+
+                iniciarAutomatico();
+
+            }
+        );
+
+
+        /* =========================
+           BOTON MUSICA
+        ========================= */
+
+        botonMusica.addEventListener(
+            "click",
+            function () {
+
+                if (musica.paused) {
+
+                    reproducirMusica();
+
+                } else {
+
+                    pausarMusica();
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           BOTONES
+        ========================= */
+
+        siguiente.addEventListener(
+            "click",
+            function () {
+
+                siguientePagina();
+
+                reiniciarAutomatico();
+
+            }
+        );
+
+
+        anterior.addEventListener(
+            "click",
+            function () {
+
+                anteriorPagina();
+
+                reiniciarAutomatico();
+
+            }
+        );
+
+
+        volver.addEventListener(
+            "click",
+            function () {
+
+                volverRecuerdos();
+
+                reiniciarAutomatico();
+
+            }
+        );
+
+
+        /* =========================
+           CAMBIO AUTOMATICO
+        ========================= */
 
         function iniciarAutomatico() {
 
             detenerAutomatico();
-
 
             intervalo = setInterval(
                 function () {
@@ -839,7 +1003,7 @@
 
         function detenerAutomatico() {
 
-            if (intervalo) {
+            if (intervalo !== null) {
 
                 clearInterval(intervalo);
 
@@ -850,187 +1014,45 @@
         }
 
 
-        /* =========================================
-           MUSICA
-        ========================================== */
-
-        async function reproducirMusica() {
-
-            try {
-
-                musica.volume = 0.8;
-
-                await musica.play();
-
-                indicadorMusica.classList.remove(
-                    "pausada"
-                );
-
-                console.log(
-                    "Música reproduciéndose correctamente."
-                );
-
-            }
-
-            catch (error) {
-
-                console.error(
-                    "No se pudo reproducir la música:",
-                    error
-                );
-
-                indicadorMusica.classList.add(
-                    "pausada"
-                );
-
-            }
-
-        }
-
-
-        function pausarMusica() {
-
-            musica.pause();
-
-            indicadorMusica.classList.add(
-                "pausada"
-            );
-
-        }
-
-
-        /* =========================================
-           BOTON ABRIR
-        ========================================== */
-
-        abrir.onclick = async function () {
-
-            /*
-             * Primero reproducimos la música
-             * aprovechando el clic del usuario.
-             */
-
-            await reproducirMusica();
-
-
-            /*
-             * Luego ocultamos la portada.
-             */
-
-            portada.classList.add("oculta");
-
-
-            /*
-             * Mostramos la primera página.
-             */
-
-            paginaActual = 0;
-
-            mostrar();
-
-
-            /*
-             * Iniciamos el cambio automático.
-             */
+        function reiniciarAutomatico() {
 
             iniciarAutomatico();
 
-        };
+        }
 
 
-        /* =========================================
-           BOTON SIGUIENTE
-        ========================================== */
+        /* =========================
+           INICIO
+        ========================= */
 
-        siguiente.onclick =
-            function () {
+        /*
+         * Cargamos la primera foto desde el inicio.
+         * Así comprobamos que GitHub Pages
+         * puede encontrar foto1.png.
+         */
 
-                siguientePagina();
+        mostrarPagina();
 
-            };
-
-
-        /* =========================================
-           BOTON ANTERIOR
-        ========================================== */
-
-        anterior.onclick =
-            function () {
-
-                anteriorPagina();
-
-            };
+        sorpresa.textContent =
+            CONFIG.sorpresa;
 
 
-        /* =========================================
-           BOTON MUSICA
-        ========================================== */
-
-        indicadorMusica.onclick =
-            async function () {
-
-                if (musica.paused) {
-
-                    await reproducirMusica();
-
-                }
-
-                else {
-
-                    pausarMusica();
-
-                }
-
-            };
-
-
-        /* =========================================
-           EVENTOS DEL AUDIO
-        ========================================== */
-
-        musica.addEventListener(
-            "play",
-            function () {
-
-                indicadorMusica.classList.remove(
-                    "pausada"
-                );
-
-            }
+        console.log(
+            "Página cargada correctamente."
         );
 
-
-        musica.addEventListener(
-            "pause",
-            function () {
-
-                indicadorMusica.classList.add(
-                    "pausada"
-                );
-
-            }
+        console.log(
+            "Foto inicial:",
+            foto.src
         );
 
-
-        musica.addEventListener(
-            "error",
-            function () {
-
-                console.error(
-                    "ERROR: No se pudo cargar cancion.mp3"
-                );
-
-            }
+        console.log(
+            "Música:",
+            musica.currentSrc
         );
-
-
-        /* =========================================
-           MOSTRAR PRIMERA PAGINA
-        ========================================== */
-
-        mostrar();
 
     </script>
 
 </body>
+
 </html>
