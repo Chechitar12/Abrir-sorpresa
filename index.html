@@ -65,8 +65,9 @@
 
             z-index:1000;
 
-            transition:opacity 1s ease,
-                       visibility 1s ease;
+            transition:
+                opacity 1s ease,
+                visibility 1s ease;
         }
 
         .inicio.oculto{
@@ -302,7 +303,7 @@
 
 
         /* =========================================================
-           FOTO
+           FOTO CON MARCO BLANCO
         ========================================================= */
 
         .polaroid{
@@ -311,15 +312,16 @@
 
             margin:10px auto 0;
 
-            padding:0;
+            padding:10px;
 
-            background:transparent;
+            background:white;
 
-            border:none;
+            border:2px solid white;
 
-            border-radius:0;
+            border-radius:2px;
 
-            box-shadow:none;
+            box-shadow:
+                0 8px 20px rgba(0,0,0,.20);
 
             overflow:hidden;
 
@@ -682,7 +684,11 @@
 
             border:4px solid #7a472c;
 
-            border-radius:45px 45px 25px 25px;
+            border-radius:
+                45px
+                45px
+                25px
+                25px;
         }
 
         .brazo{
@@ -864,6 +870,8 @@
             .polaroid{
 
                 width:94vw;
+
+                padding:8px;
             }
 
             .descripcion{
@@ -919,6 +927,7 @@
                 onclick="iniciarSorpresa()">
 
                 Abrir nuestra historia ♥
+
             </button>
 
         </div>
@@ -1247,7 +1256,6 @@
         id="musica"
         src="cancion.mp3"
         preload="auto">
-
     </audio>
 
 
@@ -1256,7 +1264,7 @@
 
         /* =========================================================
            VARIABLES
-        ========================================================== */
+        ========================================================= */
 
         const paginas =
             document.querySelectorAll(".pagina");
