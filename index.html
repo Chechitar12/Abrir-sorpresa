@@ -9,9 +9,9 @@
 
 <style>
 
-/* ============================= */
-/* ESTILOS ORIGINALES */
-/* ============================= */
+/* ================================================= */
+/* ESTILOS GENERALES */
+/* ================================================= */
 
 :root{
     --papel:#fff9ed;
@@ -90,6 +90,11 @@ header{
     display:none!important;
 }
 
+
+/* ================================================= */
+/* PORTADA */
+/* ================================================= */
+
 .portada{
     display:flex;
     align-items:center;
@@ -100,6 +105,7 @@ header{
     color:#fff3df;
 
     min-height:580px;
+
     border:12px double #c9a37b;
 }
 
@@ -141,10 +147,14 @@ button{
     border:0;
     border-radius:30px;
     padding:14px 22px;
+
     background:var(--rosa);
     color:white;
+
     cursor:pointer;
+
     font:15px Arial,sans-serif;
+
     min-height:46px;
 }
 
@@ -168,190 +178,302 @@ button:disabled{
     margin-top:20px;
 }
 
+
+/* ================================================= */
+/* MARCO DE LA FOTO */
+/* ================================================= */
+
 .polaroid{
-    background:white;
+
+    background:#fff;
+
     padding:12px 12px 28px;
 
     box-shadow:
-        0 5px 18px #42352e20;
+        0 15px 38px #35000c99;
+
+    width:100%;
 
     max-width:560px;
+
     margin:22px auto;
 
-    transform:rotate(-2deg);
+    /* IMPORTANTE:
+       Marco completamente derecho */
+    transform:rotate(0deg);
 
-    /* NUEVO */
+    /* Oculto mientras carga */
     opacity:0;
     visibility:hidden;
-    transition:opacity .25s ease;
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease;
 }
 
+
+/*
+   Cuando la foto ya está lista
+*/
 .polaroid.lista{
+
     opacity:1;
+
     visibility:visible;
+
 }
+
+
+/* ================================================= */
+/* FOTO */
+/* ================================================= */
 
 .polaroid img{
+
     display:block;
+
     width:100%;
+
     aspect-ratio:4/3;
+
     object-fit:cover;
-    object-position:center;
+
+    object-position:center center;
+
+    margin:0 auto;
+
     background:#eee;
+
+    transform:none;
+
 }
+
+
+/* ================================================= */
+/* ILUSTRACIÓN DE RESPALDO */
+/* ================================================= */
 
 .ilustracion{
+
     aspect-ratio:4/3;
+
     display:grid;
+
     place-content:center;
-    background:linear-gradient(150deg,#d8d6c8,#f2dcc9);
+
+    background:
+        linear-gradient(
+            150deg,
+            #d8d6c8,
+            #f2dcc9
+        );
+
     color:#71695f;
+
     font-size:72px;
+
 }
+
+
+/* ================================================= */
+/* PIE DE FOTO */
+/* ================================================= */
 
 .pie-foto{
+
     font-style:italic;
+
     font-size:14px;
+
     margin:12px 0 0;
+
 }
 
+
+/* ================================================= */
+/* OTROS ELEMENTOS */
+/* ================================================= */
+
 nav{
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     gap:8px;
+
     margin-top:30px;
+
 }
 
 #contador{
+
     font:12px Arial,sans-serif;
+
     color:#75675b;
+
     text-align:center;
+
 }
 
 .nota{
+
     text-align:center;
+
     color:#887b71;
+
     font:12px Arial,sans-serif;
+
     margin:25px 0;
+
 }
 
 .secreto{
+
     padding:20px;
+
     border:1px dashed var(--oro);
+
     border-radius:8px;
+
     margin-top:20px;
+
     background:#f4e9d9;
+
 }
 
 .numero{
+
     font:11px Arial,sans-serif;
+
     color:#a79279;
+
     letter-spacing:2px;
+
     margin-top:28px;
+
 }
+
+
+/* ================================================= */
+/* ANIMACIÓN DEL LIBRO */
+/* ================================================= */
 
 @keyframes entrada{
 
     from{
+
         opacity:0;
+
         transform:
             perspective(900px)
             rotateY(-8deg);
+
     }
 
     to{
+
         opacity:1;
+
         transform:none;
+
     }
 
 }
+
+
+/* ================================================= */
+/* RESPONSIVE */
+/* ================================================= */
 
 @media(max-width:520px){
 
     main{
+
         padding:18px 14px;
+
     }
 
     .pagina{
+
         padding:26px 18px;
+
         min-height:530px;
+
     }
 
     .portada{
+
         min-height:550px;
+
     }
 
     nav button{
+
         padding:12px 15px;
+
     }
 
 }
+
 
 @media(prefers-reduced-motion:reduce){
 
     .pagina{
+
         animation:none;
+
     }
 
 }
 
 
-/* ============================= */
-/* NUEVO DISEÑO */
-/* ============================= */
-
-body{
-
-    background:
-        radial-gradient(
-            circle at 20% 10%,
-            #fff0f4 0,
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 80% 90%,
-            #f5dce3 0,
-            transparent 40%
-        ),
-        #e8dfd4;
-}
-
-
-/* INTRO */
+/* ================================================= */
+/* INTRODUCCIÓN */
+/* ================================================= */
 
 .inicio{
 
     position:fixed;
+
     inset:0;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     z-index:9999;
 
     background:
+
         radial-gradient(
             circle at 50% 15%,
-            #f7dce4 0,
+            #df4864 0,
             transparent 38%
         ),
+
         linear-gradient(
             145deg,
-            #f8e8ed,
-            #e6d0d7
+            #a71535,
+            #4a0717
         );
 
     transition:
         opacity .8s ease,
         visibility .8s ease;
+
 }
 
 .inicio.oculto{
 
     opacity:0;
+
     visibility:hidden;
+
     pointer-events:none;
 
 }
@@ -364,49 +486,65 @@ body{
 
     text-align:center;
 
-    border:1px solid #cba974;
+    border:1px solid #fff;
 
     border-radius:20px;
 
-    background:#fff9edee;
+    background:#6c0b20d9;
 
     box-shadow:
-        0 25px 80px #42352e55,
-        inset 0 0 45px #ffffffaa;
+
+        0 25px 80px #210008a8,
+
+        inset 0 0 45px #ffffff12;
 
 }
 
 .inicio-corazon{
 
     font-size:65px;
-    color:#995b63;
+
+    color:#ffd4dc;
 
     display:block;
 
     animation:
         latido 1.5s infinite;
+
 }
 
 .inicio h1{
 
-    color:#42352e;
+    color:#fff;
 
 }
 
 .inicio p{
 
-    color:#73665d;
+    color:#fff;
+
+}
+
+.inicio .etiqueta{
+
+    color:#fff;
 
 }
 
 .inicio button{
+
+    background:#fff;
+
+    color:#8b1430;
 
     margin-top:20px;
 
 }
 
 
+/* ================================================= */
 /* PROGRESO */
+/* ================================================= */
 
 .progreso{
 
@@ -418,7 +556,7 @@ body{
 
     overflow:hidden;
 
-    background:#cba97455;
+    background:#ffffff3d;
 
 }
 
@@ -430,30 +568,39 @@ body{
 
     width:0;
 
-    background:#995b63;
+    background:#fff;
 
-    transition:width .5s ease;
+    transition:
+        width .5s ease;
 
 }
 
 
-/* SONIDO */
+/* ================================================= */
+/* BOTONES DE SONIDO */
+/* ================================================= */
 
 .sonido{
 
-    color:#42352e;
-    border:1px solid #cba974;
-    background:#ffffff55;
+    color:#fff;
+
+    border:1px solid #ffffff70;
+
+    background:#ffffff10;
 
     margin:5px;
+
 }
 
 
-/* PARTICULAS */
+/* ================================================= */
+/* PARTÍCULAS */
+/* ================================================= */
 
 .particulas{
 
     position:fixed;
+
     inset:0;
 
     pointer-events:none;
@@ -461,6 +608,7 @@ body{
     overflow:hidden;
 
     z-index:2;
+
 }
 
 .particulas span{
@@ -469,7 +617,7 @@ body{
 
     top:100%;
 
-    color:#995b6345;
+    color:#ffffff38;
 
     font-size:25px;
 
@@ -479,13 +627,16 @@ body{
 }
 
 
-/* DESTELLOS */
+/* ================================================= */
+/* DESTELLOS FINALES */
+/* ================================================= */
 
 .destello{
 
     position:fixed;
 
     left:50%;
+
     top:50%;
 
     font-size:25px;
@@ -496,191 +647,180 @@ body{
 
     animation:
         confeti 1.9s ease-out forwards;
+
 }
 
 
-/* ANIMACIONES DE FOTOS */
+/* ================================================= */
+/* ANIMACIÓN DE FOTO */
+/* ================================================= */
 
-.foto-centro{
+/*
+   Todas las fotos utilizan la misma animación.
 
-    animation:
-        fotoCentro 1.6s cubic-bezier(.2,.7,.2,1) both;
-}
+   Esto evita:
+   - giros
+   - inclinaciones
+   - desplazamientos laterales
 
-.foto-lateral{
+   La foto aparece centrada y derecha.
+*/
 
-    animation:
-        fotoLateral 1.6s cubic-bezier(.2,.7,.2,1) both;
-}
-
-.foto-cortina{
-
-    animation:
-        fotoCortina 1.8s ease-in-out both;
-}
-
-.foto-giro{
-
-    animation:
-        fotoGiro 1.8s cubic-bezier(.2,.7,.2,1) both;
-}
-
+.foto-centro,
+.foto-lateral,
+.foto-cortina,
+.foto-giro,
 .foto-album{
 
-    transform-origin:left center;
+    display:block;
+
+    width:100%;
+
+    aspect-ratio:4/3;
+
+    object-fit:cover;
+
+    object-position:center center;
+
+    margin:0 auto;
+
+    transform:none;
 
     animation:
-        fotoAlbum 1.8s ease-out both;
+        aparecerFoto 1s ease-out both;
 
-    backface-visibility:hidden;
 }
 
 
-@keyframes fotoCentro{
+/* ================================================= */
+/* APARICIÓN DE LA FOTO */
+/* ================================================= */
+
+@keyframes aparecerFoto{
 
     from{
+
         opacity:0;
-        transform:scale(.78);
+
+        transform:scale(.96);
+
     }
 
     to{
+
         opacity:1;
+
         transform:scale(1);
+
     }
 
 }
 
-@keyframes fotoLateral{
 
-    from{
-        opacity:0;
-        transform:translateX(55px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateX(0);
-    }
-
-}
-
-@keyframes fotoCortina{
-
-    from{
-        clip-path:inset(0 50%);
-        opacity:.4;
-    }
-
-    to{
-        clip-path:inset(0 0);
-        opacity:1;
-    }
-
-}
-
-@keyframes fotoGiro{
-
-    from{
-        opacity:0;
-        transform:
-            rotate(-8deg)
-            scale(.88);
-    }
-
-    to{
-        opacity:1;
-        transform:
-            rotate(0)
-            scale(1);
-    }
-
-}
-
-@keyframes fotoAlbum{
-
-    from{
-        opacity:0;
-        transform:
-            perspective(1000px)
-            rotateY(-78deg);
-    }
-
-    to{
-        opacity:1;
-        transform:
-            perspective(1000px)
-            rotateY(0);
-    }
-
-}
+/* ================================================= */
+/* CORAZÓN */
+/* ================================================= */
 
 @keyframes latido{
 
     0%,100%{
+
         transform:scale(1);
+
     }
 
     50%{
+
         transform:scale(1.15);
+
     }
 
 }
+
+
+/* ================================================= */
+/* PARTÍCULAS FLOTANTES */
+/* ================================================= */
 
 @keyframes flotar{
 
     from{
+
         transform:
             translateY(0)
             rotate(0deg);
+
         opacity:0;
+
     }
 
     15%{
+
         opacity:1;
+
     }
 
     85%{
+
         opacity:1;
+
     }
 
     to{
+
         transform:
             translateY(-120vh)
             rotate(360deg);
+
         opacity:0;
+
     }
 
 }
+
+
+/* ================================================= */
+/* CONFETI */
+/* ================================================= */
 
 @keyframes confeti{
 
     from{
+
         opacity:1;
+
         transform:
             translate(0,0)
             scale(1);
+
     }
 
     to{
+
         opacity:0;
+
         transform:
             translate(var(--dx),var(--dy))
             scale(.3)
             rotate(360deg);
+
     }
 
 }
 
 
-/* ============================= */
+/* ================================================= */
 /* TEMA ROJO ROMÁNTICO */
-/* ============================= */
+/* ================================================= */
 
 :root{
 
     --papel:#8f1028;
+
     --tinta:#fff;
+
     --rosa:#fff;
+
     --oro:#ffd4dc;
 
 }
@@ -719,6 +859,7 @@ header{
 
     text-shadow:
         0 2px 8px #35000c;
+
 }
 
 .libro{
@@ -730,7 +871,9 @@ header{
     box-shadow:
 
         8px 8px 0 #740d23,
+
         12px 12px 0 #4d0717,
+
         0 30px 80px #21000888;
 
 }
@@ -801,76 +944,6 @@ header{
 
 }
 
-.inicio{
-
-    background:
-
-        radial-gradient(
-            circle at 50% 15%,
-            #df4864 0,
-            transparent 38%
-        ),
-
-        linear-gradient(
-            145deg,
-            #a71535,
-            #4a0717
-        );
-
-}
-
-.inicio-tarjeta{
-
-    background:#6c0b20d9;
-
-    border-color:#fff;
-
-    box-shadow:
-
-        0 25px 80px #210008a8,
-        inset 0 0 45px #ffffff12;
-
-}
-
-.inicio h1,
-.inicio p,
-.inicio .etiqueta{
-
-    color:#fff;
-
-}
-
-.inicio button{
-
-    background:#fff;
-
-    color:#8b1430;
-
-}
-
-.polaroid{
-
-    background:#fff;
-
-    box-shadow:
-        0 15px 38px #35000c99;
-
-}
-
-.polaroid .pie-foto{
-
-    color:#6d1830;
-
-    text-shadow:none;
-
-}
-
-.polaroid:before{
-
-    background:#ffc2cdbd;
-
-}
-
 .secreto{
 
     color:#fff!important;
@@ -878,18 +951,6 @@ header{
     background:#ffffff18;
 
     border-color:#ffd2da;
-
-}
-
-.progreso{
-
-    background:#ffffff3d;
-
-}
-
-.progreso span{
-
-    background:#fff;
 
 }
 
@@ -903,16 +964,6 @@ header{
 
 }
 
-.sonido{
-
-    color:#fff;
-
-    border:1px solid #ffffff70;
-
-    background:#ffffff10;
-
-}
-
 .particulas span{
 
     color:#ffffff38;
@@ -920,21 +971,60 @@ header{
 }
 
 
-/* ============================= */
-/* MEJORA DE CARGA DE FOTOS */
-/* ============================= */
+/* ================================================= */
+/* MARCO SIEMPRE RECTO */
+/* ================================================= */
 
-.polaroid.cargando{
+.polaroid{
 
-    opacity:0;
-    visibility:hidden;
+    transform:rotate(0deg) !important;
 
 }
 
-.polaroid.lista{
 
-    opacity:1;
-    visibility:visible;
+/* ================================================= */
+/* FOTO SIEMPRE CENTRADA */
+/* ================================================= */
+
+.polaroid img{
+
+    transform:none !important;
+
+    object-position:center center !important;
+
+}
+
+
+/* ================================================= */
+/* ANIMACIÓN DE FOTO SIN ROTACIÓN */
+/* ================================================= */
+
+.foto-centro,
+.foto-lateral,
+.foto-cortina,
+.foto-giro,
+.foto-album{
+
+    transform:none;
+
+}
+
+
+/* ================================================= */
+/* REDUCCIÓN DE MOVIMIENTO */
+/* ================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    .foto-centro,
+    .foto-lateral,
+    .foto-cortina,
+    .foto-giro,
+    .foto-album{
+
+        animation:none;
+
+    }
 
 }
 
@@ -945,9 +1035,9 @@ header{
 <body>
 
 
-<!-- ============================= -->
-<!-- INTRODUCCIÓN -->
-<!-- ============================= -->
+<!-- ================================================= -->
+<!-- PANTALLA DE INICIO -->
+<!-- ================================================= -->
 
 <div class="inicio" id="inicio">
 
@@ -976,9 +1066,9 @@ header{
 </div>
 
 
-<!-- ============================= -->
+<!-- ================================================= -->
 <!-- PARTICULAS -->
-<!-- ============================= -->
+<!-- ================================================= -->
 
 <div
     class="particulas"
@@ -987,9 +1077,9 @@ header{
 </div>
 
 
-<!-- ============================= -->
+<!-- ================================================= -->
 <!-- MÚSICA -->
-<!-- ============================= -->
+<!-- ================================================= -->
 
 <audio
     id="musica"
@@ -1018,9 +1108,9 @@ header{
     </header>
 
 
-    <!-- ============================= -->
+    <!-- ================================================= -->
     <!-- LIBRO -->
-    <!-- ============================= -->
+    <!-- ================================================= -->
 
     <div
         class="libro"
@@ -1055,7 +1145,9 @@ header{
         </section>
 
 
-        <!-- CONTENIDO -->
+        <!-- ================================================= -->
+        <!-- PÁGINA DE CONTENIDO -->
+        <!-- ================================================= -->
 
         <section
             class="pagina"
@@ -1076,7 +1168,9 @@ header{
             </h2>
 
 
-            <!-- MARCO DE FOTO -->
+            <!-- ================================================= -->
+            <!-- MARCO -->
+            <!-- ================================================= -->
 
             <figure
                 class="polaroid cargando"
@@ -1134,9 +1228,9 @@ header{
     </div>
 
 
-    <!-- ============================= -->
-    <!-- PROGRESO -->
-    <!-- ============================= -->
+    <!-- ================================================= -->
+    <!-- BARRA DE PROGRESO -->
+    <!-- ================================================= -->
 
     <div
         class="progreso"
@@ -1147,9 +1241,9 @@ header{
     </div>
 
 
-    <!-- ============================= -->
+    <!-- ================================================= -->
     <!-- CONTROLES -->
-    <!-- ============================= -->
+    <!-- ================================================= -->
 
     <div
         style="text-align:center;margin-top:22px">
@@ -1229,7 +1323,6 @@ const CONFIG = {
     recuerdos:[
 
         {
-
             fecha:"El comienzo",
 
             titulo:"Donde empezó todo",
@@ -1244,12 +1337,10 @@ const CONFIG = {
 
             texto:
                 "Quizás ese día no imaginábamos cuántos recuerdos vendrían después. Hoy lo guardo como uno de mis favoritos."
-
         },
 
 
         {
-
             fecha:"Un día especial",
 
             titulo:"Nuestra pequeña aventura",
@@ -1264,12 +1355,10 @@ const CONFIG = {
 
             texto:
                 "No fue solo el lugar. Fueron las conversaciones, las risas y esa manera de convertir un día cualquiera en algo especial."
-
         },
 
 
         {
-
             fecha:"Siempre en mi memoria",
 
             titulo:"Las cosas más sencillas",
@@ -1284,12 +1373,10 @@ const CONFIG = {
 
             texto:
                 "A veces la felicidad cabe en una foto, en una conversación larga o en una risa que no se puede contener."
-
         },
 
 
         {
-
             fecha:"Una aventura al atardecer",
 
             titulo:"Donde el cielo guardó este momento",
@@ -1304,12 +1391,10 @@ const CONFIG = {
 
             texto:
                 "El cielo cambió de colores y el tiempo pareció detenerse. Hay paisajes hermosos, pero los recuerdos son los que les dan un significado especial."
-
         },
 
 
         {
-
             fecha:"Un momento para nosotros",
 
             titulo:"Juntos, todo se siente especial",
@@ -1324,7 +1409,6 @@ const CONFIG = {
 
             texto:
                 "No importa el lugar ni el momento. Cuando estamos juntos, siempre aparece una razón para sonreír y guardar una nueva página en nuestra historia."
-
         }
 
     ]
@@ -1336,8 +1420,8 @@ const CONFIG = {
 /* ELEMENTOS */
 /* ================================================= */
 
-const $ = id =>
-    document.getElementById(id);
+const $ =
+    id => document.getElementById(id);
 
 
 let pagina = 0;
@@ -1347,38 +1431,43 @@ const total =
 
 
 /* ================================================= */
-/* PRECARGAR TODAS LAS FOTOS */
+/* PRECARGA DE LAS FOTOS */
 /* ================================================= */
 
 /*
-   ESTA ES LA MEJORA PRINCIPAL.
+    Las cinco fotos empiezan a cargarse
+    desde el inicio.
 
-   Las 5 imágenes empiezan a descargarse
-   desde que se abre la página.
-
-   Así foto1, foto2 y foto5 no tienen
-   que esperar recién cuando llega
-   su página.
+    Esto evita esperar a que lleguemos
+    a cada página.
 */
 
 const fotosPrecargadas = [];
 
-CONFIG.recuerdos.forEach((recuerdo,index)=>{
 
-    if(!recuerdo.foto){
-        return;
+CONFIG.recuerdos.forEach(
+    (recuerdo,index)=>{
+
+        if(!recuerdo.foto){
+
+            return;
+
+        }
+
+
+        const imagen =
+            new Image();
+
+
+        imagen.src =
+            recuerdo.foto;
+
+
+        fotosPrecargadas[index] =
+            imagen;
+
     }
-
-    const imagen =
-        new Image();
-
-    imagen.src =
-        recuerdo.foto;
-
-    fotosPrecargadas[index] =
-        imagen;
-
-});
+);
 
 
 /* ================================================= */
@@ -1388,8 +1477,10 @@ CONFIG.recuerdos.forEach((recuerdo,index)=>{
 $("titulo").textContent =
     CONFIG.titulo;
 
+
 $("dedicatoria").textContent =
     CONFIG.dedicatoria;
+
 
 $("secreto").textContent =
     CONFIG.sorpresa;
@@ -1404,21 +1495,26 @@ function mostrarFoto(recuerdo){
     const foto =
         $("foto");
 
+
     const marco =
         $("marco");
+
 
     const ilustracion =
         $("ilustracion");
 
 
     /*
-       Ocultamos el marco mientras
-       esperamos la imagen.
+        Primero ocultamos el marco.
     */
 
-    marco.classList.remove("lista");
+    marco.classList.remove(
+        "lista"
+    );
 
-    marco.classList.add("cargando");
+    marco.classList.add(
+        "cargando"
+    );
 
 
     foto.onload = null;
@@ -1426,7 +1522,10 @@ function mostrarFoto(recuerdo){
     foto.onerror = null;
 
 
-    foto.removeAttribute("src");
+    foto.removeAttribute(
+        "src"
+    );
+
 
     foto.hidden = true;
 
@@ -1440,102 +1539,115 @@ function mostrarFoto(recuerdo){
 
     if(!recuerdo.foto){
 
-        ilustracion.hidden = false;
+        ilustracion.hidden =
+            false;
 
-        marco.classList.remove("cargando");
 
-        marco.classList.add("lista");
+        marco.classList.remove(
+            "cargando"
+        );
+
+
+        marco.classList.add(
+            "lista"
+        );
+
 
         return;
 
     }
 
 
-    /*
-       Revisamos si la imagen ya fue
-       cargada anteriormente.
-    */
+    const indice =
+        CONFIG.recuerdos.indexOf(
+            recuerdo
+        );
+
 
     const imagenPrecargada =
-        fotosPrecargadas[
-            CONFIG.recuerdos.indexOf(recuerdo)
-        ];
+        fotosPrecargadas[indice];
 
+
+    /*
+        Función para mostrar la foto
+        cuando ya esté disponible.
+    */
 
     function imagenLista(){
 
-        foto.hidden = false;
+        foto.hidden =
+            false;
 
-        ilustracion.hidden = true;
+
+        ilustracion.hidden =
+            true;
 
 
         /*
-           Aplicamos nuevamente la animación.
+            Reiniciamos la animación.
         */
 
         foto.className = "";
 
+
         void foto.offsetWidth;
 
 
-        const efectos = [
+        /*
+            Todas las fotos utilizan
+            la misma aparición.
 
-            "foto-centro",
-
-            "foto-lateral",
-
-            "foto-cortina",
-
-            "foto-giro",
-
-            "foto-album"
-
-        ];
-
+            Sin giro.
+            Sin inclinación.
+            Sin desplazamiento.
+        */
 
         foto.classList.add(
-
-            efectos[
-                CONFIG.recuerdos.indexOf(recuerdo)
-                %
-                efectos.length
-            ]
-
+            "foto-centro"
         );
 
 
         /*
-           AHORA sí mostramos el marco.
-
-           Primero aparece la imagen
-           y después el marco.
-
-           Ya no habrá marco vacío.
+            Ahora aparece el marco.
         */
 
-        marco.classList.remove("cargando");
+        marco.classList.remove(
+            "cargando"
+        );
 
-        marco.classList.add("lista");
+
+        marco.classList.add(
+            "lista"
+        );
 
     }
 
 
     function imagenError(){
 
-        foto.hidden = true;
+        foto.hidden =
+            true;
 
-        ilustracion.hidden = false;
 
-        marco.classList.remove("cargando");
+        ilustracion.hidden =
+            false;
 
-        marco.classList.add("lista");
+
+        marco.classList.remove(
+            "cargando"
+        );
+
+
+        marco.classList.add(
+            "lista"
+        );
 
     }
 
 
     /*
-       Si ya está cargada,
-       la mostramos inmediatamente.
+        Si la imagen ya está cargada,
+        aparece inmediatamente.
     */
 
     if(
@@ -1547,7 +1659,9 @@ function mostrarFoto(recuerdo){
         foto.src =
             imagenPrecargada.src;
 
+
         imagenLista();
+
 
         return;
 
@@ -1555,12 +1669,13 @@ function mostrarFoto(recuerdo){
 
 
     /*
-       Si todavía está cargando,
-       esperamos.
+        Si todavía está cargando,
+        esperamos.
     */
 
     foto.onload =
         imagenLista;
+
 
     foto.onerror =
         imagenError;
@@ -1589,6 +1704,7 @@ function mostrar(){
     $("portada").hidden =
         !portada;
 
+
     $("contenido").hidden =
         portada;
 
@@ -1605,18 +1721,21 @@ function mostrar(){
         true;
 
 
-    $("revelar")
-        .setAttribute(
-            "aria-expanded",
-            "false"
-        );
+    $("revelar").setAttribute(
+        "aria-expanded",
+        "false"
+    );
 
 
     if(portada){
 
-        $("marco").classList.remove("lista");
+        $("marco").classList.remove(
+            "lista"
+        );
 
-        $("marco").classList.add("cargando");
+        $("marco").classList.add(
+            "cargando"
+        );
 
         return;
 
@@ -1637,9 +1756,14 @@ function mostrar(){
 
     if(final){
 
-        $("marco").classList.remove("lista");
+        $("marco").classList.remove(
+            "lista"
+        );
 
-        $("marco").classList.add("cargando");
+
+        $("marco").classList.add(
+            "cargando"
+        );
 
 
         $("secreto").hidden =
@@ -1661,7 +1785,6 @@ function mostrar(){
             "Este libro es una pequeña manera de decirte cuánto significan para mí los momentos que compartimos.";
 
     }
-
 
     else{
 
@@ -1693,7 +1816,8 @@ function mostrar(){
 
 
     $("numero").textContent =
-        String(pagina).padStart(2,"0");
+        String(pagina)
+        .padStart(2,"0");
 
 
     $("contenido").style.animation =
@@ -1710,7 +1834,7 @@ function mostrar(){
 
 
 /* ================================================= */
-/* RECORRIDO */
+/* RECORRIDO AUTOMÁTICO */
 /* ================================================= */
 
 let temporizador;
@@ -1728,7 +1852,9 @@ function programar(){
 
 
     if(!historiaIniciada){
+
         return;
+
     }
 
 
@@ -1784,13 +1910,16 @@ function programar(){
 
             programar();
 
-        },Math.max(1,segundos)*1000);
+        },Math.max(
+            1,
+            segundos
+        ) * 1000);
 
 }
 
 
 /* ================================================= */
-/* BOTÓN PAUSAR */
+/* PAUSAR */
 /* ================================================= */
 
 $("pausar").onclick = ()=>{
@@ -1843,9 +1972,12 @@ $("pausar").onclick = ()=>{
 
 $("reiniciar").onclick = ()=>{
 
-    pagina = 1;
+    pagina =
+        1;
 
-    pausado = false;
+
+    pausado =
+        false;
 
 
     $("pausar").textContent =
@@ -1910,9 +2042,12 @@ function desvanecerMusica(
         musica.volume;
 
 
-    const pasos = 30;
+    const pasos =
+        30;
 
-    let paso = 0;
+
+    let paso =
+        0;
 
 
     intervaloVolumen =
@@ -1926,7 +2061,9 @@ function desvanecerMusica(
                     0,
                     Math.min(
                         1,
+
                         volumenInicial +
+
                         (
                             volumenFinal -
                             volumenInicial
@@ -1940,7 +2077,9 @@ function desvanecerMusica(
                 );
 
 
-            if(paso >= pasos){
+            if(
+                paso >= pasos
+            ){
 
                 clearInterval(
                     intervaloVolumen
@@ -1979,8 +2118,12 @@ async function reproducirMusica(){
 
     try{
 
-        if(!musica.paused){
+        if(
+            !musica.paused
+        ){
+
             return;
+
         }
 
 
@@ -2033,6 +2176,7 @@ async function reproducirMusica(){
         if(
             error.name !==
             "NotAllowedError" &&
+
             error.name !==
             "AbortError"
         ){
@@ -2111,7 +2255,7 @@ $("silenciar").onclick = ()=>{
 
 
 /* ================================================= */
-/* INTENTAR REPRODUCIR */
+/* INICIAR MÚSICA */
 /* ================================================= */
 
 reproducirMusica();
@@ -2152,13 +2296,14 @@ $("abrir").onclick =
 
         mostrar();
 
+
         programar();
 
     };
 
 
 /* ================================================= */
-/* MOVIMIENTO REDUCIDO */
+/* PARTÍCULAS */
 /* ================================================= */
 
 const movimientoReducido =
@@ -2167,11 +2312,9 @@ const movimientoReducido =
     );
 
 
-/* ================================================= */
-/* PARTICULAS */
-/* ================================================= */
-
-if(!movimientoReducido.matches){
+if(
+    !movimientoReducido.matches
+){
 
     for(
         let i = 0;
@@ -2262,19 +2405,23 @@ function celebrar(){
 
         c.style.setProperty(
             "--dx",
+
             (
                 Math.random() * 500 -
                 250
             ) + "px"
+
         );
 
 
         c.style.setProperty(
             "--dy",
+
             (
                 Math.random() * 400 -
                 300
             ) + "px"
+
         );
 
 
@@ -2292,7 +2439,7 @@ function celebrar(){
 
 
 /* ================================================= */
-/* INICIAR */
+/* MOSTRAR INICIALMENTE */
 /* ================================================= */
 
 mostrar();
